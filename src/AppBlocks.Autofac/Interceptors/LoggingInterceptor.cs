@@ -3,9 +3,7 @@ using Autofac.Features.Indexed;
 using Castle.DynamicProxy;
 using log4net;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AppBlocks.Autofac.Interceptors
 {

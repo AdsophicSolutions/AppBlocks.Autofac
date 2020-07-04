@@ -1,11 +1,8 @@
 ﻿using Autofac.Core;
 using Autofac.Core.Registration;
 using log4net;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace AppBlocks.Autofac.Common
 {

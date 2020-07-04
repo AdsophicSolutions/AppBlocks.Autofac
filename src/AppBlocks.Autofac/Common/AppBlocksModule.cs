@@ -1,9 +1,5 @@
 ﻿using AppBlocks.Autofac.Interceptors;
 using Autofac;
-using Autofac.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AppBlocks.Autofac.Common
 {
