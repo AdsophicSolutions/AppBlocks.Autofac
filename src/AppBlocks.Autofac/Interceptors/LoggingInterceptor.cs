@@ -69,7 +69,8 @@ namespace AppBlocks.Autofac.Interceptors
 
         protected override void PostMethodInvoke(IInvocation invocation)
         {
-            if (serviceLoggers.TryGetValue(invocation.TargetType.FullName, out IServiceLogger serviceLogger))
+            if (serviceLoggers.TryGetValue(invocation.TargetType.FullName, out IServiceLogger serviceLogger)
+                && !disabledServiceLoggers.Contains(serviceLogger.GetType().FullName))
             {
                 try
                 {
