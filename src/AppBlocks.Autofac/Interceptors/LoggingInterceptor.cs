@@ -3,14 +3,19 @@ using Autofac.Features.Indexed;
 using Castle.DynamicProxy;
 using log4net;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AppBlocks.Autofac.Interceptors
 {
+    /// <summary>
+    /// LoggingInterceptor performs automatic logging before and after service methods are invoked. 
+    /// </summary>
     public class LoggingInterceptor : AutofacInterceptorBase
     {
         private readonly IIndex<string, IClassLogger> classLoggers;
         private readonly ILoggingConfiguration loggingConfiguration;
+        private readonly HashSet<string> disabledLoggers = new HashSet<string>();
 
         public LoggingInterceptor(
             IIndex<string, IClassLogger> classLoggers,
@@ -22,16 +27,30 @@ namespace AppBlocks.Autofac.Interceptors
 
         protected override void PreMethodInvoke(IInvocation invocation)
         {
-            if (classLoggers.TryGetValue(invocation.TargetType.FullName, out IClassLogger classLogger))
+            if (classLoggers.TryGetValue(invocation.TargetType.FullName, out IClassLogger classLogger)
+                && !disabledLoggers.Contains(classLogger.GetType().FullName))
             {
-                classLogger.PreMethodInvocationLog(invocation);
+                try
+                {
+                    classLogger.PreMethodInvocationLog(invocation);
+                }
+                catch(Exception e)
+                {
+                    if(Logger.IsErrorEnabled)
+                    {
+                        Logger.Error($"Class logger {classLogger.GetType().FullName} threw an exception during PreMethodInvocationLog method call. Logger will be disabled", e);
+                    }
+
+                    disabledLoggers.Add(classLogger.GetType().FullName);
+                }
             }
             else
-            {                
+            {
                 if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
-                    Logger.Info($"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name}" +
-                        $"with parameters {string.Join(", ", invocation.Arguments.Select(a => a ?? string.Empty).ToString()).ToArray()}");
+                    if (Logger.IsInfoEnabled)
+                        Logger.Info($"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name} " +
+                            $"with parameters {string.Join(", ", invocation.Arguments.Select(a => a ?? string.Empty).ToString()).ToArray()}");
                 }
             }
         }
@@ -52,14 +71,28 @@ namespace AppBlocks.Autofac.Interceptors
         {
             if (classLoggers.TryGetValue(invocation.TargetType.FullName, out IClassLogger classLogger))
             {
-                classLogger.PostMethodInvocationLog(invocation);
+                try
+                {
+                    classLogger.PostMethodInvocationLog(invocation);
+                }
+                catch (Exception e)
+                {
+                    if (Logger.IsErrorEnabled)
+                    {
+                        Logger.Error($"Class logger {classLogger.GetType().FullName} threw an exception during PostmethodInvocationLog method call. " +
+                            $"Logger will be disabled", e);
+                    }
+
+                    disabledLoggers.Add(classLogger.GetType().FullName);
+                }
             }
             else
-            {   
+            {
                 if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
-                    Logger.Info($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
-                        $"Returned {invocation.ReturnValue}");
+                    if (Logger.IsInfoEnabled)
+                        Logger.Info($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                            $"Returned {invocation.ReturnValue}");
                 }
             }
         }
