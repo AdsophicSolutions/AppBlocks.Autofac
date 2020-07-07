@@ -22,7 +22,7 @@ namespace AppBlocks.Autofac.Common
             // Set the properties located.
             foreach (var propToSet in properties)
             {
-                propToSet.SetValue(instance, LogManager.GetLogger("default", instanceType), null);
+                propToSet.SetValue(instance, LogManager.GetLogger(instanceType), null);
             }
         }
 
@@ -33,7 +33,7 @@ namespace AppBlocks.Autofac.Common
               {
         new ResolvedParameter(
             (p, i) => p.ParameterType == typeof(ILog),
-            (p, i) => LogManager.GetLogger("default",p.Member.DeclaringType)),
+            (p, i) => LogManager.GetLogger(p.Member.DeclaringType)),
               });
         }
 

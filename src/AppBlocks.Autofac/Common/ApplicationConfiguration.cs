@@ -12,10 +12,9 @@ namespace AppBlocks.Autofac.Common
         private static readonly log4net.ILog log =
                 log4net.LogManager.GetLogger(typeof(ApplicationConfiguration));
 
-        private static IConfiguration Configuration { get; set; }
-        private Lazy<IList<string>> ConfigurationFilePaths { get; } = new Lazy<IList<string>>(() => new List<string>());
-        private Lazy<IList<string>> autofacDirectories { get; } = new Lazy<IList<string>>(() => new List<string>());
-        private Lazy<IList<string>> useDefaultLoggerTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
+        internal Lazy<IList<string>> ConfigurationFilePaths { get; } = new Lazy<IList<string>>(() => new List<string>());
+        internal Lazy<IList<string>> AutofacDirectories { get; } = new Lazy<IList<string>>(() => new List<string>());
+        internal Lazy<IList<string>> UseDefaultLoggerTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
 
         /// <summary>
         /// Constructur to create ApplicationConfiguration object
@@ -83,9 +82,6 @@ namespace AppBlocks.Autofac.Common
             }          
         }
 
-        public IEnumerable<string> AutofacDirectories { get => autofacDirectories.Value; }
-        public IEnumerable<string> UseDefaultLoggerTypes { get => useDefaultLoggerTypes.Value; }
-
         private void ValidateAndAddConfigurationPath(string configurationFilePath)
         {
             //Confirm file exists and is accessible
@@ -109,7 +105,7 @@ namespace AppBlocks.Autofac.Common
                     throw new Exception($"Autofac source directory does not exist: {autofacSourceDirectoryConfiguration["Directory"]}");
                 }
 
-                autofacDirectories.Value.Add(autofacSourceDirectoryConfiguration["Directory"]);
+                AutofacDirectories.Value.Add(autofacSourceDirectoryConfiguration["Directory"]);
             }
         }
 
@@ -118,7 +114,7 @@ namespace AppBlocks.Autofac.Common
             var useDefaultLoggerTypesConfiguration = configurationRoot.GetSection("useDefaultLogger").GetChildren();
             foreach (var defaultLoggerTypeConfiguration in useDefaultLoggerTypesConfiguration)
             {
-                useDefaultLoggerTypes.Value.Add(defaultLoggerTypeConfiguration["Type"]);
+                UseDefaultLoggerTypes.Value.Add(defaultLoggerTypeConfiguration["Type"]);
             }
         }
     }

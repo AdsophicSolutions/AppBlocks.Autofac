@@ -17,7 +17,7 @@ namespace AppBlocks.Autofac.Common
         {
             if (!useDefaultLogTypes.IsValueCreated)
             {
-                foreach (string useDefaultLoggerType in configuration.UseDefaultLoggerTypes)
+                foreach (string useDefaultLoggerType in configuration?.UseDefaultLoggerTypes.Value)
                 {
                     useDefaultLogTypes.Value.Add(useDefaultLoggerType);
                 }

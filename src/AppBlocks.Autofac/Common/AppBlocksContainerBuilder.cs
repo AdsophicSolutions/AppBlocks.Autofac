@@ -15,8 +15,9 @@ namespace AppBlocks.Autofac.Common
 {
     public abstract class AppBlocksContainerBuilder
     {
-        private static readonly ILog logger = 
-            LogManager.GetLogger("default", MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logger =
+            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        
 
         protected readonly ApplicationConfiguration ApplicationConfiguration;
         public AppBlocksContainerBuilder(ApplicationConfiguration applicationConfiguration)
@@ -24,7 +25,10 @@ namespace AppBlocks.Autofac.Common
             ApplicationConfiguration = applicationConfiguration ?? throw new ArgumentNullException("Application configuration cannot be null");
         }
 
-        public AppBlocksContainerBuilder() { }
+        public AppBlocksContainerBuilder()
+        {
+            ApplicationConfiguration = new ApplicationConfiguration();
+        }
 
         public IContainer BuildContainer()
         {
@@ -64,7 +68,7 @@ namespace AppBlocks.Autofac.Common
         private void RegisterExternalDirectories(ContainerBuilder builder)
         {
             //Iterate through list of directories set up as Autofac probe directories 
-            foreach (string directory in (ApplicationConfiguration?.AutofacDirectories ?? new string[0]))
+            foreach (string directory in (ApplicationConfiguration?.AutofacDirectories.Value ?? new string[0]))
             {
                 if (!Directory.Exists(directory)) throw new InvalidDataException($"Configured directory path {directory} is invalid");
                 foreach (string filePath in Directory.GetFiles(directory))
@@ -94,12 +98,6 @@ namespace AppBlocks.Autofac.Common
             builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
         }
 
-        static IEnumerable<Type> GetTypesRegisteredAsServices(Assembly assembly)
-        {
-            return assembly.GetTypes().
-                Where(t => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1);
-        }
-
         /// <summary>
         /// Registers types attributed with AutofacServiceAttribute as interfaces. 
         /// </summary>
@@ -108,7 +106,7 @@ namespace AppBlocks.Autofac.Common
         private void RegisterAsInterfaces(ContainerBuilder builder, Assembly assembly)
         {
             //Anonymous service is one that has AutofacServiceAttribute with no name specified
-            bool isAnonymousService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
+            static bool isAnonymousService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
                     && string.IsNullOrEmpty(((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).Name)
                     && !((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).IsKeyed;
 
@@ -135,7 +133,7 @@ namespace AppBlocks.Autofac.Common
         private void RegisterNamedServices(ContainerBuilder builder, Assembly assembly)
         {
             //Named service is one that has AutofacServiceAttribute with no name specified
-            bool isNamedService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
+            static bool isNamedService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
                     && !string.IsNullOrEmpty(((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).Name)
                     && !((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).IsKeyed;
 
@@ -163,7 +161,7 @@ namespace AppBlocks.Autofac.Common
         private void RegisterKeyedServices(ContainerBuilder builder, Assembly assembly)
         {
             //Named service is one that has AutofacServiceAttribute with no name specified
-            bool isKeyedService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
+            static bool isKeyedService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
                     && !string.IsNullOrEmpty(((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).Name)
                     && ((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).IsKeyed;
 
