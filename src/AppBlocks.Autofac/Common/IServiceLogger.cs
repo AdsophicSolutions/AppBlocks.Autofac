@@ -2,7 +2,7 @@
 
 namespace AppBlocks.Autofac.Common
 {
-    public interface IClassLogger
+    public interface IServiceLogger
     {
         void PreMethodInvocationLog(IInvocation invocation);
         void PostMethodInvocationLog(IInvocation invocation);

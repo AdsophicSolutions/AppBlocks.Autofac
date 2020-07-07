@@ -5,8 +5,8 @@ using System;
 
 namespace AppBlocks.Autofac.Interceptors.Placeholders
 {
-    [AppBlocksClassLoggerService(Name: "**")]
-    public class ClassLoggerPlaceholder : IClassLogger
+    [AppBlocksLoggerService(Name: "**")]
+    public class ServiceLoggerPlaceholder : IServiceLogger
     {
         public void PostMethodInvocationLog(IInvocation invocation)
         {

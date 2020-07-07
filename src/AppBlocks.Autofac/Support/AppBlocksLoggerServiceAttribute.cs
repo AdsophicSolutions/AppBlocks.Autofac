@@ -4,12 +4,12 @@ using System;
 namespace AppBlocks.Autofac.Support
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class AppBlocksClassLoggerServiceAttribute : AppBlocksServiceAttribute
+    public class AppBlocksLoggerServiceAttribute : AppBlocksServiceAttribute
     {
-        public AppBlocksClassLoggerServiceAttribute(string Name) :
+        public AppBlocksLoggerServiceAttribute(string Name) :
             base(
                 Name,
-                typeof(IClassLogger),
+                typeof(IServiceLogger),
                 EnumAppBlocksInstanceLifetime.SingleInstance,
                 new string[0],
                 new string[0],

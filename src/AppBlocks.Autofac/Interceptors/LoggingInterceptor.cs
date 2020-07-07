@@ -13,35 +13,35 @@ namespace AppBlocks.Autofac.Interceptors
     /// </summary>
     public class LoggingInterceptor : AutofacInterceptorBase
     {
-        private readonly IIndex<string, IClassLogger> classLoggers;
+        private readonly IIndex<string, IServiceLogger> serviceLoggers;
         private readonly ILoggingConfiguration loggingConfiguration;
-        private readonly HashSet<string> disabledLoggers = new HashSet<string>();
+        private readonly HashSet<string> disabledServiceLoggers = new HashSet<string>();
 
         public LoggingInterceptor(
-            IIndex<string, IClassLogger> classLoggers,
+            IIndex<string, IServiceLogger> serviceLoggers,
             ILoggingConfiguration loggingConfiguration)
         {
-            this.classLoggers = classLoggers;
+            this.serviceLoggers = serviceLoggers;
             this.loggingConfiguration = loggingConfiguration;
         }
 
         protected override void PreMethodInvoke(IInvocation invocation)
         {
-            if (classLoggers.TryGetValue(invocation.TargetType.FullName, out IClassLogger classLogger)
-                && !disabledLoggers.Contains(classLogger.GetType().FullName))
+            if (serviceLoggers.TryGetValue(invocation.TargetType.FullName, out IServiceLogger serviceLogger)
+                && !disabledServiceLoggers.Contains(serviceLogger.GetType().FullName))
             {
                 try
                 {
-                    classLogger.PreMethodInvocationLog(invocation);
+                    serviceLogger.PreMethodInvocationLog(invocation);
                 }
                 catch(Exception e)
                 {
                     if(Logger.IsErrorEnabled)
                     {
-                        Logger.Error($"Class logger {classLogger.GetType().FullName} threw an exception during PreMethodInvocationLog method call. Logger will be disabled", e);
+                        Logger.Error($"Service logger {serviceLogger.GetType().FullName} threw an exception during PreMethodInvocationLog method call. Logger will be disabled", e);
                     }
 
-                    disabledLoggers.Add(classLogger.GetType().FullName);
+                    disabledServiceLoggers.Add(serviceLogger.GetType().FullName);
                 }
             }
             else
@@ -69,21 +69,21 @@ namespace AppBlocks.Autofac.Interceptors
 
         protected override void PostMethodInvoke(IInvocation invocation)
         {
-            if (classLoggers.TryGetValue(invocation.TargetType.FullName, out IClassLogger classLogger))
+            if (serviceLoggers.TryGetValue(invocation.TargetType.FullName, out IServiceLogger serviceLogger))
             {
                 try
                 {
-                    classLogger.PostMethodInvocationLog(invocation);
+                    serviceLogger.PostMethodInvocationLog(invocation);
                 }
                 catch (Exception e)
                 {
                     if (Logger.IsErrorEnabled)
                     {
-                        Logger.Error($"Class logger {classLogger.GetType().FullName} threw an exception during PostmethodInvocationLog method call. " +
+                        Logger.Error($"Service logger {serviceLogger.GetType().FullName} threw an exception during PostmethodInvocationLog method call. " +
                             $"Logger will be disabled", e);
                     }
 
-                    disabledLoggers.Add(classLogger.GetType().FullName);
+                    disabledServiceLoggers.Add(serviceLogger.GetType().FullName);
                 }
             }
             else
