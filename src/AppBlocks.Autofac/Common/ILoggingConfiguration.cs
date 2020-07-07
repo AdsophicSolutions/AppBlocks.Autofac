@@ -6,6 +6,6 @@ namespace AppBlocks.Autofac.Common
 {
     public interface ILoggingConfiguration
     {
-        bool ShouldUseDefaultLogger(string fullTypeName);
+        bool IsTypeExcluded(string fullTypeName);
     }
 }

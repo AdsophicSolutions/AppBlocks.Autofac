@@ -27,13 +27,11 @@ namespace AppBlocks.Autofac.Interceptors
                 classLogger.PreMethodInvocationLog(invocation);
             }
             else
-            {
-                var shouldUseDefaultLogger = loggingConfiguration.ShouldUseDefaultLogger(invocation.TargetType.FullName);
-                if (shouldUseDefaultLogger)
+            {                
+                if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
-                    Logger.Info($"Logging Interceptor: Calling method {invocation.Method.Name}" +
-                        $"with parameters {string.Join(", ", invocation.Arguments.Select(a => a ?? string.Empty).ToString()).ToArray()}." +
-                        $" Type {invocation.TargetType.FullName} setup to use default logger");
+                    Logger.Info($"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name}" +
+                        $"with parameters {string.Join(", ", invocation.Arguments.Select(a => a ?? string.Empty).ToString()).ToArray()}");
                 }
             }
         }
@@ -57,11 +55,11 @@ namespace AppBlocks.Autofac.Interceptors
                 classLogger.PostMethodInvocationLog(invocation);
             }
             else
-            {
-                var shouldUseDefaultLogger = loggingConfiguration.ShouldUseDefaultLogger(invocation.TargetType.FullName);
-                if (shouldUseDefaultLogger)
+            {   
+                if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
-                    Logger.Info($"Done: result was {invocation.ReturnValue}.");
+                    Logger.Info($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                        $"Returned {invocation.ReturnValue}");
                 }
             }
         }

@@ -9,12 +9,12 @@ namespace AppBlocks.Autofac.Common
 {
     public class ApplicationConfiguration
     {
-        private static readonly log4net.ILog log =
+        private static readonly log4net.ILog logger =
                 log4net.LogManager.GetLogger(typeof(ApplicationConfiguration));
 
         internal Lazy<IList<string>> ConfigurationFilePaths { get; } = new Lazy<IList<string>>(() => new List<string>());
         internal Lazy<IList<string>> AutofacDirectories { get; } = new Lazy<IList<string>>(() => new List<string>());
-        internal Lazy<IList<string>> UseDefaultLoggerTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
+        internal Lazy<IList<string>> ExcludeFromLogTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
 
         /// <summary>
         /// Constructur to create ApplicationConfiguration object
@@ -42,28 +42,14 @@ namespace AppBlocks.Autofac.Common
         {
         }
 
-        public void AddLoggingConfiguration(string logFilePath)
-        {
-            XmlDocument log4netConfig = new XmlDocument();
-            log4netConfig.Load(File.OpenRead(logFilePath));
-
-            var repo = log4net.LogManager.CreateRepository(
-                "default",//Assembly.GetEntryAssembly(), 
-                typeof(log4net.Repository.Hierarchy.Hierarchy));
-
-            log4net.Config.XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
-
-            log.Info("Application Configuration. Logging setup completed");
-            //Lines removed for brevity
-        }
-
         /// <summary>
         /// Add application config file path
         /// </summary>
         /// <param name="configurationFilePath">Configuration File Path to add</param>
         public void AddConfigurationFile(string configurationFilePath)
         {
-            if (string.IsNullOrEmpty(configurationFilePath)) throw new ArgumentNullException("Configuration file path cannot be null or empty");
+            if (string.IsNullOrEmpty(configurationFilePath)) 
+                throw new ArgumentNullException("Configuration file path cannot be null or empty");
 
             //Add file path to list of file paths to process
             ValidateAndAddConfigurationPath(configurationFilePath);
@@ -78,7 +64,7 @@ namespace AppBlocks.Autofac.Common
 
                 var configuration = builder.Build();
                 SetupAutofacSourceDirectories(configuration);
-                SetupDefaultLoggerTypes(configuration);
+                SetupExcludeLogTypes(configuration);
             }          
         }
 
@@ -90,6 +76,8 @@ namespace AppBlocks.Autofac.Common
                 throw new ArgumentException($"File {configurationFilePath} is not exist or not accessible. " +
                     $"All configuration file paths passed to {GetType().FullName} must exist and be accessible");
             }
+
+            if (logger.IsDebugEnabled) logger.Debug($"Adding configuration file path {configurationFilePath}");
 
             //Add to list of directories to be processed
             ConfigurationFilePaths.Value.Add(configurationFilePath);
@@ -105,16 +93,18 @@ namespace AppBlocks.Autofac.Common
                     throw new Exception($"Autofac source directory does not exist: {autofacSourceDirectoryConfiguration["Directory"]}");
                 }
 
+                if (logger.IsDebugEnabled) logger.Debug($"Adding Autofac source directory {autofacSourceDirectoryConfiguration["Directory"]}");
+
                 AutofacDirectories.Value.Add(autofacSourceDirectoryConfiguration["Directory"]);
             }
         }
 
-        private void SetupDefaultLoggerTypes(IConfigurationRoot configurationRoot)
+        private void SetupExcludeLogTypes(IConfigurationRoot configurationRoot)
         {
-            var useDefaultLoggerTypesConfiguration = configurationRoot.GetSection("useDefaultLogger").GetChildren();
-            foreach (var defaultLoggerTypeConfiguration in useDefaultLoggerTypesConfiguration)
+            var excludeFromLogTypes = configurationRoot.GetSection("excludeFromLog").GetChildren();
+            foreach (var excludeFromLogType in excludeFromLogTypes)
             {
-                UseDefaultLoggerTypes.Value.Add(defaultLoggerTypeConfiguration["Type"]);
+                ExcludeFromLogTypes.Value.Add(excludeFromLogType["Type"]);
             }
         }
     }

@@ -9,23 +9,23 @@ namespace AppBlocks.Autofac.Common
         // that is needed to "poke" interceptors into registrations.
         //const string InterceptorsPropertyName = "Autofac.Extras.DynamicProxy2.RegistrationExtensions.InterceptorsPropertyName";
 
-        protected override void Load(ContainerBuilder builder)
-        {
-            base.Load(builder);
+        //protected override void Load(ContainerBuilder builder)
+        //{
+        //    base.Load(builder);
 
-            builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
-                .As<ILoggingConfiguration>()
-                .SingleInstance();
+        //    builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
+        //        .As<ILoggingConfiguration>()
+        //        .SingleInstance();
 
-            RegisterInterceptors(builder);
-        }
+        //    RegisterInterceptors(builder);
+        //}
 
-        private void RegisterInterceptors(ContainerBuilder builder)
-        {
-            // Typed registration
-            builder.RegisterType<LoggingInterceptor>().AsSelf().SingleInstance();
-            builder.RegisterType<ValidationInterceptor>().AsSelf().SingleInstance();
-            builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
-        }
+        //private void RegisterInterceptors(ContainerBuilder builder)
+        //{
+        //    // Typed registration
+        //    builder.RegisterType<LoggingInterceptor>().AsSelf().SingleInstance();
+        //    builder.RegisterType<ValidationInterceptor>().AsSelf().SingleInstance();
+        //    builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
+        //}
     }
 }

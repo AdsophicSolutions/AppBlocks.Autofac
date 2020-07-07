@@ -6,24 +6,25 @@ namespace AppBlocks.Autofac.Common
     internal class LoggingConfiguration : ILoggingConfiguration
     {
         private readonly ApplicationConfiguration configuration;
-        private readonly Lazy<HashSet<string>> useDefaultLogTypes = new Lazy<HashSet<string>>(() => new HashSet<string>());
+        private readonly Lazy<HashSet<string>> excludeFromLogTypes 
+            = new Lazy<HashSet<string>>(() => new HashSet<string>());
 
         public LoggingConfiguration(ApplicationConfiguration configuration)
         {
             this.configuration = configuration;
         }
 
-        public bool ShouldUseDefaultLogger(string fullTypeName)
+        public bool IsTypeExcluded(string fullTypeName)
         {
-            if (!useDefaultLogTypes.IsValueCreated)
+            if (!excludeFromLogTypes.IsValueCreated)
             {
-                foreach (string useDefaultLoggerType in configuration?.UseDefaultLoggerTypes.Value)
+                foreach (string excludeFromLogType in configuration?.ExcludeFromLogTypes.Value)
                 {
-                    useDefaultLogTypes.Value.Add(useDefaultLoggerType);
+                    excludeFromLogTypes.Value.Add(excludeFromLogType);
                 }
             }
 
-            return useDefaultLogTypes.Value.Contains(fullTypeName);
+            return excludeFromLogTypes.Value.Contains(fullTypeName);
         }
     }
 }
