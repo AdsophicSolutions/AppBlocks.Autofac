@@ -2,6 +2,7 @@
 using AppBlocks.Autofac.Support;
 using Autofac.Features.Indexed;
 using Castle.DynamicProxy;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,10 @@ namespace AppBlocks.Autofac.Interceptors
     public class WorkflowInterceptor : AutofacInterceptorBase
     {   
         private readonly IIndex<string, IWorkflowWriter> workflowWriters;
-        private Lazy<Dictionary<string, IList<IWorkflowWriter>>> workflowWriterServiceDictionary =
-            new Lazy<Dictionary<string, IList<IWorkflowWriter>>>(() => new Dictionary<string, IList<IWorkflowWriter>>());
+        private readonly Lazy<Dictionary<string, Dictionary<string, IWorkflowWriter>>> workflowWriterServiceDictionary =
+            new Lazy<Dictionary<string, Dictionary<string, IWorkflowWriter>>>(() => new Dictionary<string, Dictionary<string, IWorkflowWriter>>());
+        private readonly HashSet<string> disabledWorkflowWriters = 
+            new HashSet<string>();
 
         public WorkflowInterceptor(IIndex<string, IWorkflowWriter> workflowWriters)
         {            
@@ -25,7 +28,22 @@ namespace AppBlocks.Autofac.Interceptors
             var writers = GetWorkflowWriters(invocation);
             foreach (var writer in writers)
             {
-                writer.PostMethodInvocationOutput(invocation);
+                if (disabledWorkflowWriters.Contains(writer.Key)) continue;
+
+                try
+                {
+                    writer.Value.PostMethodInvocationOutput(invocation);
+                }
+                catch(Exception e)
+                {
+                    if (Logger.IsErrorEnabled)
+                    {
+                        Logger.Error($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
+                            $"Writer will be disabled", e);
+                    }
+
+                    disabledWorkflowWriters.Add(writer.Key);
+                }
             }
         }
 
@@ -34,14 +52,29 @@ namespace AppBlocks.Autofac.Interceptors
             var writers = GetWorkflowWriters(invocation);
             foreach (var writer in writers)
             {
-                writer.PreMethodInvocationOutput(invocation);
+                if (disabledWorkflowWriters.Contains(writer.Key)) continue;
+
+                try
+                {
+                    writer.Value.PreMethodInvocationOutput(invocation);
+                }
+                catch (Exception e)
+                {
+                    if (Logger.IsErrorEnabled)
+                    {
+                        Logger.Error($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PreMethodInvoke method call. " +
+                            $"Writer will be disabled", e);
+                    }
+
+                    disabledWorkflowWriters.Add(writer.Key);
+                }
             }
         }
 
-        private IEnumerable<IWorkflowWriter> GetWorkflowWriters(IInvocation invocation)
+        private Dictionary<string, IWorkflowWriter> GetWorkflowWriters(IInvocation invocation)
         {
             if (workflowWriterServiceDictionary.Value.TryGetValue(
-                invocation.TargetType.FullName, out IList<IWorkflowWriter> writers))
+                invocation.TargetType.FullName, out Dictionary<string, IWorkflowWriter> writers))
             {
                 return writers;
             }
@@ -76,15 +109,17 @@ namespace AppBlocks.Autofac.Interceptors
                     if (!workflowWriterServiceDictionary.Value.TryGetValue(invocation.TargetType.FullName,
                         out writers))
                     {
-                        writers = new List<IWorkflowWriter>();
+                        writers = new Dictionary<string, IWorkflowWriter>();
                         workflowWriterServiceDictionary.Value[invocation.TargetType.FullName] = writers;
                     }
 
-                    writers.Add(writer);
+                    writers.Add(workflow, writer);
                 }
             }
 
             return workflowWriterServiceDictionary.Value[invocation.TargetType.FullName];
         }
+
+        public ILog Logger { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace AppBlocks.Autofac.Interceptors.Placeholders
     /// <summary>
     /// Place holder class validator to satisfy DI
     /// </summary>
-    [AppBlocksClassValidatorWriterService(ClassFullName: "**")]
-    public class ClassValidatorPlaceholder : IClassValidator
+    [AppBlocksValidatorService(ClassFullName: "**")]
+    public class ServiceValidatorPlaceholder : IServiceValidator
     {
         public void ValidateInputParameters(IInvocation invocation)
         {

@@ -7,7 +7,7 @@ namespace AppBlocks.Autofac.Common
     /// parameters to method calls in a class and validate 
     /// result values. 
     /// </summary>
-    public interface IClassValidator
+    public interface IServiceValidator
     {
         void ValidateInputParameters(IInvocation invocation);
         void ValidateResult(IInvocation invocation);

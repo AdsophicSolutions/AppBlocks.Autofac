@@ -4,12 +4,12 @@ using System;
 namespace AppBlocks.Autofac.Support
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class AppBlocksClassValidatorWriterServiceAttribute : AppBlocksServiceAttribute
+    public class AppBlocksValidatorServiceAttribute : AppBlocksServiceAttribute
     {
-        public AppBlocksClassValidatorWriterServiceAttribute(string ClassFullName) :
+        public AppBlocksValidatorServiceAttribute(string ClassFullName) :
             base(
                 ClassFullName,
-                typeof(IClassValidator),
+                typeof(IServiceValidator),
                 EnumAppBlocksInstanceLifetime.SingleInstance,
                 new string[0],
                 new string[0],
