@@ -1,4 +1,5 @@
 ﻿using AppBlocks.Autofac.Common;
+using AppBlocks.Autofac.Support;
 using Autofac.Features.Indexed;
 using Castle.DynamicProxy;
 using log4net;
@@ -11,7 +12,14 @@ namespace AppBlocks.Autofac.Interceptors
     /// <summary>
     /// LoggingInterceptor performs automatic logging before and after service methods are invoked. 
     /// </summary>
-    public class LoggingInterceptor : AutofacInterceptorBase
+    [AppBlocksService(
+        Name:"", 
+        ServiceType:null,
+        ServiceScope:EnumAppBlocksInstanceLifetime.SingleInstance, 
+        Interceptors: new string[0], 
+        Workflows:null,
+        IsKeyed:false)]
+    public class LoggingInterceptor : ILoggingInterceptor
     {
         private readonly IIndex<string, IServiceLogger> serviceLoggers;
         private readonly ILoggingConfiguration loggingConfiguration;
@@ -25,7 +33,7 @@ namespace AppBlocks.Autofac.Interceptors
             this.loggingConfiguration = loggingConfiguration;
         }
 
-        protected override void PreMethodInvoke(IInvocation invocation)
+        public void PreMethodInvoke(IInvocation invocation)
         {
             if (serviceLoggers.TryGetValue(invocation.TargetType.FullName, out IServiceLogger serviceLogger)
                 && !disabledServiceLoggers.Contains(serviceLogger.GetType().FullName))
@@ -50,24 +58,13 @@ namespace AppBlocks.Autofac.Interceptors
                 {
                     if (Logger.IsInfoEnabled)
                         Logger.Info($"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name} " +
-                            $"with parameters {string.Join(", ", invocation.Arguments.Select(a => a ?? string.Empty).ToString()).ToArray()}");
+                            $"with parameters: {(invocation.Arguments.Length == 0 ? "None" : string.Join(", ", invocation.Arguments))}");
                 }
             }
         }
 
-        protected override void MethodInvoke(IInvocation invocation)
-        {
-            try
-            {
-                base.MethodInvoke(invocation);
-            }
-            catch (Exception e)
-            {
-                Logger.Error($"Exception thrown running {invocation.TargetType.FullName}.{invocation.Method.Name}", e);
-            }
-        }
 
-        protected override void PostMethodInvoke(IInvocation invocation)
+        public void PostMethodInvoke(IInvocation invocation)
         {
             if (serviceLoggers.TryGetValue(invocation.TargetType.FullName, out IServiceLogger serviceLogger)
                 && !disabledServiceLoggers.Contains(serviceLogger.GetType().FullName))

@@ -10,7 +10,14 @@ using System.Reflection;
 
 namespace AppBlocks.Autofac.Interceptors
 {
-    public class WorkflowInterceptor : AutofacInterceptorBase
+    [AppBlocksService(
+        Name: "",
+        ServiceType: null,
+        ServiceScope: EnumAppBlocksInstanceLifetime.SingleInstance,
+        Interceptors: new string[0],
+        Workflows: null,
+        IsKeyed: false)]
+    public class WorkflowInterceptor : IWorkflowInterceptor
     {   
         private readonly IIndex<string, IWorkflowWriter> workflowWriters;
         private readonly Lazy<Dictionary<string, Dictionary<string, IWorkflowWriter>>> workflowWriterServiceDictionary =
@@ -23,9 +30,11 @@ namespace AppBlocks.Autofac.Interceptors
             this.workflowWriters = workflowWriters;
         }
 
-        protected override void PostMethodInvoke(IInvocation invocation)
+        public void PostMethodInvoke(IInvocation invocation)
         {
             var writers = GetWorkflowWriters(invocation);
+            if (writers == null) return;
+
             foreach (var writer in writers)
             {
                 if (disabledWorkflowWriters.Contains(writer.Key)) continue;
@@ -47,9 +56,11 @@ namespace AppBlocks.Autofac.Interceptors
             }
         }
 
-        protected override void PreMethodInvoke(IInvocation invocation)
+        public void PreMethodInvoke(IInvocation invocation)
         {
             var writers = GetWorkflowWriters(invocation);
+            if (writers == null) return;
+
             foreach (var writer in writers)
             {
                 if (disabledWorkflowWriters.Contains(writer.Key)) continue;
@@ -90,7 +101,8 @@ namespace AppBlocks.Autofac.Interceptors
             var typedServiceAttribute = appblocksServiceAttribute.First();
             if ((typedServiceAttribute.Workflows ?? new string[0]).Count() == 0)
             {
-                throw new ArgumentException($"Oops! Not sure how you ended up here, but AutofacServiceAttribute definition does not have a valid workflow name");
+                workflowWriterServiceDictionary.Value[invocation.TargetType.FullName] = null;
+                return null;
             }
 
             if (!typedServiceAttribute.Workflows.All(

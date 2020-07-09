@@ -90,12 +90,12 @@ namespace AppBlocks.Autofac.Common
         private void RegisterInterceptors(ContainerBuilder builder)
         {
             // Typed registration
-            logger.Debug("Registering Logging Interceptor");
-            builder.RegisterType<LoggingInterceptor>().AsSelf().SingleInstance();
-            logger.Debug("Registering Validation Interceptor");
-            builder.RegisterType<ValidationInterceptor>().AsSelf().SingleInstance();
-            logger.Debug("Registering Workflow Interceptor");
-            builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
+            logger.Debug("Registering Interceptor");
+            builder.RegisterType<AppBlocksServiceInterceptor>().AsSelf().SingleInstance();
+            //logger.Debug("Registering Validation Interceptor");
+            //builder.RegisterType<ValidationInterceptor>().AsSelf().SingleInstance();
+            //logger.Debug("Registering Workflow Interceptor");
+            //builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
         }
 
         /// <summary>
@@ -224,31 +224,36 @@ namespace AppBlocks.Autofac.Common
             AppBlocksServiceAttribute attribute,
             IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle> registration)
         {
-            bool isEnabledForInterception = false;
-            if ((attribute.Interceptors?.Count() ?? 0) == 0) return;
-            var interceptorsSet = attribute.Interceptors.ToHashSet<string>();
-            if (interceptorsSet.Contains(AppBlocksInterceptorConstants.Logging))
-            {
-                registration = registration
-                    .EnableInterfaceInterceptors().InterceptedBy(typeof(LoggingInterceptor));
-                isEnabledForInterception = true;
-            }
+            //bool isEnabledForInterception = false;
+            if ((attribute.Interceptors?.Count() ?? 0) == 0 && 
+                !(attribute.Workflows ?? new string[0]).Any(s => !string.IsNullOrWhiteSpace(s))) return;
 
-            if (interceptorsSet.Contains(AppBlocksInterceptorConstants.Validation))
-            {
-                if (isEnabledForInterception) registration = registration.InterceptedBy(typeof(ValidationInterceptor));
-                else registration.EnableInterfaceInterceptors().InterceptedBy(typeof(ValidationInterceptor));
-                isEnabledForInterception = true;
-            }
+            registration = registration
+                    .EnableInterfaceInterceptors().InterceptedBy(typeof(AppBlocksServiceInterceptor));
 
-            //A class should only be incercepted by workflow interceptor if 
-            //Worflows fields has at least one non whitespace workflow name
-            if ((attribute.Workflows ?? new string[0]).Any(s => !string.IsNullOrWhiteSpace(s)))
-            {
-                if (isEnabledForInterception) registration = registration.InterceptedBy(typeof(WorkflowInterceptor));
-                else registration.EnableInterfaceInterceptors().InterceptedBy(typeof(WorkflowInterceptor));
-                isEnabledForInterception = true;
-            }
+            //var interceptorsSet = attribute.Interceptors.ToHashSet<string>();
+            //if (interceptorsSet.Contains(AppBlocksInterceptorConstants.Logging))
+            //{
+            //    registration = registration
+            //        .EnableInterfaceInterceptors().InterceptedBy(typeof(LoggingInterceptor));
+            //    isEnabledForInterception = true;
+            //}
+
+            //if (interceptorsSet.Contains(AppBlocksInterceptorConstants.Validation))
+            //{
+            //    if (isEnabledForInterception) registration = registration.InterceptedBy(typeof(ValidationInterceptor));
+            //    else registration.EnableInterfaceInterceptors().InterceptedBy(typeof(ValidationInterceptor));
+            //    isEnabledForInterception = true;
+            //}
+
+            ////A class should only be incercepted by workflow interceptor if 
+            ////Worflows fields has at least one non whitespace workflow name
+            //if ((attribute.Workflows ?? new string[0]).Any(s => !string.IsNullOrWhiteSpace(s)))
+            //{
+            //    if (isEnabledForInterception) registration = registration.InterceptedBy(typeof(WorkflowInterceptor));
+            //    else registration.EnableInterfaceInterceptors().InterceptedBy(typeof(WorkflowInterceptor));
+            //    isEnabledForInterception = true;
+            //}
         }
 
         private static Type GetServiceRegistrationType(Type type, AppBlocksServiceAttribute attribute)

@@ -1,4 +1,5 @@
 ﻿using AppBlocks.Autofac.Common;
+using AppBlocks.Autofac.Support;
 using Autofac.Features.Indexed;
 using Castle.DynamicProxy;
 using log4net;
@@ -7,7 +8,14 @@ using System.Collections.Generic;
 
 namespace AppBlocks.Autofac.Interceptors
 {
-    public class ValidationInterceptor : AutofacInterceptorBase
+    [AppBlocksService(
+        Name: "",
+        ServiceType: null,
+        ServiceScope: EnumAppBlocksInstanceLifetime.SingleInstance,
+        Interceptors: new string[0],
+        Workflows: null,
+        IsKeyed: false)]
+    public class ValidationInterceptor : IValidationInterceptor
     {
         private readonly IIndex<string, IServiceValidator> serviceValidators;
         private readonly HashSet<string> disabledServiceValidators = new HashSet<string>();
@@ -17,14 +25,14 @@ namespace AppBlocks.Autofac.Interceptors
             this.serviceValidators = serviceValidators;
         }
 
-        protected override void PreMethodInvoke(IInvocation invocation)
+        public void PreMethodInvoke(IInvocation invocation)
         {
             if (serviceValidators.TryGetValue(invocation.TargetType.FullName, out IServiceValidator serviceValidator) &&
-                !disabledServiceValidators.Contains(invocation.TargetType.FullName))
+                !disabledServiceValidators.Contains(serviceValidator.GetType().FullName))
             {
                 try
                 {
-                    serviceValidator.ValidateResult(invocation);
+                    serviceValidator.ValidateInputParameters(invocation);
                 }
                 catch(Exception e)
                 {
@@ -39,14 +47,14 @@ namespace AppBlocks.Autofac.Interceptors
             }
         }
 
-        protected override void PostMethodInvoke(IInvocation invocation)
+        public void PostMethodInvoke(IInvocation invocation)
         {
             if (serviceValidators.TryGetValue(invocation.TargetType.FullName, out IServiceValidator serviceValidator) &&
-                !disabledServiceValidators.Contains(invocation.TargetType.FullName))
+                !disabledServiceValidators.Contains(serviceValidator.GetType().FullName))
             {
                 try
                 {
-                    serviceValidator.ValidateInputParameters(invocation);
+                    serviceValidator.ValidateResult(invocation);
                 }
                 catch (Exception e)
                 {
