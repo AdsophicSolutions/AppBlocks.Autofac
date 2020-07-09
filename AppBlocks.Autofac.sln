@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBlocks.Autofac", "src\AppBlocks.Autofac\AppBlocks.Autofac.csproj", "{33BF1E36-117A-4FBD-BB82-E59B52BA29CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppBlocks.Autofac", "src\AppBlocks.Autofac\AppBlocks.Autofac.csproj", "{33BF1E36-117A-4FBD-BB82-E59B52BA29CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBlocks.Autofac.Tests", "src\AppBlocks.Autofac.Tests\AppBlocks.Autofac.Tests.csproj", "{DC184657-D901-4BE0-95B3-B5149B077F30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{33BF1E36-117A-4FBD-BB82-E59B52BA29CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33BF1E36-117A-4FBD-BB82-E59B52BA29CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33BF1E36-117A-4FBD-BB82-E59B52BA29CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC184657-D901-4BE0-95B3-B5149B077F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC184657-D901-4BE0-95B3-B5149B077F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC184657-D901-4BE0-95B3-B5149B077F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC184657-D901-4BE0-95B3-B5149B077F30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

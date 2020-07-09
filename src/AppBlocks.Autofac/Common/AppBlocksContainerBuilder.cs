@@ -122,7 +122,10 @@ namespace AppBlocks.Autofac.Common
                 .ToList()
                 .ForEach(i =>
                 {
-                    logger.Debug($"Registering {i.TypeInformation.FullName} as implemented interfaces");
+                    ValidateRegistration(i.AttributeInformation);
+
+                    if (logger.IsDebugEnabled)
+                        logger.Debug($"Registering {i.TypeInformation.FullName} as implemented interfaces");
 
                     var registration = builder.RegisterType(i.TypeInformation).AsImplementedInterfaces();
                     SetTypeScope(i.AttributeInformation, registration);
@@ -149,8 +152,12 @@ namespace AppBlocks.Autofac.Common
                 .ToList()
                 .ForEach(i =>
                 {
+                    ValidateRegistration(i.AttributeInformation);
+
                     //Find out what to Interface to use for service registration
-                    logger.Debug($"Registering {i.TypeInformation.FullName} as named service {i.AttributeInformation.Name}");
+                    if (logger.IsDebugEnabled)
+                        logger.Debug($"Registering {i.TypeInformation.FullName} as named service {i.AttributeInformation.Name}");
+
                     var registrationType = GetServiceRegistrationType(i.TypeInformation, i.AttributeInformation);
                     var registration = builder.RegisterType(i.TypeInformation).Named(i.AttributeInformation.Name, registrationType);
                     SetTypeScope(i.AttributeInformation, registration);
@@ -177,17 +184,73 @@ namespace AppBlocks.Autofac.Common
                 .ToList()
                 .ForEach(i =>
                 {
+                    ValidateRegistration(i.AttributeInformation);
+
                     //Find out what to Interface to use for service registration. For keyed service, we enforce
                     //having attribute declared with non-null ServiceType. In other words, keyed services 
                     //must explicitly specify service type.  
-                    logger.Debug($"Registering {i.TypeInformation.FullName} as keyed service of type {i.AttributeInformation.ServiceType.FullName} " +
-                        $"with key {i.AttributeInformation.Name}");
+                    if(logger.IsDebugEnabled)
+                        logger.Debug($"Registering {i.TypeInformation.FullName} as keyed service of type {i.AttributeInformation.ServiceType.FullName} " +
+                            $"with key {i.AttributeInformation.Name}");
 
                     var registrationType = GetServiceRegistrationType(i.TypeInformation, i.AttributeInformation);
                     var registration = builder.RegisterType(i.TypeInformation).Keyed(i.AttributeInformation.Name, registrationType);
                     SetTypeScope(i.AttributeInformation, registration);
                     AddTypeInterceptors(i.AttributeInformation, registration);
                 });
+        }
+
+        /// <summary>
+        /// IServiceLogger, IServiceValidator, IWorkflowWriter can only be registered 
+        /// using their specialized attributes. 
+        /// </summary>
+        /// <param name="attributeInformation">Attribute information on the service</param>
+        private void ValidateRegistration(AppBlocksServiceAttribute attributeInformation)
+        {
+            // No further checks necessary if ServiceType is not set
+            if (attributeInformation.ServiceType == null) return;
+
+            if(attributeInformation.ServiceType.GetType() == typeof(IServiceLogger) 
+                && !attributeInformation.GetType().IsAssignableFrom(typeof(AppBlocksLoggerServiceAttribute)))
+            {
+                var message = $"Please register {nameof(IServiceLogger)} using attribute {nameof(AppBlocksLoggerServiceAttribute)}. " +
+                        $"Registering using {nameof(AppBlocksServiceAttribute)} is not permitted";
+
+                var exception = new InvalidOperationException(message);
+
+                if (logger.IsErrorEnabled)
+                    logger.Error("Error registering service", exception);
+
+                throw new InvalidOperationException(message);
+            }
+
+            if (attributeInformation.ServiceType.GetType() == typeof(IServiceValidator)
+                && !attributeInformation.GetType().IsAssignableFrom(typeof(AppBlocksValidatorServiceAttribute)))
+            {
+                var message = $"Please register {nameof(IServiceValidator)} using attribute {nameof(AppBlocksValidatorServiceAttribute)}. " +
+                        $"Registering using {nameof(AppBlocksValidatorServiceAttribute)} is not permitted";
+
+                var exception = new InvalidOperationException(message);
+
+                if (logger.IsErrorEnabled)
+                    logger.Error("Error registering service", exception);
+
+                throw new InvalidOperationException(message);
+            }
+
+            if (attributeInformation.ServiceType.GetType() == typeof(IWorkflowWriter)
+                && !attributeInformation.GetType().IsAssignableFrom(typeof(AppBlocksWorkflowWriterServiceAttribute)))
+            {
+                var message = $"Please register {nameof(IWorkflowWriter)} using attribute {nameof(AppBlocksWorkflowWriterServiceAttribute)}. " +
+                        $"Registering using {nameof(AppBlocksWorkflowWriterServiceAttribute)} is not permitted";
+
+                var exception = new InvalidOperationException(message);
+
+                if (logger.IsErrorEnabled)
+                    logger.Error("Error registering service", exception);
+
+                throw new InvalidOperationException(message);
+            }
         }
 
         private void RegisterFromAssembly(ContainerBuilder builder, string assemblyPath)
