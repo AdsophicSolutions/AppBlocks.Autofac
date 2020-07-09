@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace AppBlocks.Autofac.Tests
+namespace AppBlocks.Autofac.Tests.Logging
 {
     [AppBlocksService]
     public class LoggingTestExceptionService : ILoggingTestExceptionService

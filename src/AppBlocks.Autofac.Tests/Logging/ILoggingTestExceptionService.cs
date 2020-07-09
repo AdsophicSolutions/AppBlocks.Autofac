@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AppBlocks.Autofac.Tests
+namespace AppBlocks.Autofac.Tests.Logging
 {
-    public interface ILoggingTestService
+    public interface ILoggingTestExceptionService
     {
         void Method1();
     }

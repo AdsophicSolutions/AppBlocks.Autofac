@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AppBlocks.Autofac.Tests
+namespace AppBlocks.Autofac.Tests.Logging
 {
     [TestClass]
     public class LoggingInterceptorTests

@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace AppBlocks.Autofac.Tests
+namespace AppBlocks.Autofac.Tests.Validation
 {
     [AppBlocksService]
-    public class LoggingTestService : ILoggingTestService
+    public class ValidationTestService : IValidationTestService
     {
         private static readonly ILog logger =
             LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -16,7 +16,7 @@ namespace AppBlocks.Autofac.Tests
         public void Method1()
         {
             if (logger.IsInfoEnabled)
-                logger.Info($"{nameof(LoggingTestService)}.{nameof(Method1)} called successfully");
+                logger.Info($"{nameof(ValidationTestService)}.{nameof(Method1)} called successfully");
         }
     }
 }

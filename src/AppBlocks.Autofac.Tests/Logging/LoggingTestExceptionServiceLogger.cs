@@ -5,10 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AppBlocks.Autofac.Tests
+namespace AppBlocks.Autofac.Tests.Logging
 {
-    [AppBlocksLoggerService("AppBlocks.Autofac.Tests.LoggingTestService")]
-    public class LoggingTestServiceLogger : IServiceLogger
+    [AppBlocksLoggerService("AppBlocks.Autofac.Tests.Logging.LoggingTestExceptionService")]
+    public class LoggingTestExceptionServiceLogger : IServiceLogger
     {
         private static int postInvocationCallCount = 0;
         public static int GetPostInvocationCallCount() => postInvocationCallCount;
@@ -26,11 +26,12 @@ namespace AppBlocks.Autofac.Tests
         public void PostMethodInvocationLog(IInvocation invocation)
         {
             postInvocationCallCount++;
+            throw new Exception("Failed during logging");
         }
 
         public void PreMethodInvocationLog(IInvocation invocation)
         {
-            preInvocationCallCount++;
+            preInvocationCallCount++;            
         }
     }
 }
