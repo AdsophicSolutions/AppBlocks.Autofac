@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using Castle.DynamicProxy;
+using System.Linq;
+using System.Reflection;
 
 namespace AppBlocks.Autofac.Common
 {
@@ -14,6 +16,17 @@ namespace AppBlocks.Autofac.Common
             }
             catch { }
             return false;
+        }
+
+        public static object GetAsyncInvocationResult(IInvocation invocation)
+        {
+            var resultMethod = invocation
+                .ReturnValue
+                .GetType()
+                .GetMethods()
+                .FirstOrDefault(n => n.Name == "get_Result");
+
+            return resultMethod?.Invoke(invocation.ReturnValue, null);
         }
     }
 }
