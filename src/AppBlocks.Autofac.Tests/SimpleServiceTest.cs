@@ -26,13 +26,5 @@ namespace AppBlocks.Autofac.Tests
             var service = scope.Resolve<IService>();
             Assert.AreEqual(expected: 0, actual: service.RunService());
         }
-
-        [TestMethod]
-        public void Test_Resolve_And_Run_Service_Again()
-        {
-            using var scope = autofacContainer.BeginLifetimeScope();
-            var service = scope.Resolve<IService>();
-            Assert.AreEqual(expected: 0, actual: service.RunService());
-        }
     }
 }

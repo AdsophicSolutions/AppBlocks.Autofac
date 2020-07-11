@@ -5,26 +5,25 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace AppBlocks.Autofac.Tests
+namespace AppBlocks.Autofac.Tests.RegistrationFilter
 {
     [AppBlocksService]
-    public class Service : IService
+    public class TestFilteredInService : ITestFilterService
     {
-        private static readonly ILog logger =
+        private static readonly ILog logger =            
             LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private static int callCount;
+
         public static int GetCallCount() => callCount;
         public static void ResetCount() => callCount = 0;
 
-        public int RunService()
+        public void RunService()
         {
             callCount++;
 
             if (logger.IsInfoEnabled)
-                logger.Info($"{nameof(Service)}.{nameof(RunService)} called successfully");
-
-            return 0;
+                logger.Info($"{nameof(TestFilteredInService)}.{nameof(RunService)} called successfully");
         }
     }
 }
