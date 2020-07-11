@@ -20,14 +20,20 @@ namespace AppBlocks.Autofac.Common
         
 
         protected readonly ApplicationConfiguration ApplicationConfiguration;
-        public AppBlocksContainerBuilder(ApplicationConfiguration applicationConfiguration)
+        protected readonly AppBlocksApplicationMode ApplicationMode; 
+
+        public AppBlocksContainerBuilder(
+            ApplicationConfiguration applicationConfiguration, 
+            AppBlocksApplicationMode applicationMode)
         {
             ApplicationConfiguration = applicationConfiguration ?? throw new ArgumentNullException("Application configuration cannot be null");
+            ApplicationMode = applicationMode;
         }
 
-        public AppBlocksContainerBuilder()
+        public AppBlocksContainerBuilder(AppBlocksApplicationMode applicationMode)
         {
             ApplicationConfiguration = new ApplicationConfiguration();
+            ApplicationMode = applicationMode;
         }
 
         public IContainer BuildContainer()
@@ -57,6 +63,7 @@ namespace AppBlocks.Autofac.Common
 
         protected virtual void RegisterGlobalServices(ContainerBuilder builder) { }
         protected virtual void RegisterAssemblyServices(ContainerBuilder builder) { }
+        protected virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttribute serviceAttribute) => true;
 
         protected void RegisterAssembly(Assembly assembly, ContainerBuilder builder)
         {   
@@ -105,10 +112,20 @@ namespace AppBlocks.Autofac.Common
         /// <param name="assembly">Assembly to process</param>
         private void RegisterAsInterfaces(ContainerBuilder builder, Assembly assembly)
         {
-            //Anonymous service is one that has AutofacServiceAttribute with no name specified
-            static bool isAnonymousService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
-                    && string.IsNullOrEmpty(((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).Name)
-                    && !((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).IsKeyed;
+            bool isAnonymousService(Type t)
+            {
+                var serviceAttributes = t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true);
+                if (serviceAttributes.Length == 0) return false;
+
+                var serviceAttribute = (AppBlocksServiceAttribute)serviceAttributes[0];
+
+                if (!string.IsNullOrEmpty(serviceAttribute.Name) || serviceAttribute.IsKeyed) return false;
+
+                if (ApplicationMode == AppBlocksApplicationMode.Test
+                    && serviceAttribute.ServiceDependencyType == AppBlocksServiceDependencyType.Live) return false;
+
+                return ShouldRegisterService(t, serviceAttribute);
+            }
 
             assembly.GetTypes()
                 .Where(t => isAnonymousService(t))
@@ -135,10 +152,20 @@ namespace AppBlocks.Autofac.Common
 
         private void RegisterNamedServices(ContainerBuilder builder, Assembly assembly)
         {
-            //Named service is one that has AutofacServiceAttribute with no name specified
-            static bool isNamedService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
-                    && !string.IsNullOrEmpty(((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).Name)
-                    && !((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).IsKeyed;
+            bool isNamedService(Type t)
+            {
+                var serviceAttributes = t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true);
+                if (serviceAttributes.Length == 0) return false;
+
+                var serviceAttribute = (AppBlocksServiceAttribute)serviceAttributes[0];
+
+                if (string.IsNullOrEmpty(serviceAttribute.Name) || serviceAttribute.IsKeyed) return false;
+
+                if (ApplicationMode == AppBlocksApplicationMode.Test
+                    && serviceAttribute.ServiceDependencyType == AppBlocksServiceDependencyType.Live) return false;
+
+                return ShouldRegisterService(t, serviceAttribute);
+            }
 
             assembly.GetTypes()
                 .Where(t => isNamedService(t))
@@ -167,10 +194,20 @@ namespace AppBlocks.Autofac.Common
 
         private void RegisterKeyedServices(ContainerBuilder builder, Assembly assembly)
         {
-            //Named service is one that has AutofacServiceAttribute with no name specified
-            static bool isKeyedService(Type t) => t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true).Length == 1
-                    && !string.IsNullOrEmpty(((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).Name)
-                    && ((AppBlocksServiceAttribute)t.GetCustomAttribute(typeof(AppBlocksServiceAttribute))).IsKeyed;
+            bool isKeyedService(Type t)
+            {
+                var serviceAttributes = t.GetCustomAttributes(typeof(AppBlocksServiceAttribute), true);
+                if (serviceAttributes.Length == 0) return false;
+
+                var serviceAttribute = (AppBlocksServiceAttribute)serviceAttributes[0];
+
+                if (string.IsNullOrEmpty(serviceAttribute.Name) || !serviceAttribute.IsKeyed) return false;
+
+                if (ApplicationMode == AppBlocksApplicationMode.Test
+                    && serviceAttribute.ServiceDependencyType == AppBlocksServiceDependencyType.Live) return false;
+
+                return ShouldRegisterService(t, serviceAttribute);
+            }
 
             assembly.GetTypes()
                 .Where(t => isKeyedService(t))
@@ -269,15 +306,15 @@ namespace AppBlocks.Autofac.Common
             //Service is available as all implemented interfaces. 
             switch (attribute.ServiceScope)
             {
-                case EnumAppBlocksInstanceLifetime.SingleInstance:
+                case AppBlocksInstanceLifetime.SingleInstance:
                     registration.SingleInstance();
                     break;
 
-                case EnumAppBlocksInstanceLifetime.InstancePerDependency:
+                case AppBlocksInstanceLifetime.InstancePerDependency:
                     registration.InstancePerDependency();
                     break;
 
-                case EnumAppBlocksInstanceLifetime.InstancePerLifetimeScope:
+                case AppBlocksInstanceLifetime.InstancePerLifetimeScope:
                     registration.InstancePerLifetimeScope();
                     break;
             }

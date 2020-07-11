@@ -7,14 +7,17 @@ namespace AppBlocks.Autofac.Support
     public class AppBlocksServiceAttribute : Attribute
     {
         public AppBlocksServiceAttribute(
+            AppBlocksServiceDependencyType ServiceDependencyType = 
+                AppBlocksServiceDependencyType.NonLive,
             string Name = "",
             Type ServiceType = null,
-            EnumAppBlocksInstanceLifetime ServiceScope = 
-                EnumAppBlocksInstanceLifetime.InstancePerLifetimeScope,
+            AppBlocksInstanceLifetime ServiceScope = 
+                AppBlocksInstanceLifetime.InstancePerLifetimeScope,
             string[] Interceptors = null,
             string[] Workflows = null,
             bool IsKeyed = false)
         {
+            this.ServiceDependencyType = ServiceDependencyType;
             this.Name = Name;
             this.ServiceType = ServiceType;
             this.ServiceScope = ServiceScope;
@@ -34,10 +37,11 @@ namespace AppBlocks.Autofac.Support
             }
         }
 
+        public AppBlocksServiceDependencyType ServiceDependencyType { get; set; }
         public string Name { get; }
         public string[] Workflows { get; }
         public Type ServiceType { get; }
-        public EnumAppBlocksInstanceLifetime ServiceScope { get; }
+        public AppBlocksInstanceLifetime ServiceScope { get; }
         public IEnumerable<string> Interceptors { get; }
         public bool IsKeyed { get; }
     }

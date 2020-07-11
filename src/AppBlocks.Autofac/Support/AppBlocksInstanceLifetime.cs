@@ -1,6 +1,6 @@
 ﻿namespace AppBlocks.Autofac.Support
 {
-    public enum EnumAppBlocksInstanceLifetime
+    public enum AppBlocksInstanceLifetime
     {
         SingleInstance,
         InstancePerLifetimeScope,        

@@ -11,7 +11,7 @@ namespace AppBlocks.Autofac.Interceptors
     [AppBlocksService(
         Name: "",
         ServiceType: null,
-        ServiceScope: EnumAppBlocksInstanceLifetime.SingleInstance,
+        ServiceScope: AppBlocksInstanceLifetime.SingleInstance,
         Interceptors: new string[0],
         Workflows: null,
         IsKeyed: false)]

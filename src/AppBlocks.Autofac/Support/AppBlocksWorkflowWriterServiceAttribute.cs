@@ -8,12 +8,13 @@ namespace AppBlocks.Autofac.Support
     {
         public AppBlocksWorkflowWriterServiceAttribute(string WorkflowName) :
              base(
-                WorkflowName,
-                typeof(IWorkflowWriter),
-                EnumAppBlocksInstanceLifetime.SingleInstance,
-                new string[0],
-                new string[0],
-                true)
+                    AppBlocksServiceDependencyType.NonLive,
+                    WorkflowName,
+                    typeof(IWorkflowWriter),
+                    AppBlocksInstanceLifetime.SingleInstance,
+                    new string[0],
+                    new string[0],
+                    true)
         {
             if (string.IsNullOrWhiteSpace(WorkflowName)) throw new Exception("Workflow Name cannot be null or whitespace");
             this.WorkflowName = WorkflowName;

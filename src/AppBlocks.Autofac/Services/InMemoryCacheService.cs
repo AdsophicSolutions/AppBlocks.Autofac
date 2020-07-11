@@ -19,7 +19,7 @@ namespace AppBlocks.Autofac.Services
         }
 
         public void AddItem(string key,
-            EnumCacheExpirationType expirationType,
+            CacheExpirationType expirationType,
             TimeSpan expiration,
             bool keepValueOnRetrieveFail,
             Func<object> retrieveFunction)
@@ -91,7 +91,7 @@ namespace AppBlocks.Autofac.Services
             CacheStore cacheStore)
         {
             var memoryCacheEntryOptions = new MemoryCacheEntryOptions();
-            if (cacheStore.CacheExpirationType == EnumCacheExpirationType.Absolute)
+            if (cacheStore.CacheExpirationType == CacheExpirationType.Absolute)
                 memoryCacheEntryOptions.SetAbsoluteExpiration(cacheStore.Expiration);
             else
                 memoryCacheEntryOptions.SetSlidingExpiration(cacheStore.Expiration);
@@ -106,7 +106,7 @@ namespace AppBlocks.Autofac.Services
             public Lazy<object> CacheValue { get; set; }
             public object PreviousCacheValue { get; set; }
             public bool KeepValueOnRetrieveFail { get; set; }
-            public EnumCacheExpirationType CacheExpirationType { get; set; }
+            public CacheExpirationType CacheExpirationType { get; set; }
             public TimeSpan Expiration { get; set; }
         }
     }

@@ -8,9 +8,10 @@ namespace AppBlocks.Autofac.Support
     {
         public AppBlocksValidatorServiceAttribute(string ClassFullName) :
             base(
+                AppBlocksServiceDependencyType.NonLive,
                 ClassFullName,
                 typeof(IServiceValidator),
-                EnumAppBlocksInstanceLifetime.SingleInstance,
+                AppBlocksInstanceLifetime.SingleInstance,
                 new string[0],
                 new string[0],
                 true)

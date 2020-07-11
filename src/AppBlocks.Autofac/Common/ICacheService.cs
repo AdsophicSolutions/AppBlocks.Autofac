@@ -15,7 +15,7 @@ namespace AppBlocks.Autofac.Common
         /// <param name="expiration">expiration value</param>
         /// <param name="keepValueOnRetrieveFail">keep current cache value if cache retrieval fails</param>
         /// <param name="retrieveFunction"></param>
-        void AddItem(string key, EnumCacheExpirationType expirationType, TimeSpan expiration, bool keepValueOnRetrieveFail, Func<object> retrieveFunction);
+        void AddItem(string key, CacheExpirationType expirationType, TimeSpan expiration, bool keepValueOnRetrieveFail, Func<object> retrieveFunction);
 
         /// <summary>
         /// Get Item from cache
@@ -40,7 +40,7 @@ namespace AppBlocks.Autofac.Common
         bool RemoveItem(string key);
     }
 
-    public enum EnumCacheExpirationType
+    public enum CacheExpirationType
     {
         Absolute,
         Relative

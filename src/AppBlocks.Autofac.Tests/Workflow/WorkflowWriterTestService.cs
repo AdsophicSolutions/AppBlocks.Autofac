@@ -9,7 +9,7 @@ namespace AppBlocks.Autofac.Tests.Workflow
 {
     [AppBlocksService(Name: "", 
         ServiceType: null, 
-        ServiceScope: EnumAppBlocksInstanceLifetime.InstancePerLifetimeScope,
+        ServiceScope: AppBlocksInstanceLifetime.InstancePerLifetimeScope,
         Interceptors: new string[0],
         Workflows: new [] { "TestWorkflowWriter" },
         IsKeyed: false)]

@@ -8,9 +8,10 @@ namespace AppBlocks.Autofac.Support
     {
         public AppBlocksLoggerServiceAttribute(string Name) :
             base(
+                AppBlocksServiceDependencyType.NonLive,
                 Name,
                 typeof(IServiceLogger),
-                EnumAppBlocksInstanceLifetime.SingleInstance,
+                AppBlocksInstanceLifetime.SingleInstance,
                 new string[0],
                 new string[0],
                 true)
