@@ -20,7 +20,8 @@ namespace AppBlocks.Autofac.Common
         
 
         protected readonly ApplicationConfiguration ApplicationConfiguration;
-        protected readonly AppBlocksApplicationMode ApplicationMode; 
+        protected readonly AppBlocksApplicationMode ApplicationMode;
+        private IContext applicationContext;
 
         public AppBlocksContainerBuilder(
             ApplicationConfiguration applicationConfiguration, 
@@ -46,7 +47,13 @@ namespace AppBlocks.Autofac.Common
         public void InitializeContainer(ContainerBuilder builder)
         {
             builder.Register(c => ApplicationConfiguration).AsSelf().SingleInstance();
-            RegisterGlobalServices(builder);
+            applicationContext = new ApplicationContextService(ApplicationConfiguration);
+            builder.Register(c => applicationContext)
+                .As<IContext>()
+                .SingleInstance();
+                        
+            RegisterGlobalServices(builder, applicationContext);
+
             builder.RegisterModule<LoggingModule>();
 
             builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
@@ -54,6 +61,7 @@ namespace AppBlocks.Autofac.Common
                 .SingleInstance();
 
             RegisterInterceptors(builder);
+            RegisterInMemoryCache(builder);
 
             RegisterAssembly(Assembly.GetExecutingAssembly(), builder);
             RegisterAssemblyServices(builder);
@@ -61,7 +69,9 @@ namespace AppBlocks.Autofac.Common
             RegisterExternalDirectories(builder);
         }
 
-        protected virtual void RegisterGlobalServices(ContainerBuilder builder) { }
+        protected virtual void RegisterGlobalServices(ContainerBuilder builder, 
+            IContext applicationContext) { }
+
         protected virtual void RegisterAssemblyServices(ContainerBuilder builder) { }
         protected virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttribute serviceAttribute) => true;
 
@@ -87,7 +97,7 @@ namespace AppBlocks.Autofac.Common
         /// Registers InMemoryCache service 
         /// </summary>
         /// <param name="builder"></param>
-        protected void RegisterInMemoryCache(ContainerBuilder builder)
+        private void RegisterInMemoryCache(ContainerBuilder builder)
         {
             builder.Register(c => new InMemoryCacheService())
                 .As<ICacheService>()

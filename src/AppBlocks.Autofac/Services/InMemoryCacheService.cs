@@ -8,7 +8,7 @@ namespace AppBlocks.Autofac.Services
     /// <summary>
     /// InMemoryCache is a wrapper around MemoryCache to simplify creation and maintenance of in memory cache. 
     /// </summary>
-    public class InMemoryCacheService : ICacheService
+    internal sealed class InMemoryCacheService : ICacheService
     {
         private ConcurrentDictionary<string, CacheStore> cacheDictionary = new ConcurrentDictionary<string, CacheStore>();
         private MemoryCache MemoryCache { get; }

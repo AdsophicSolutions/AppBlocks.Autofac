@@ -16,6 +16,12 @@ namespace AppBlocks.Autofac.Common
         internal Lazy<IList<string>> AutofacDirectories { get; } = new Lazy<IList<string>>(() => new List<string>());
         internal Lazy<IList<string>> ExcludeFromLogTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
 
+        public ApplicationConfiguration(string configurationFilePath) 
+            : this(new [] { configurationFilePath})
+        {
+            
+        }
+
         /// <summary>
         /// Constructur to create ApplicationConfiguration object
         /// </summary>
@@ -85,7 +91,12 @@ namespace AppBlocks.Autofac.Common
 
         private void SetupAutofacSourceDirectories(IConfigurationRoot configurationRoot)
         {
-            var autofacSourceDirectoriesConfiguration = configurationRoot.GetSection("autofacSourceDirectories").GetChildren();
+            var autofacSourceDirectoriesConfiguration = configurationRoot
+                .GetSection("autofacSourceDirectories")
+                ?.GetChildren();
+
+            if (autofacSourceDirectoriesConfiguration == null) return;
+
             foreach (var autofacSourceDirectoryConfiguration in autofacSourceDirectoriesConfiguration)
             {
                 if (!Directory.Exists(autofacSourceDirectoryConfiguration["Directory"]))
@@ -101,7 +112,12 @@ namespace AppBlocks.Autofac.Common
 
         private void SetupExcludeLogTypes(IConfigurationRoot configurationRoot)
         {
-            var excludeFromLogTypes = configurationRoot.GetSection("excludeFromLog").GetChildren();
+            var excludeFromLogTypes = configurationRoot
+                .GetSection("excludeFromLog")
+                ?.GetChildren();
+
+            if (excludeFromLogTypes == null) return;
+
             foreach (var excludeFromLogType in excludeFromLogTypes)
             {
                 ExcludeFromLogTypes.Value.Add(excludeFromLogType["Type"]);
