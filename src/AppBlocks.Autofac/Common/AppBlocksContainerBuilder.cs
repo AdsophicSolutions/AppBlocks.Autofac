@@ -5,6 +5,8 @@ using Autofac;
 using Autofac.Builder;
 using Autofac.Extras.DynamicProxy;
 using log4net;
+using MediatR;
+using MediatR.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,10 +53,11 @@ namespace AppBlocks.Autofac.Common
             builder.Register(c => applicationContext)
                 .As<IContext>()
                 .SingleInstance();
-                        
-            RegisterGlobalServices(builder, applicationContext);
 
             builder.RegisterModule<LoggingModule>();
+
+            RegisterMediatr(builder);
+            RegisterGlobalServices(builder, applicationContext);
 
             builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
                 .As<ILoggingConfiguration>()
@@ -69,17 +72,73 @@ namespace AppBlocks.Autofac.Common
             RegisterExternalDirectories(builder);
         }
 
+        private void RegisterMediatr(ContainerBuilder builder)
+        {
+            builder
+                .RegisterAssemblyTypes(typeof(IMediator).Assembly)
+                .AsImplementedInterfaces();
+
+            builder.RegisterGeneric(typeof(RequestPostProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            builder.RegisterGeneric(typeof(RequestPreProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+
+            builder.RegisterGeneric(typeof(LogMediatrRequest<>)).As(typeof(IRequestPreProcessor<>));
+            builder.RegisterGeneric(typeof(LogMediatrResponse<,>)).As(typeof(IRequestPostProcessor<,>));
+            builder.RegisterGeneric(typeof(LogMediatrNotification<>)).As(typeof(INotificationHandler<>));
+
+
+            //var mediatrOpenTypes = new[]
+            //{
+            //    typeof(IRequestHandler<,>),
+            //    typeof(IRequestExceptionHandler<,,>),
+            //    typeof(IRequestExceptionAction<,>),
+            //    typeof(INotificationHandler<>),
+            //};
+
+            //foreach (var mediatrOpenType in mediatrOpenTypes)
+            //{
+            //    builder
+            //        .RegisterAssemblyTypes(typeof(Ping).GetTypeInfo().Assembly)
+            //        .AsClosedTypesOf(mediatrOpenType)
+            //        // when having a single class implementing several handler types
+            //        // this call will cause a handler to be called twice
+            //        // in general you should try to avoid having a class implementing for instance `IRequestHandler<,>` and `INotificationHandler<>`
+            //        // the other option would be to remove this call
+            //        // see also https://github.com/jbogard/MediatR/issues/462
+            //        .AsImplementedInterfaces();
+            //}
+
+            //// It appears Autofac returns the last registered types first
+            //builder.RegisterGeneric(typeof(RequestPostProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            //builder.RegisterGeneric(typeof(RequestPreProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            //builder.RegisterGeneric(typeof(RequestExceptionActionProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            //builder.RegisterGeneric(typeof(RequestExceptionProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            //builder.RegisterGeneric(typeof(GenericRequestPreProcessor<>)).As(typeof(IRequestPreProcessor<>));
+            //builder.RegisterGeneric(typeof(GenericRequestPostProcessor<,>)).As(typeof(IRequestPostProcessor<,>));
+            //builder.RegisterGeneric(typeof(GenericPipelineBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            //builder.RegisterGeneric(typeof(ConstrainedRequestPostProcessor<,>)).As(typeof(IRequestPostProcessor<,>));
+            //builder.RegisterGeneric(typeof(ConstrainedPingedHandler<>)).As(typeof(INotificationHandler<>));
+
+            // request & notification handlers
+            builder.Register<ServiceFactory>(context =>
+            {
+                var c = context.Resolve<IComponentContext>();
+                return t => c.Resolve(t);
+            });
+        }
+
         protected virtual void RegisterGlobalServices(ContainerBuilder builder, 
             IContext applicationContext) { }
 
         protected virtual void RegisterAssemblyServices(ContainerBuilder builder) { }
-        protected virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttribute serviceAttribute) => true;
+        protected virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttributeBase serviceAttribute) => true;
 
         protected void RegisterAssembly(Assembly assembly, ContainerBuilder builder)
         {   
             RegisterAsInterfaces(builder, assembly);
             RegisterNamedServices(builder, assembly);
             RegisterKeyedServices(builder, assembly);
+            RegisterMediatrRequestServices(builder, assembly);
+            RegisterMediatrNotificationServices(builder, assembly);
         }
 
         private void RegisterExternalDirectories(ContainerBuilder builder)
@@ -247,6 +306,94 @@ namespace AppBlocks.Autofac.Common
                 });
         }
 
+        private void RegisterMediatrRequestServices(ContainerBuilder builder, Assembly assembly)
+        {
+            bool isMediatrRequestService(Type t)
+            {
+                var serviceAttributes = t.GetCustomAttributes(typeof(AppBlocksMediatrRequestServiceAttribute), true);
+                if (serviceAttributes.Length == 0) return false;
+
+                var serviceAttribute = (AppBlocksMediatrRequestServiceAttribute)serviceAttributes[0];
+
+                if (ApplicationMode == AppBlocksApplicationMode.Test
+                    && serviceAttribute.ServiceDependencyType == AppBlocksServiceDependencyType.Live) return false;
+
+                return ShouldRegisterService(t, serviceAttribute);
+            }
+
+            assembly.GetTypes()
+               .Where(t => isMediatrRequestService(t))
+               .Select(t =>
+                   new
+                   {
+                       TypeInformation = t,
+                       AttributeInformation = (AppBlocksMediatrRequestServiceAttribute)t
+                           .GetCustomAttribute(typeof(AppBlocksMediatrRequestServiceAttribute))
+                   })
+               .ToList()
+               .ForEach(i =>
+               {
+                   if(!i.TypeInformation.IsClosedTypeOf(typeof(IRequestHandler<,>)))
+                   {
+                       throw new Exception($"{i.TypeInformation.FullName} must closed type of " +
+                           $"Mediatr.IRequestHandler<,>");
+                   }
+
+                    if (logger.IsDebugEnabled)
+                       logger.Debug($"Registering {i.TypeInformation.FullName} as Mediatr Request Handler");
+
+                   var registration = builder
+                    .RegisterType(i.TypeInformation)
+                    .AsImplementedInterfaces();
+
+                   SetTypeScope(i.AttributeInformation, registration);
+               });
+        }
+
+        private void RegisterMediatrNotificationServices(ContainerBuilder builder, Assembly assembly)
+        {
+            bool isMediatrRequestService(Type t)
+            {
+                var serviceAttributes = t.GetCustomAttributes(typeof(AppBlocksMediatrNotificationServiceAttribute), true);
+                if (serviceAttributes.Length == 0) return false;
+
+                var serviceAttribute = (AppBlocksMediatrNotificationServiceAttribute)serviceAttributes[0];
+
+                if (ApplicationMode == AppBlocksApplicationMode.Test
+                    && serviceAttribute.ServiceDependencyType == AppBlocksServiceDependencyType.Live) return false;
+
+                return ShouldRegisterService(t, serviceAttribute);
+            }
+
+            assembly.GetTypes()
+               .Where(t => isMediatrRequestService(t))
+               .Select(t =>
+                   new
+                   {
+                       TypeInformation = t,
+                       AttributeInformation = (AppBlocksMediatrNotificationServiceAttribute)t
+                           .GetCustomAttribute(typeof(AppBlocksMediatrNotificationServiceAttribute))
+                   })
+               .ToList()
+               .ForEach(i =>
+               {
+                   if (!i.TypeInformation.IsClosedTypeOf(typeof(INotificationHandler<>)))
+                   {
+                       throw new Exception($"{i.TypeInformation.FullName} must closed type of " +
+                           $"Mediatr.INotificationHandler<>");
+                   }
+
+                   if (logger.IsDebugEnabled)
+                       logger.Debug($"Registering {i.TypeInformation.FullName} as Mediatr Notification Handler");
+
+                   var registration = builder
+                    .RegisterType(i.TypeInformation)
+                    .AsImplementedInterfaces();
+
+                   SetTypeScope(i.AttributeInformation, registration);
+               });
+        }
+
         /// <summary>
         /// IServiceLogger, IServiceValidator, IWorkflowWriter can only be registered 
         /// using their specialized attributes. 
@@ -310,7 +457,7 @@ namespace AppBlocks.Autofac.Common
         }
 
         private void SetTypeScope(
-            AppBlocksServiceAttribute attribute,
+            AppBlocksServiceAttributeBase attribute,
             IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle> registration)
         {
             //Service is available as all implemented interfaces. 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AppBlocks.Autofac.Support
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class AppBlocksServiceAttribute : Attribute
+    public class AppBlocksServiceAttribute : AppBlocksServiceAttributeBase
     {
         public AppBlocksServiceAttribute(
             AppBlocksServiceDependencyType ServiceDependencyType = 
@@ -15,12 +15,10 @@ namespace AppBlocks.Autofac.Support
                 AppBlocksInstanceLifetime.InstancePerLifetimeScope,
             string[] Interceptors = null,
             string[] Workflows = null,
-            bool IsKeyed = false)
-        {
-            this.ServiceDependencyType = ServiceDependencyType;
+            bool IsKeyed = false) : base(ServiceDependencyType, ServiceScope)
+        {   
             this.Name = Name;
-            this.ServiceType = ServiceType;
-            this.ServiceScope = ServiceScope;
+            this.ServiceType = ServiceType;            
             this.Interceptors =
                 Interceptors ?? new[]
                     {
@@ -37,11 +35,10 @@ namespace AppBlocks.Autofac.Support
             }
         }
 
-        public AppBlocksServiceDependencyType ServiceDependencyType { get; set; }
+        
         public string Name { get; }
         public string[] Workflows { get; }
-        public Type ServiceType { get; }
-        public AppBlocksInstanceLifetime ServiceScope { get; }
+        public Type ServiceType { get; }        
         public IEnumerable<string> Interceptors { get; }
         public bool IsKeyed { get; }
     }
