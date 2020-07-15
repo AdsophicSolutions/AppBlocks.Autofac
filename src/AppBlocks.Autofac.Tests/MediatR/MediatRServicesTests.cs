@@ -21,10 +21,29 @@ namespace AppBlocks.Autofac.Tests.MediatR
             using (var scope = autofacContainer.BeginLifetimeScope())
             {
                 var service = scope.Resolve<IMediatRReceiverService>();
-                service.RunService();
+                service.RunRequest();
             }
             
             Assert.AreEqual(expected: 1, actual: RequestResponseService.GetCallCount());            
+            Assert.AreEqual(expected: 1, actual: MediatRReceiverService.GetCallCount());
+        }
+
+        [TestMethod]
+        public void Notification_Test()
+        {
+            var containerBuilder = new TestContainerBuilder();
+            var autofacContainer = containerBuilder.BuildContainer();
+
+            MediatRReceiverService.ResetCount();
+            NotificationService.ResetCount();
+
+            using (var scope = autofacContainer.BeginLifetimeScope())
+            {
+                var service = scope.Resolve<IMediatRReceiverService>();
+                service.RunNotification();
+            }
+
+            Assert.AreEqual(expected: 1, actual: NotificationService.GetCallCount());
             Assert.AreEqual(expected: 1, actual: MediatRReceiverService.GetCallCount());
         }
     }

@@ -26,7 +26,7 @@ namespace AppBlocks.Autofac.Tests.MediatR
             Mediator = mediator;
         }
 
-        public void RunService()
+        public void RunRequest()
         {
             var request = new Request { Input = "0" };
             var response = Mediator
@@ -39,8 +39,20 @@ namespace AppBlocks.Autofac.Tests.MediatR
                 callCount++;
                 if (logger.IsInfoEnabled)
                     logger.Info($"Received response in " +
-                        $"{nameof(MediatRReceiverService)}.{nameof(RunService)}");
+                        $"{nameof(MediatRReceiverService)}.{nameof(RunRequest)}");
             }
+        }
+
+        public void RunNotification()
+        {
+            var notification = new Notification { Message = "0" };
+
+            callCount++;
+            if (logger.IsInfoEnabled)
+                logger.Info($"Publishing notification in " +
+                    $"{nameof(MediatRReceiverService)}.{nameof(RunNotification)}");
+
+            Mediator.Publish(notification).GetAwaiter().GetResult();
         }
     }
 }

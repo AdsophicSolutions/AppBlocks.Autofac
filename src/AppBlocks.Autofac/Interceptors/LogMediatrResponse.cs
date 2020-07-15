@@ -11,16 +11,16 @@ namespace AppBlocks.Autofac.Interceptors
     internal class LogMediatrResponse<TRequest, TResponse> : 
         IRequestPostProcessor<TRequest, TResponse>
     {
+        private static readonly ILog logger =
+            LogManager.GetLogger(typeof(LogMediatrResponse<,>).Assembly, "AppBlocks.Autofac.Interceptors.LogMediatrResponse");
         public Task Process(TRequest request, TResponse response, CancellationToken cancellationToken)
         {
             return Task.Factory.StartNew(() =>
             {
-                if (Logger.IsInfoEnabled)
-                    Logger.Info($"Logging response from {response.GetType().FullName}");
+                if (logger.IsInfoEnabled)
+                    logger.Info($"Logging response from {response?.GetType().FullName}. Response details {response}");
             }
             );
         }
-
-        public ILog Logger { get; set; }
     }
 }

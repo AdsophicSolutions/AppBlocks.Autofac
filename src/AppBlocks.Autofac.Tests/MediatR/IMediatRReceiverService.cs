@@ -2,6 +2,8 @@
 {
     public interface IMediatRReceiverService
     {
-        void RunService();
+        void RunRequest();
+
+        void RunNotification();
     }
 }

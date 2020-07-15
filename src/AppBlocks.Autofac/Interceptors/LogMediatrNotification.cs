@@ -12,17 +12,18 @@ namespace AppBlocks.Autofac.Interceptors
     internal class LogMediatrNotification<TNotification> : 
         INotificationHandler<TNotification> where TNotification : INotification
     {
+        private static readonly ILog logger =
+            LogManager.GetLogger(typeof(LogMediatrNotification<>).Assembly, "AppBlocks.Autofac.Interceptors.LogMediatrNotification");
+
         public Task Handle(TNotification notification, 
             CancellationToken cancellationToken)
         {
             return Task.Factory.StartNew(() =>
             {
-                if (Logger.IsInfoEnabled)
-                    Logger.Info($"Logging notification from {notification.GetType().FullName}");
+                if (logger.IsInfoEnabled)
+                    logger.Info($"Logging notification from {notification?.GetType().FullName}. Notification details {notification}");
             }
            );
         }
-
-        public ILog Logger { get; set; }
     }
 }

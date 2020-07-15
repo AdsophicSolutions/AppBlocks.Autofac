@@ -7,5 +7,7 @@ namespace AppBlocks.Autofac.Tests.MediatR
     public class Response
     {
         public string Output { get; set; }
+
+        public override string ToString() => $"Output: {Output}";
     }
 }
