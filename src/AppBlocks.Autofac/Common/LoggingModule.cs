@@ -1,4 +1,4 @@
-﻿using Autofac;
+﻿using Module = global::Autofac.Module;
 using Autofac.Core;
 using Autofac.Core.Registration;
 using log4net;
@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace AppBlocks.Autofac.Common
 {
-    internal class LoggingModule : AppBlocksModule
+    internal class LoggingModule : Module
     {
         private static void InjectLoggerProperties(object instance)
         {
@@ -47,16 +47,6 @@ namespace AppBlocks.Autofac.Common
             registration.Activated += (sender, e) => InjectLoggerProperties(e.Instance);
 
             base.AttachToComponentRegistration(componentRegistry, registration);
-        }
-
-        protected override void RegisterAssemblyServices(ContainerBuilder builder)
-        {
-            
-        }
-
-        protected override void RegisterExternalService(ContainerBuilder builder, IContext applicationContext)
-        {
-            
         }
     }
 }

@@ -2,6 +2,7 @@
 using Autofac;
 using Autofac.Core;
 
+
 namespace AppBlocks.Autofac.Common
 {
     public abstract class AppBlocksModule : Module
@@ -32,5 +33,13 @@ namespace AppBlocks.Autofac.Common
         protected abstract void RegisterExternalService(ContainerBuilder builder, IContext applicationContext);
 
         protected abstract void RegisterAssemblyServices(ContainerBuilder builder);
+
+        protected void RegisterAssembly(
+            System.Reflection.Assembly assembly,
+            ContainerBuilder builder,
+            AppBlocksContainerBuilder appBlocksContainerBuilder)
+        {
+            RegistrationUtils.RegisterAssembly(assembly, builder, appBlocksContainerBuilder);
+        }
     }
 }
