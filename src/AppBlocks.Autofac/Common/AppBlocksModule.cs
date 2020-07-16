@@ -30,9 +30,9 @@ namespace AppBlocks.Autofac.Common
         //    builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
         //}
 
-        protected abstract void RegisterExternalService(ContainerBuilder builder, IContext applicationContext);
+        protected internal abstract void RegisterExternalServices(ContainerBuilder builder, IContext applicationContext);
 
-        protected abstract void RegisterAssemblyServices(ContainerBuilder builder);
+        protected internal abstract void RegisterAssemblyServices(ContainerBuilder builder, AppBlocksContainerBuilder appBlocksContainerBuilder);
 
         protected void RegisterAssembly(
             System.Reflection.Assembly assembly,

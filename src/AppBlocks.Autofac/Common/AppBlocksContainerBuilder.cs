@@ -136,6 +136,12 @@ namespace AppBlocks.Autofac.Common
             RegistrationUtils.RegisterAssembly(assembly, builder, this);
         }
 
+        protected void RegisterModule(ContainerBuilder builder, AppBlocksModule appBlocksModule)
+        {
+            appBlocksModule.RegisterExternalServices(builder, applicationContext);
+            appBlocksModule.RegisterAssemblyServices(builder, this);
+        }
+
         protected void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service) 
             where T : class
         {
