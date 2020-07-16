@@ -13,8 +13,7 @@ namespace AppBlocks.Autofac.Tests.RegistrationFilter
 
         protected override void RegisterAssemblyServices(ContainerBuilder builder)
         {
-            RegisterAssembly(typeof(TestContainerBuilderWithFilter).Assembly, builder);
-            base.RegisterAssemblyServices(builder);
+            RegisterAssembly(typeof(TestContainerBuilderWithFilter).Assembly, builder);            
         }
 
         protected override bool ShouldRegisterService(Type type, AppBlocksServiceAttributeBase serviceAttribute)

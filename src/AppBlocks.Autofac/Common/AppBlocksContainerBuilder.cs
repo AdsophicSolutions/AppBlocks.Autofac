@@ -57,7 +57,7 @@ namespace AppBlocks.Autofac.Common
             builder.RegisterModule<LoggingModule>();
 
             RegisterMediatr(builder);
-            RegisterGlobalServices(builder, applicationContext);
+            RegisterExternalServices(builder, applicationContext);
 
             builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
                 .As<ILoggingConfiguration>()
@@ -68,7 +68,6 @@ namespace AppBlocks.Autofac.Common
 
             RegisterAssembly(Assembly.GetExecutingAssembly(), builder);
             RegisterAssemblyServices(builder);
-
             RegisterExternalDirectories(builder);
         }
 
@@ -126,10 +125,10 @@ namespace AppBlocks.Autofac.Common
             });
         }
 
-        protected virtual void RegisterGlobalServices(ContainerBuilder builder, 
+        protected virtual void RegisterExternalServices(ContainerBuilder builder, 
             IContext applicationContext) { }
 
-        protected virtual void RegisterAssemblyServices(ContainerBuilder builder) { }
+        protected abstract void RegisterAssemblyServices(ContainerBuilder builder);
         protected virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttributeBase serviceAttribute) => true;
 
         protected void RegisterAssembly(Assembly assembly, ContainerBuilder builder)
