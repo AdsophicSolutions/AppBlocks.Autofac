@@ -1,11 +1,11 @@
 ﻿using AppBlocks.Autofac.Interceptors;
 using Autofac;
 using Autofac.Core;
-
+using System;
 
 namespace AppBlocks.Autofac.Common
 {
-    public abstract class AppBlocksModule : Module
+    public abstract class AppBlocksModuleBase : Module
     {
         // This is a private constant from the Autofac.Extras.DynamicProxy2 assembly
         // that is needed to "poke" interceptors into registrations.
@@ -40,6 +40,18 @@ namespace AppBlocks.Autofac.Common
             AppBlocksContainerBuilder appBlocksContainerBuilder)
         {
             RegistrationUtils.RegisterAssembly(assembly, builder, appBlocksContainerBuilder);
+        }
+
+        protected void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service)
+            where T : class
+        {
+            if (service == null)
+                throw new ArgumentNullException("Cannot register service as null");
+
+            builder
+                .Register(c => service)
+                .AsSelf()
+                .SingleInstance();
         }
     }
 }

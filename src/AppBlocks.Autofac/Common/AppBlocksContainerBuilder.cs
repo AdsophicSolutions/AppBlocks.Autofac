@@ -136,7 +136,7 @@ namespace AppBlocks.Autofac.Common
             RegistrationUtils.RegisterAssembly(assembly, builder, this);
         }
 
-        protected void RegisterModule(ContainerBuilder builder, AppBlocksModule appBlocksModule)
+        protected void RegisterModule(ContainerBuilder builder, AppBlocksModuleBase appBlocksModule)
         {
             appBlocksModule.RegisterExternalServices(builder, applicationContext);
             appBlocksModule.RegisterAssemblyServices(builder, this);
