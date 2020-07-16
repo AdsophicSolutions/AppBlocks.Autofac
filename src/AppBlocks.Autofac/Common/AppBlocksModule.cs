@@ -1,9 +1,10 @@
 ﻿using AppBlocks.Autofac.Interceptors;
 using Autofac;
+using Autofac.Core;
 
 namespace AppBlocks.Autofac.Common
 {
-    public class AppBlocksModule : Module
+    public abstract class AppBlocksModule : Module
     {
         // This is a private constant from the Autofac.Extras.DynamicProxy2 assembly
         // that is needed to "poke" interceptors into registrations.
@@ -27,5 +28,9 @@ namespace AppBlocks.Autofac.Common
         //    builder.RegisterType<ValidationInterceptor>().AsSelf().SingleInstance();
         //    builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
         //}
+
+        protected abstract void RegisterExternalService(ContainerBuilder builder, IContext applicationContext);
+
+        protected abstract void RegisterAssemblyServices(ContainerBuilder builder);
     }
 }

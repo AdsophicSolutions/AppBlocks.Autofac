@@ -1,4 +1,5 @@
-﻿using Autofac.Core;
+﻿using Autofac;
+using Autofac.Core;
 using Autofac.Core.Registration;
 using log4net;
 using System.Linq;
@@ -46,6 +47,16 @@ namespace AppBlocks.Autofac.Common
             registration.Activated += (sender, e) => InjectLoggerProperties(e.Instance);
 
             base.AttachToComponentRegistration(componentRegistry, registration);
+        }
+
+        protected override void RegisterAssemblyServices(ContainerBuilder builder)
+        {
+            
+        }
+
+        protected override void RegisterExternalService(ContainerBuilder builder, IContext applicationContext)
+        {
+            
         }
     }
 }
