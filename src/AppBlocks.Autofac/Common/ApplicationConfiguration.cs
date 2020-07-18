@@ -59,6 +59,7 @@ namespace AppBlocks.Autofac.Common
 
             //Add file path to list of file paths to process
             ValidateAndAddConfigurationPath(configurationFilePath);
+
         }
 
         public void GenerateConfiguration()
@@ -93,20 +94,23 @@ namespace AppBlocks.Autofac.Common
         {
             var autofacSourceDirectoriesConfiguration = configurationRoot
                 .GetSection("autofacSourceDirectories")
-                ?.GetChildren();
+                ?.GetChildren()
+                .Select(d => d.Value)
+                .ToArray();
 
             if (autofacSourceDirectoriesConfiguration == null) return;
 
-            foreach (var autofacSourceDirectoryConfiguration in autofacSourceDirectoriesConfiguration)
+            foreach (var autofacSourceDirectory in autofacSourceDirectoriesConfiguration)
             {
-                if (!Directory.Exists(autofacSourceDirectoryConfiguration["Directory"]))
+                if (!Directory.Exists(autofacSourceDirectory))
                 {
-                    throw new Exception($"Autofac source directory does not exist: {autofacSourceDirectoryConfiguration["Directory"]}");
+                    throw new Exception($"Autofac source directory does not exist: {autofacSourceDirectory}");
                 }
 
-                if (logger.IsDebugEnabled) logger.Debug($"Adding Autofac source directory {autofacSourceDirectoryConfiguration["Directory"]}");
+                if (logger.IsDebugEnabled) 
+                    logger.Debug($"Adding Autofac source directory {autofacSourceDirectory}");
 
-                AutofacDirectories.Value.Add(autofacSourceDirectoryConfiguration["Directory"]);
+                AutofacDirectories.Value.Add(autofacSourceDirectory);
             }
         }
 
@@ -114,13 +118,15 @@ namespace AppBlocks.Autofac.Common
         {
             var excludeFromLogTypes = configurationRoot
                 .GetSection("excludeFromLog")
-                ?.GetChildren();
+                ?.GetChildren()
+                .Select(t => t.Value)
+                .ToArray();
 
             if (excludeFromLogTypes == null) return;
 
             foreach (var excludeFromLogType in excludeFromLogTypes)
             {
-                ExcludeFromLogTypes.Value.Add(excludeFromLogType["Type"]);
+                ExcludeFromLogTypes.Value.Add(excludeFromLogType);
             }
         }
     }
