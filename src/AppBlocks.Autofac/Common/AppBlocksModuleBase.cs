@@ -7,20 +7,31 @@ namespace AppBlocks.Autofac.Common
 {
     public abstract class AppBlocksModuleBase : Module
     {
+        protected IContext ApplicationContext => AppBlocksContainerBuilder.ApplicationContext;
+
+        protected readonly AppBlocksContainerBuilder AppBlocksContainerBuilder;
+
+        public AppBlocksModuleBase(AppBlocksContainerBuilder appBlocksContainerBuilder)
+        {
+            
+            AppBlocksContainerBuilder = appBlocksContainerBuilder;
+        }
         // This is a private constant from the Autofac.Extras.DynamicProxy2 assembly
         // that is needed to "poke" interceptors into registrations.
         //const string InterceptorsPropertyName = "Autofac.Extras.DynamicProxy2.RegistrationExtensions.InterceptorsPropertyName";
 
-        //protected override void Load(ContainerBuilder builder)
-        //{
-        //    base.Load(builder);
+        protected override void Load(ContainerBuilder builder)
+        {
+            base.Load(builder);
 
-        //    builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
-        //        .As<ILoggingConfiguration>()
-        //        .SingleInstance();
+            //builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
+            //    .As<ILoggingConfiguration>()
+            //    .SingleInstance();
 
-        //    RegisterInterceptors(builder);
-        //}
+            //RegisterInterceptors(builder);
+            RegisterExternalServices(builder);
+            RegisterAssemblyServices(builder);
+        }
 
         //private void RegisterInterceptors(ContainerBuilder builder)
         //{
@@ -30,9 +41,9 @@ namespace AppBlocks.Autofac.Common
         //    builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
         //}
 
-        protected internal abstract void RegisterExternalServices(ContainerBuilder builder, IContext applicationContext);
+        protected abstract void RegisterExternalServices(ContainerBuilder builder);
 
-        protected internal abstract void RegisterAssemblyServices(ContainerBuilder builder, AppBlocksContainerBuilder appBlocksContainerBuilder);
+        protected abstract void RegisterAssemblyServices(ContainerBuilder builder);
 
         protected void RegisterAssembly(
             System.Reflection.Assembly assembly,

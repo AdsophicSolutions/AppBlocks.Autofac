@@ -23,7 +23,7 @@ namespace AppBlocks.Autofac.Common
 
         protected readonly ApplicationConfiguration ApplicationConfiguration;
         protected internal readonly AppBlocksApplicationMode ApplicationMode;
-        private IContext applicationContext;
+        protected internal IContext ApplicationContext;
 
         public AppBlocksContainerBuilder(
             ApplicationConfiguration applicationConfiguration,
@@ -49,15 +49,15 @@ namespace AppBlocks.Autofac.Common
         public void InitializeContainer(ContainerBuilder builder)
         {
             builder.Register(c => ApplicationConfiguration).AsSelf().SingleInstance();
-            applicationContext = new ApplicationContextService(ApplicationConfiguration);
-            builder.Register(c => applicationContext)
+            ApplicationContext = new ApplicationContextService(ApplicationConfiguration);
+            builder.Register(c => ApplicationContext)
                 .As<IContext>()
                 .SingleInstance();
 
             builder.RegisterModule<LoggingModule>();
 
             RegisterMediatr(builder);
-            RegisterExternalServices(builder, applicationContext);
+            RegisterExternalServices(builder);
 
             builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
                 .As<ILoggingConfiguration>()
@@ -125,21 +125,14 @@ namespace AppBlocks.Autofac.Common
             });
         }
 
-        protected virtual void RegisterExternalServices(ContainerBuilder builder,
-            IContext applicationContext) { }
-
+        protected virtual void RegisterExternalServices(ContainerBuilder builder) { }
         protected abstract void RegisterAssemblyServices(ContainerBuilder builder);
+
         protected internal virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttributeBase serviceAttribute) => true;
 
         protected void RegisterAssembly(Assembly assembly, ContainerBuilder builder)
         {
             RegistrationUtils.RegisterAssembly(assembly, builder, this);
-        }
-
-        protected void RegisterModule(ContainerBuilder builder, AppBlocksModuleBase appBlocksModule)
-        {
-            appBlocksModule.RegisterExternalServices(builder, applicationContext);
-            appBlocksModule.RegisterAssemblyServices(builder, this);
         }
 
         protected void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service) 
