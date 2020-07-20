@@ -40,9 +40,20 @@ namespace AppBlocks.Autofac.Common
         bool RemoveItem(string key);
     }
 
+    /// <summary>
+    /// Define lifetime for cached objects
+    /// </summary>
     public enum CacheExpirationType
     {
+        /// <summary>
+        /// Expire object at an absolute time. Object is considered stale after 
+        /// absolute time has passed
+        /// </summary>
         Absolute,
+
+        /// <summary>
+        /// Expire object at relative time. Reset expiration time when object is accessed
+        /// </summary>
         Relative
     }
 }

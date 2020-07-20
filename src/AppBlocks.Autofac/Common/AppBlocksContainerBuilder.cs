@@ -2,29 +2,48 @@
 using AppBlocks.Autofac.Services;
 using AppBlocks.Autofac.Support;
 using Autofac;
-using Autofac.Builder;
-using Autofac.Extras.DynamicProxy;
 using log4net;
 using MediatR;
 using MediatR.Pipeline;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 
 namespace AppBlocks.Autofac.Common
 {
+    /// <summary>
+    /// All AppBlocks applications must define a class inherited from 
+    /// <see cref="AppBlocksContainerBuilder"/>. Manages registration
+    /// of Autofac services. 
+    /// </summary>
     public abstract class AppBlocksContainerBuilder
     {
         private static readonly ILog logger =
             LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-
+        /// <summary>
+        /// <see cref="ApplicationConfiguration"/> for the AppBlocks application
+        /// </summary>
         protected readonly ApplicationConfiguration ApplicationConfiguration;
+
+        /// <summary>
+        /// <see cref="AppBlocksApplicationMode"/> for AppBlocks application
+        /// </summary>
         protected internal readonly AppBlocksApplicationMode ApplicationMode;
+
+        /// <summary>
+        /// <see cref="IContext"/> provides a dictionary of key / value pairs 
+        /// that defined the application context. Default <see cref="IContext"/>
+        /// is generated via <see cref="ApplicationConfiguration"/> source file
+        /// </summary>
         protected internal IContext ApplicationContext;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="applicationConfiguration">Instance of <see cref="ApplicationConfiguration"/> for the AppBlocks application</param>
+        /// <param name="applicationMode"><see cref="AppBlocksApplicationMode"/> for the AppBlocks application. <see cref="AppBlocksApplicationMode"/> can be Live or Test</param>
         public AppBlocksContainerBuilder(
             ApplicationConfiguration applicationConfiguration,
             AppBlocksApplicationMode applicationMode)
@@ -33,12 +52,21 @@ namespace AppBlocks.Autofac.Common
             ApplicationMode = applicationMode;
         }
 
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="applicationMode"><see cref="AppBlocksApplicationMode"/> for the AppBlocks application. <see cref="AppBlocksApplicationMode"/> can be Live or Test</param>
         public AppBlocksContainerBuilder(AppBlocksApplicationMode applicationMode)
+            : this(new ApplicationConfiguration(), applicationMode)
         {
-            ApplicationConfiguration = new ApplicationConfiguration();
-            ApplicationMode = applicationMode;
         }
 
+        /// <summary>
+        /// Initializes <see cref="global::Autofac.IContainer"/> for an 
+        /// AppBlocks application
+        /// </summary>
+        /// <returns>Reference to <see cref="global::Autofac.IContainer"/></returns>
         public IContainer BuildContainer()
         {
             var builder = new ContainerBuilder();
@@ -46,44 +74,65 @@ namespace AppBlocks.Autofac.Common
             return builder.Build();
         }
 
-        public void InitializeContainer(ContainerBuilder builder)
+        private void InitializeContainer(ContainerBuilder builder)
         {
+            // Registation ApplicationConfiguration as single instance
             builder.Register(c => ApplicationConfiguration).AsSelf().SingleInstance();
+
+            // Initialize application context based on ApplicationConfiguration
             ApplicationContext = new ApplicationContextService(ApplicationConfiguration);
+
+            // Register ApplicationContext as SingleInstance
             builder.Register(c => ApplicationContext)
                 .As<IContext>()
                 .SingleInstance();
 
+            // Register LoggingModule to inject logger
             builder.RegisterModule<LoggingModule>();
 
+            // MediatR registration
             RegisterMediatr(builder);
+
+            // Let inheriting classes register external services
             RegisterExternalServices(builder);
 
+            // Set up LoggingConfiguration
             builder.Register(c => new LoggingConfiguration(c.Resolve<ApplicationConfiguration>()))
                 .As<ILoggingConfiguration>()
                 .SingleInstance();
 
+            // Register Interceptors 
             RegisterInterceptors(builder);
+
+            // Register global cache service
             RegisterInMemoryCache(builder);
 
-            RegisterAssembly(Assembly.GetExecutingAssembly(), builder);
+            // Register current assembly
+            RegisterAssembly(typeof(AppBlocksContainerBuilder).Assembly, builder);
+
+            // Let inheriting class register services
             RegisterAssemblyServices(builder);
+
+            // Finally register any external directories setup via
+            // application configuration
             RegisterExternalDirectories(builder);
         }
 
         private void RegisterMediatr(ContainerBuilder builder)
         {
+            // Register all types from IMediatR assembly
             builder
                 .RegisterAssemblyTypes(typeof(IMediator).Assembly)
                 .AsImplementedInterfaces();
 
+            // Required for intercepting MediatR Request Response
             builder.RegisterGeneric(typeof(RequestPostProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
             builder.RegisterGeneric(typeof(RequestPreProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
 
+            // Required for interception MediatR notifications
             builder.RegisterGeneric(typeof(LogMediatrRequest<>)).As(typeof(IRequestPreProcessor<>));
             builder.RegisterGeneric(typeof(LogMediatrResponse<,>)).As(typeof(IRequestPostProcessor<,>));
             builder.RegisterGeneric(typeof(LogMediatrNotification<>)).As(typeof(INotificationHandler<>));
-
 
             //var mediatrOpenTypes = new[]
             //{
@@ -125,22 +174,60 @@ namespace AppBlocks.Autofac.Common
             });
         }
 
+        /// <summary>
+        /// Override to add instances of 3rd party classes as AutoFac services. 
+        /// This is useful when you want an instance of a 3rd party class to be injected.
+        /// Please consider registering these services with 
+        /// <see cref="Support.AppBlocksInstanceLifetime.SingleInstance"/>
+        /// </summary>
+        /// <param name="builder"></param>
         protected virtual void RegisterExternalServices(ContainerBuilder builder) { }
+
+        /// <summary>
+        /// Override to register your application assembly. Typically you will call 
+        /// <see cref="RegisterAssembly(Assembly, ContainerBuilder)"/> here to 
+        /// register attributed services from your <see cref="Assembly"/>
+        /// </summary>
+        /// <param name="builder"><see cref="global::Autofac.ContainerBuilder"/> instance</param>
         protected abstract void RegisterAssemblyServices(ContainerBuilder builder);
 
+        /// <summary>
+        /// Override to prevent certain services from being registered. This may be useful while running 
+        /// tests when you want to mock certain services and prevent the live service from being registered
+        /// </summary>
+        /// <param name="type"><see cref="Type"/> for service being registered</param>
+        /// <param name="serviceAttribute"><see cref="AppBlocksServiceAttribute"/> on the service</param>
+        /// <returns><c>true</c> if you want service to be registered; otherwise <c>false</c>.</returns>
         protected internal virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttributeBase serviceAttribute) => true;
 
-        protected void RegisterAssembly(Assembly assembly, ContainerBuilder builder)
+        /// <summary>
+        /// Scan assembly for attributed Autofac services. 
+        /// </summary>
+        /// <param name="assembly"><see cref="Assembly"/> to scam</param>
+        /// <param name="builder"><see cref="global::Autofac.ContainerBuilder"/> to add services to</param>
+        protected void RegisterAssembly(
+            Assembly assembly,
+            ContainerBuilder builder)
         {
+            // Register attributed services in assembly
             RegistrationUtils.RegisterAssembly(assembly, builder, this);
         }
 
-        protected void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service) 
+        /// <summary>
+        /// Registers an instance of a class as a 
+        /// <see cref="Support.AppBlocksInstanceLifetime.SingleInstance"/> service
+        /// </summary>
+        /// <typeparam name="T">Type of class to register </typeparam>
+        /// <param name="builder"><see cref="global::Autofac.ContainerBuilder"/> to add service to</param>
+        /// <param name="service">Instance of class to register</param>
+        protected void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service)
             where T : class
         {
+            // throw exception if reference is null
             if (service == null)
                 throw new ArgumentNullException("Cannot register service as null");
 
+            // Register service in builder
             builder
                 .Register(c => service)
                 .AsSelf()
@@ -153,6 +240,8 @@ namespace AppBlocks.Autofac.Common
             foreach (string directory in (ApplicationConfiguration?.AutofacDirectories.Value ?? new string[0]))
             {
                 if (!Directory.Exists(directory)) throw new InvalidDataException($"Configured directory path {directory} is invalid");
+
+                // Register assemblies in directory
                 foreach (string filePath in Directory.GetFiles(directory))
                     if (Utility.IsAssembly(filePath)) RegisterFromAssembly(builder, filePath);
             }
@@ -164,6 +253,7 @@ namespace AppBlocks.Autofac.Common
         /// <param name="builder"></param>
         private void RegisterInMemoryCache(ContainerBuilder builder)
         {
+            // Global in memory cache registration
             builder.Register(c => new InMemoryCacheService())
                 .As<ICacheService>()
                 .SingleInstance();
@@ -180,12 +270,17 @@ namespace AppBlocks.Autofac.Common
             //builder.RegisterType<WorkflowInterceptor>().AsSelf().SingleInstance();
         }
 
-        
-       private void RegisterFromAssembly(ContainerBuilder builder, string assemblyPath)
+        // Registers an assembly from assembly path
+        private void RegisterFromAssembly(ContainerBuilder builder, string assemblyPath)
         {
+            // Load assembly
             Assembly assembly = Assembly.LoadFrom(assemblyPath);
+
+            // Assembly must be marked with AppBlocksAssembly atttribute
             if (assembly.GetCustomAttributes<AppBlocksAssemblyAttribute>().Any())
             {
+                // call register assembly to register all services in
+                // the assembly
                 RegisterAssembly(assembly, builder);
             }
         }

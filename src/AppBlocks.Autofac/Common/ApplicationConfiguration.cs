@@ -7,6 +7,10 @@ using System.Xml;
 
 namespace AppBlocks.Autofac.Common
 {
+    /// <summary>
+    /// <see cref="ApplicationConfiguration"/> provides configuration details a 
+    /// AppBlocks application
+    /// </summary>
     public class ApplicationConfiguration
     {
         private static readonly log4net.ILog logger =
@@ -16,6 +20,10 @@ namespace AppBlocks.Autofac.Common
         internal Lazy<IList<string>> AutofacDirectories { get; } = new Lazy<IList<string>>(() => new List<string>());
         internal Lazy<IList<string>> ExcludeFromLogTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="configurationFilePath"><see cref="string"/> path to configuration json file</param>
         public ApplicationConfiguration(string configurationFilePath) 
             : this(new [] { configurationFilePath})
         {
@@ -23,7 +31,7 @@ namespace AppBlocks.Autofac.Common
         }
 
         /// <summary>
-        /// Constructur to create ApplicationConfiguration object
+        /// Constructor
         /// </summary>
         /// <param name="configurationFilePaths">IEnumerable list of configuration directories</param>
         public ApplicationConfiguration(IEnumerable<string> configurationFilePaths)
@@ -42,7 +50,7 @@ namespace AppBlocks.Autofac.Common
         }
 
         /// <summary>
-        /// Parameterless constructor to create Application Configuration
+        /// Constructor
         /// </summary>
         public ApplicationConfiguration()
         {
@@ -54,6 +62,7 @@ namespace AppBlocks.Autofac.Common
         /// <param name="configurationFilePath">Configuration File Path to add</param>
         public void AddConfigurationFile(string configurationFilePath)
         {
+            // Perform a null check
             if (string.IsNullOrEmpty(configurationFilePath)) 
                 throw new ArgumentNullException("Configuration file path cannot be null or empty");
 
@@ -62,16 +71,25 @@ namespace AppBlocks.Autofac.Common
 
         }
 
+        /// <summary>
+        /// Generates configuration based on configuration file paths
+        /// </summary>
         public void GenerateConfiguration()
         {
+            // Iterate through configuration file paths
             foreach (string configurationFilePath in ConfigurationFilePaths.Value)
             {
+                // Add file to ConfigurationBuilder
                 var builder = new ConfigurationBuilder()
                     .AddJsonFile(configurationFilePath);
 
                 var configuration = builder.Build();
-                SetupAutofacSourceDirectories(configuration);
-                SetupExcludeLogTypes(configuration);
+
+                // Add source directories
+                AddAutofacSourceDirectories(configuration);
+
+                // Add types to be excluded from logging
+                AddExcludeLogTypes(configuration);
             }          
         }
 
@@ -90,44 +108,48 @@ namespace AppBlocks.Autofac.Common
             ConfigurationFilePaths.Value.Add(configurationFilePath);
         }
 
-        private void SetupAutofacSourceDirectories(IConfigurationRoot configurationRoot)
+        private void AddAutofacSourceDirectories(IConfigurationRoot configurationRoot)
         {
+            // Read configuration file section and create array of directories
             var autofacSourceDirectoriesConfiguration = configurationRoot
                 .GetSection("autofacSourceDirectories")
                 ?.GetChildren()
                 .Select(d => d.Value)
                 .ToArray();
 
+            // Return if section is not found
             if (autofacSourceDirectoriesConfiguration == null) return;
 
+            // Make sure source directories exist. 
             foreach (var autofacSourceDirectory in autofacSourceDirectoriesConfiguration)
             {
+                // check if directory exists
                 if (!Directory.Exists(autofacSourceDirectory))
-                {
                     throw new Exception($"Autofac source directory does not exist: {autofacSourceDirectory}");
-                }
 
                 if (logger.IsDebugEnabled) 
                     logger.Debug($"Adding Autofac source directory {autofacSourceDirectory}");
 
+                // Add directory to the list of source directories
                 AutofacDirectories.Value.Add(autofacSourceDirectory);
             }
         }
 
-        private void SetupExcludeLogTypes(IConfigurationRoot configurationRoot)
+        private void AddExcludeLogTypes(IConfigurationRoot configurationRoot)
         {
+            // Read types to be excluded from logging. 
             var excludeFromLogTypes = configurationRoot
                 .GetSection("excludeFromLog")
                 ?.GetChildren()
                 .Select(t => t.Value)
                 .ToArray();
 
+            // return if no entries are found
             if (excludeFromLogTypes == null) return;
 
+            // Add types to the list of directories. 
             foreach (var excludeFromLogType in excludeFromLogTypes)
-            {
                 ExcludeFromLogTypes.Value.Add(excludeFromLogType);
-            }
         }
     }
 }
