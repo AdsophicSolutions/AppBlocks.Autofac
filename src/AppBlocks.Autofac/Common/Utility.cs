@@ -4,8 +4,16 @@ using System.Reflection;
 
 namespace AppBlocks.Autofac.Common
 {
+    /// <summary>
+    /// Utility methods
+    /// </summary>
     public static class Utility
     {
+        /// <summary>
+        /// Check if assembly is a .NET assembly
+        /// </summary>
+        /// <param name="assemblyPath">Full path to assembly</param>
+        /// <returns><c>true</c> if assembly is .NET assembly; otherwise <c>false</c>.</returns>
         public static bool IsAssembly(string assemblyPath)
         {
             try
@@ -18,6 +26,11 @@ namespace AppBlocks.Autofac.Common
             return false;
         }
 
+        /// <summary>
+        /// Gets result for asynchronous invocation
+        /// </summary>
+        /// <param name="invocation"><see cref="IInvocation"/> details</param>
+        /// <returns>Result from an invocation</returns>
         public static object GetAsyncInvocationResult(IInvocation invocation)
         {
             var resultMethod = invocation
