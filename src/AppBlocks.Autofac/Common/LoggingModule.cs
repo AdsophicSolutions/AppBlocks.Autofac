@@ -7,6 +7,10 @@ using System.Reflection;
 
 namespace AppBlocks.Autofac.Common
 {
+    /// <summary>
+    /// Implementation for <see cref="global::Autofac.Module"/> that injects 
+    /// <see cref="ILog"/> instance into a AppBlocks service
+    /// </summary>
     internal class LoggingModule : Module
     {
         private static void InjectLoggerProperties(object instance)
@@ -32,9 +36,9 @@ namespace AppBlocks.Autofac.Common
             e.Parameters = e.Parameters.Union(
               new[]
               {
-        new ResolvedParameter(
-            (p, i) => p.ParameterType == typeof(ILog),
-            (p, i) => LogManager.GetLogger(p.Member.DeclaringType)),
+                    new ResolvedParameter(
+                        (p, i) => p.ParameterType == typeof(ILog),
+                        (p, i) => LogManager.GetLogger(p.Member.DeclaringType)),
               });
         }
 
