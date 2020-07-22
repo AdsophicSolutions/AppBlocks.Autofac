@@ -6,10 +6,11 @@ using System;
 namespace AppBlocks.Autofac.Interceptors.Placeholders
 {
     /// <summary>
-    /// Place holder class validator to satisfy DI
+    /// Default implementation for <see cref="IServiceValidator"/> to satisfy
+    /// Autofac keyed services requirements
     /// </summary>
     [AppBlocksValidatorService(ClassFullName: "**")]
-    public class ServiceValidatorPlaceholder : IServiceValidator
+    internal class ServiceValidatorPlaceholder : IServiceValidator
     {
         public void ValidateInputParameters(IInvocation invocation)
         {

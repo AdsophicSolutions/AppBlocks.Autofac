@@ -19,7 +19,7 @@ namespace AppBlocks.Autofac.Interceptors
         Interceptors: new string[0], 
         Workflows:null,
         IsKeyed:false)]
-    public class LoggingInterceptor : ILoggingInterceptor
+    internal class LoggingInterceptor : ILoggingInterceptor
     {
         private readonly IIndex<string, IServiceLogger> serviceLoggers;
         private readonly ILoggingConfiguration loggingConfiguration;

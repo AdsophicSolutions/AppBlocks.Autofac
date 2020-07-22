@@ -5,8 +5,12 @@ using System;
 
 namespace AppBlocks.Autofac.Interceptors.Placeholders
 {
+    /// <summary>
+    /// Default implementation for <see cref="IWorkflowWriter"/> to satisfy 
+    /// Autofac keyed services requirements
+    /// </summary>
     [AppBlocksWorkflowWriterService(WorkflowName: "**")]
-    public class ClassWorkflowWritePlaceholder : IWorkflowWriter
+    internal class ClassWorkflowWritePlaceholder : IWorkflowWriter
     {
         public void PostMethodInvocationOutput(IInvocation invocation)
         {

@@ -5,8 +5,12 @@ using System;
 
 namespace AppBlocks.Autofac.Interceptors.Placeholders
 {
+    /// <summary>
+    /// Default implmentation of <see cref="IServiceLogger"/> to satisfy
+    /// Autofac keyed services requirements
+    /// </summary>
     [AppBlocksLoggerService(Name: "**")]
-    public class ServiceLoggerPlaceholder : IServiceLogger
+    internal class ServiceLoggerPlaceholder : IServiceLogger
     {
         public void PostMethodInvocationLog(IInvocation invocation)
         {
