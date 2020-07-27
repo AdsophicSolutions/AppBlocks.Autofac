@@ -29,31 +29,43 @@ namespace AppBlocks.Autofac.Interceptors
             IIndex<string, IServiceLogger> serviceLoggers,
             ILoggingConfiguration loggingConfiguration)
         {
+            // keyed service loggers, keyed using type full names
             this.serviceLoggers = serviceLoggers;
+
+            // logging configuration, used to exclude types
             this.loggingConfiguration = loggingConfiguration;
         }
 
+        /// <summary>
+        /// Call service loggers before service method invocation
+        /// </summary>
+        /// <param name="invocation"><see cref="IInvocation"/> instance</param>
         public void PreMethodInvoke(IInvocation invocation)
         {
+            // search for custom service logger
             if (serviceLoggers.TryGetValue(invocation.TargetType.FullName, out IServiceLogger serviceLogger)
                 && !disabledServiceLoggers.Contains(serviceLogger.GetType().FullName))
             {
                 try
                 {
+                    // Call logger 
                     serviceLogger.PreMethodInvocationLog(invocation);
                 }
                 catch(Exception e)
                 {
+                    // Log any errors
                     if(Logger.IsErrorEnabled)
-                    {
-                        Logger.Error($"Service logger {serviceLogger.GetType().FullName} threw an exception during PreMethodInvocationLog method call. Logger will be disabled", e);
-                    }
+                        Logger.Error($"Service logger {serviceLogger.GetType().FullName} threw an exception " +
+                            $"during PreMethodInvocationLog method call. Logger will be disabled", e);
 
+                    // Disable logger if any exceptions occur. 
                     disabledServiceLoggers.Add(serviceLogger.GetType().FullName);
                 }
             }
             else
             {
+                // Use default logger if no custom logger is setup
+                // Do not log if type is excluded from logging
                 if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
                     if (Logger.IsInfoEnabled)
@@ -63,29 +75,37 @@ namespace AppBlocks.Autofac.Interceptors
             }
         }
 
-
+        /// <summary>
+        /// Call service loggers after service method returns
+        /// </summary>
+        /// <param name="invocation"><see cref="IInvocation"/> instance</param>
         public void PostMethodInvoke(IInvocation invocation)
         {
+            // Call custom logger is one is configured
             if (serviceLoggers.TryGetValue(invocation.TargetType.FullName, out IServiceLogger serviceLogger)
                 && !disabledServiceLoggers.Contains(serviceLogger.GetType().FullName))
             {
                 try
                 {
+                    // Call log method
                     serviceLogger.PostMethodInvocationLog(invocation);
                 }
                 catch (Exception e)
                 {
+                    // Log any exceptions
                     if (Logger.IsErrorEnabled)
                     {
                         Logger.Error($"Service logger {serviceLogger.GetType().FullName} threw an exception during PostmethodInvocationLog method call. " +
                             $"Logger will be disabled", e);
                     }
 
+                    // Disable custom logger on exception. 
                     disabledServiceLoggers.Add(serviceLogger.GetType().FullName);
                 }
             }
             else
             {
+                // Use default logger if not excluded from logging
                 if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
                     if (Logger.IsInfoEnabled)

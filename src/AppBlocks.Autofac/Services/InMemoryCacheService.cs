@@ -6,7 +6,8 @@ using System.Collections.Concurrent;
 namespace AppBlocks.Autofac.Services
 {
     /// <summary>
-    /// InMemoryCache is a wrapper around MemoryCache to simplify creation and maintenance of in memory cache. 
+    /// InMemoryCache is a wrapper around MemoryCache to simplify creation and maintenance 
+    /// of in memory cache. 
     /// </summary>
     internal sealed class InMemoryCacheService : ICacheService
     {
@@ -15,9 +16,18 @@ namespace AppBlocks.Autofac.Services
 
         public InMemoryCacheService()
         {
+            // Initialize MemoryCache
             MemoryCache = new MemoryCache(new MemoryCacheOptions());
         }
 
+        /// <summary>
+        /// Add cache item
+        /// </summary>
+        /// <param name="key">Cache item key</param>
+        /// <param name="expirationType"><see cref="CacheExpirationType"/> instance</param>
+        /// <param name="expiration">Expiratation <see cref="TimeSpan"/></param>
+        /// <param name="keepValueOnRetrieveFail">Specifies if value should be retained if cache retrieval fails</param>
+        /// <param name="retrieveFunction">Function used to retrieve cache value</param>
         public void AddItem(string key,
             CacheExpirationType expirationType,
             TimeSpan expiration,
@@ -34,6 +44,12 @@ namespace AppBlocks.Autofac.Services
             });
         }
 
+        /// <summary>
+        /// Get item from cache
+        /// </summary>
+        /// <typeparam name="T">Item Type</typeparam>
+        /// <param name="key">Cache key to retrieve</param>
+        /// <returns></returns>
         public T GetItem<T>(string key)
         {
             //key is in memory cache. return value 
@@ -45,7 +61,8 @@ namespace AppBlocks.Autofac.Services
                 }
                 catch
                 {
-                    if (cacheStore.KeepValueOnRetrieveFail) return (T)cacheStore.PreviousCacheValue;
+                    if (cacheStore.KeepValueOnRetrieveFail) 
+                        return (T)cacheStore.PreviousCacheValue;
                     throw;
                 }
             }
@@ -67,7 +84,7 @@ namespace AppBlocks.Autofac.Services
                 }
             }
 
-            return default(T);
+            return default;
         }
 
         public object GetItem(string key)
