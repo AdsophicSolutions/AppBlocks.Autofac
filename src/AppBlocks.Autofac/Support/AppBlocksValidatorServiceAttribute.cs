@@ -3,9 +3,16 @@ using System;
 
 namespace AppBlocks.Autofac.Support
 {
+    /// <summary>
+    /// Specifies type is a validator
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class AppBlocksValidatorServiceAttribute : AppBlocksServiceAttribute
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="ClassFullName">Full name of type validated</param>
         public AppBlocksValidatorServiceAttribute(string ClassFullName) :
             base(
                 AppBlocksServiceDependencyType.NonLive,
@@ -20,6 +27,9 @@ namespace AppBlocks.Autofac.Support
             this.ClassFullName = ClassFullName;
         }
 
+        /// <summary>
+        /// Service type validated
+        /// </summary>
         public string ClassFullName { get; }
     }
 }

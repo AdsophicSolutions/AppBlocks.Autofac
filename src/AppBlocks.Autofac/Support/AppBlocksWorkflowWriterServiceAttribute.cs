@@ -3,9 +3,16 @@ using System;
 
 namespace AppBlocks.Autofac.Support
 {
+    /// <summary>
+    /// Specifies type is a workflow writer
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class AppBlocksWorkflowWriterServiceAttribute : AppBlocksServiceAttribute
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="WorkflowName">Workflow name to support</param>
         public AppBlocksWorkflowWriterServiceAttribute(string WorkflowName) :
              base(
                     AppBlocksServiceDependencyType.NonLive,
@@ -20,6 +27,9 @@ namespace AppBlocks.Autofac.Support
             this.WorkflowName = WorkflowName;
         }
 
+        /// <summary>
+        /// Workflow supported
+        /// </summary>
         public string WorkflowName { get; }
     }
 }
