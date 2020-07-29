@@ -1,0 +1,1048 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AppBlocks.Autofac</name>
+    </assembly>
+    <members>
+        <member name="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode">
+            <summary>
+            Specifies the AppBlocks application mode
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Common.AppBlocksApplicationMode.Live">
+            <summary>
+            Services marked with Live <see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> 
+            are registered in this mode
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Common.AppBlocksApplicationMode.Test">
+            <summary>
+            Services marked with Live <see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> 
+            are not registered in this mode
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.AppBlocksContainerBuilder">
+            <summary>
+            All AppBlocks applications must define a class inherited from 
+            <see cref="T:AppBlocks.Autofac.Common.AppBlocksContainerBuilder"/>. Manages registration
+            of Autofac services. 
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration">
+            <summary>
+            <see cref="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> for the AppBlocks application
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode">
+            <summary>
+            <see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> for AppBlocks application
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext">
+            <summary>
+            <see cref="T:AppBlocks.Autofac.Common.IContext"/> provides a dictionary of key / value pairs 
+            that defined the application context. Default <see cref="T:AppBlocks.Autofac.Common.IContext"/>
+            is generated via <see cref="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> source file
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.#ctor(AppBlocks.Autofac.Common.ApplicationConfiguration,AppBlocks.Autofac.Common.AppBlocksApplicationMode)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationConfiguration">Instance of <see cref="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> for the AppBlocks application</param>
+            <param name="applicationMode"><see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> for the AppBlocks application. <see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> can be Live or Test</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.#ctor(AppBlocks.Autofac.Common.AppBlocksApplicationMode)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationMode"><see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> for the AppBlocks application. <see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> can be Live or Test</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer">
+            <summary>
+            Initializes <see cref="T:Autofac.IContainer"/> for an 
+            AppBlocks application
+            </summary>
+            <returns>Reference to <see cref="T:Autofac.IContainer"/></returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterExternalServices(Autofac.ContainerBuilder)">
+            <summary>
+            Override to add instances of 3rd party classes as AutoFac services. 
+            This is useful when you want an instance of a 3rd party class to be injected.
+            Please consider registering these services with 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.SingleInstance"/>
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterAssemblyServices(Autofac.ContainerBuilder)">
+            <summary>
+            Override to register your application assembly. Typically you will call 
+            <see cref="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterAssembly(System.Reflection.Assembly,Autofac.ContainerBuilder)"/> here to 
+            register attributed services from your <see cref="T:System.Reflection.Assembly"/>
+            </summary>
+            <param name="builder"><see cref="T:Autofac.ContainerBuilder"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase)">
+            <summary>
+            Override to prevent certain services from being registered. This may be useful while running 
+            tests when you want to mock certain services and prevent the live service from being registered
+            </summary>
+            <param name="type"><see cref="T:System.Type"/> for service being registered</param>
+            <param name="serviceAttribute"><see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceAttribute"/> on the service</param>
+            <returns><c>true</c> if you want service to be registered; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterAssembly(System.Reflection.Assembly,Autofac.ContainerBuilder)">
+            <summary>
+            Scan assembly for attributed Autofac services. 
+            </summary>
+            <param name="assembly"><see cref="T:System.Reflection.Assembly"/> to scam</param>
+            <param name="builder"><see cref="T:Autofac.ContainerBuilder"/> to add services to</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterAsSingleInstance``1(Autofac.ContainerBuilder,``0)">
+            <summary>
+            Registers an instance of a class as a 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.SingleInstance"/> service
+            </summary>
+            <typeparam name="T">Type of class to register </typeparam>
+            <param name="builder"><see cref="T:Autofac.ContainerBuilder"/> to add service to</param>
+            <param name="service">Instance of class to register</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterInMemoryCache(Autofac.ContainerBuilder)">
+            <summary>
+            Registers InMemoryCache service 
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.AppBlocksModuleBase">
+            <summary>
+            Used to register assemblies as Autofac modules. Inherit from <see cref="T:AppBlocks.Autofac.Common.AppBlocksModuleBase"/>
+            and override methods to register Autofac services. 
+            </summary>
+        </member>
+        <member name="P:AppBlocks.Autofac.Common.AppBlocksModuleBase.ApplicationContext">
+            <summary>
+            Get <see cref="T:AppBlocks.Autofac.Common.IContext"/> for the AppBlocks application
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder">
+            <summary>
+            Get <see cref="F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.#ctor(AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="appBlocksContainerBuilder"><see cref="F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Override <see cref="M:Autofac.Module.Load(Autofac.ContainerBuilder)"/>
+            </summary>
+            <param name="builder">Instance of <see cref="T:Autofac.ContainerBuilder"/> being initialized</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterExternalServices(Autofac.ContainerBuilder)">
+            <summary>
+            Override to add instances of 3rd party classes as AutoFac services. 
+            This is useful when you want an instance of a 3rd party class to be injected.
+            Please consider registering these services with 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.SingleInstance"/>
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssemblyServices(Autofac.ContainerBuilder)">
+            <summary>
+            Override to register your application assembly. Typically you will call 
+            <see cref="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssembly(System.Reflection.Assembly,Autofac.ContainerBuilder,AppBlocks.Autofac.Common.AppBlocksContainerBuilder)"/> here to 
+            register attributed services from your <see cref="T:System.Reflection.Assembly"/>
+            </summary>
+            <param name="builder"><see cref="T:Autofac.ContainerBuilder"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssembly(System.Reflection.Assembly,Autofac.ContainerBuilder,AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">
+            <summary>
+            Scan assembly for attributed Autofac services. 
+            </summary>
+            <param name="assembly"><see cref="T:System.Reflection.Assembly"/> to scam</param>
+            <param name="builder"><see cref="T:Autofac.ContainerBuilder"/> to add services to</param>
+            <param name="appBlocksContainerBuilder"><see cref="F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAsSingleInstance``1(Autofac.ContainerBuilder,``0)">
+            <summary>
+            Registers an instance of a class as a 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.SingleInstance"/> service
+            </summary>
+            <typeparam name="T">Type of class to register </typeparam>
+            <param name="builder"><see cref="T:Autofac.ContainerBuilder"/> to add service to</param>
+            <param name="service">Instance of class to register</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.ApplicationConfiguration">
+            <summary>
+            <see cref="T:AppBlocks.Autofac.Common.ApplicationConfiguration"/> provides configuration details a 
+            AppBlocks application
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ApplicationConfiguration.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configurationFilePath"><see cref="T:System.String"/> path to configuration json file</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ApplicationConfiguration.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configurationFilePaths">IEnumerable list of configuration directories</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ApplicationConfiguration.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ApplicationConfiguration.AddConfigurationFile(System.String)">
+            <summary>
+            Add application config file path
+            </summary>
+            <param name="configurationFilePath">Configuration File Path to add</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ApplicationConfiguration.GenerateConfiguration">
+            <summary>
+            Generates configuration based on configuration file paths
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.ICacheService">
+            <summary>
+            Interface provides abstraction for data caching. 
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ICacheService.AddItem(System.String,AppBlocks.Autofac.Common.CacheExpirationType,System.TimeSpan,System.Boolean,System.Func{System.Object})">
+            <summary>
+            Add item to cache
+            </summary>
+            <param name="key">Item Key</param>
+            <param name="expirationType">Absolute or Relative</param>
+            <param name="expiration">expiration value</param>
+            <param name="keepValueOnRetrieveFail">keep current cache value if cache retrieval fails</param>
+            <param name="retrieveFunction"></param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ICacheService.GetItem``1(System.String)">
+            <summary>
+            Get Item from cache
+            </summary>
+            <typeparam name="T">type of item returned</typeparam>
+            <param name="key">Item key</param>
+            <returns>cache item if found, null otherwise</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ICacheService.GetItem(System.String)">
+            <summary>
+            Get Item from cache
+            </summary>
+            <param name="key">Item key</param>
+            <returns>cache item if found, null otherwise</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ICacheService.RemoveItem(System.String)">
+            <summary>
+            Remove item from cache. Call method to force cache value refresh
+            </summary>
+            <param name="key">Item Key</param>
+            <returns>true if item was removed, false if item does not exist in cache</returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.CacheExpirationType">
+            <summary>
+            Define lifetime for cached objects
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Common.CacheExpirationType.Absolute">
+            <summary>
+            Expire object at an absolute time. Object is considered stale after 
+            absolute time has passed
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Common.CacheExpirationType.Relative">
+            <summary>
+            Expire object at relative time. Reset expiration time when object is accessed
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.IContext">
+            <summary>
+            AppBlocks application supports creation of application context that 
+            implements the <see cref="T:AppBlocks.Autofac.Common.IContext"/> interface. <see cref="T:AppBlocks.Autofac.Common.IContext"/>
+            is a global service to be used to maintain application level 
+            shared key / value pairs
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.IContext.ContainsKey(System.String)">
+            <summary>
+            Determines if <see cref="T:AppBlocks.Autofac.Common.IContext"/> contains the specified key
+            </summary>
+            <param name="key">Key to search</param>
+            <returns>
+            <c>true</c> if <see cref="T:AppBlocks.Autofac.Common.IContext"/> contains the specified key, <c>false</c> otherwise
+            </returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.IContext.TryGetValue(System.String,System.Object@)">
+            <summary>
+            Get the value for a specified key from <see cref="T:AppBlocks.Autofac.Common.IContext"/>
+            </summary>
+            <param name="key">Key to search</param>
+            <param name="value">Value if found; otherwise default</param>
+            <returns><c>true</c> if <see cref="T:AppBlocks.Autofac.Common.IContext"/> contains an element with the specified key; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="P:AppBlocks.Autofac.Common.IContext.Item(System.String)">
+            <summary>
+            Gets or Sets value associated with the specified key from <see cref="T:AppBlocks.Autofac.Common.IContext"/>
+            </summary>
+            <param name="key">Key to search</param>
+            <returns>The key value associated with the specified key. If the specified key is not found, a get operation throws a 
+            <see cref="T:System.Collections.Generic.KeyNotFoundException"/>. Set operation creates a new element with the specified key</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.ILoggingConfiguration">
+            <summary>
+            Defines methods to turn logging off by type
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeExcluded(System.String)">
+            <summary>
+            Implementation returns true for types excluded from logging
+            </summary>
+            <param name="fullTypeName">Full name for type to check</param>
+            <returns><c>true</c> if type should be excluded; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.IServiceLogger">
+            <summary>
+            Defines methods to use in custom service loggers
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.IServiceLogger.PreMethodInvocationLog(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called before service method is invoked. Implementors should log 
+            service method input parameters here
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> details</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.IServiceLogger.PostMethodInvocationLog(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called after service method returns. Implements should log
+            servie method output parameters here
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> details</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.IServiceValidator">
+            <summary>
+            Defines methods for use in service validators. 
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.IServiceValidator.ValidateInputParameters(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called before service method is invoked. Implementors should use 
+            this method to write validations against method input parameters
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> details</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.IServiceValidator.ValidateResult(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called after service method returns. Implementors should use this 
+            method to write validations for method return value
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> details</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.IWorkflowWriter">
+            <summary>
+            Defined methods for use in workflow writers. 
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.IWorkflowWriter.PreMethodInvocationOutput(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called before service method is invoked. Override this method to write workflow 
+            details based on method input parameters
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> details</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.IWorkflowWriter.PostMethodInvocationOutput(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called after service method returns. Override this method to write workflow 
+            details based on method return value
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> details</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.LoggingConfiguration">
+            <summary>
+            Default implementation for <see cref="T:AppBlocks.Autofac.Common.ILoggingConfiguration"/>
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.LoggingConfiguration.#ctor(AppBlocks.Autofac.Common.ApplicationConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">Instance of <see cref="T:AppBlocks.Autofac.Common.ApplicationConfiguration"/>
+            for this AppBlocks assembly</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.LoggingConfiguration.IsTypeExcluded(System.String)">
+            <summary>
+            Evaluates if logging should be performed
+            </summary>
+            <param name="fullTypeName">Full name of type to check</param>
+            <returns><c>true</c> if type should be excluded; otherwise <c>false</c>;</returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.LoggingModule">
+            <summary>
+            Implementation for <see cref="T:Autofac.Module"/> that injects 
+            <see cref="T:log4net.ILog"/> instance into a AppBlocks service
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.RegistrationUtils">
+            <summary>
+            Utility method containing shared AppBlocks registration logic
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.RegisterAsInterfaces(Autofac.ContainerBuilder,System.Reflection.Assembly,AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">
+            <summary>
+            Registers types attributed with AutofacServiceAttribute as interfaces. 
+            </summary>
+            <param name="builder">Services Container builder</param>
+            <param name="assembly">Assembly to process</param>
+            <param name="appBlocksContainerBuilder"><see cref="T:AppBlocks.Autofac.Common.AppBlocksContainerBuilder"/> instance for this application</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.RegisterNamedServices(Autofac.ContainerBuilder,System.Reflection.Assembly,AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">
+            <summary>
+             Scan assembly for AppBlocks named services
+            </summary>        
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.RegisterKeyedServices(Autofac.ContainerBuilder,System.Reflection.Assembly,AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">
+            <summary>
+            Register types to be registered as Keyed services
+            </summary>        
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.RegisterMediatrRequestServices(Autofac.ContainerBuilder,System.Reflection.Assembly,AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">
+            <summary>
+            Register types to be registered as MediatR request service 
+            </summary>        
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.RegisterMediatrNotificationServices(Autofac.ContainerBuilder,System.Reflection.Assembly,AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">
+            <summary>
+            Register types to be registered as MediatR notification services
+            </summary>        
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.ValidateRegistration(AppBlocks.Autofac.Support.AppBlocksServiceAttribute)">
+            <summary>
+            Make sure attributes are valid types
+            </summary>        
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.SetTypeLifetimeScope(AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase,Autofac.Builder.IRegistrationBuilder{System.Object,Autofac.Builder.ConcreteReflectionActivatorData,Autofac.Builder.SingleRegistrationStyle})">
+            <summary>
+            Sets service lifetime scope
+            </summary>        
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.AddTypeInterceptors(AppBlocks.Autofac.Support.AppBlocksServiceAttribute,Autofac.Builder.IRegistrationBuilder{System.Object,Autofac.Builder.ConcreteReflectionActivatorData,Autofac.Builder.SingleRegistrationStyle})">
+            <summary>
+            Adds interceptors to AppBlocks services
+            </summary>        
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.GetServiceRegistrationType(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceAttribute)">
+            <summary>
+            Check if service is assignable to service type
+            </summary>        
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.Utility">
+            <summary>
+            Utility methods
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.Utility.IsAssembly(System.String)">
+            <summary>
+            Check if assembly is a .NET assembly
+            </summary>
+            <param name="assemblyPath">Full path to assembly</param>
+            <returns><c>true</c> if assembly is .NET assembly; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.Utility.GetAsyncInvocationResult(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Gets result for asynchronous invocation
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> details</param>
+            <returns>Result from an invocation</returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.AutofacInterceptorBase">
+            <summary>
+            Abstract template class that implements <see cref="T:Castle.DynamicProxy.IInterceptor"/>
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.AutofacInterceptorBase.Intercept(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Intercepts method calls to Autofac services
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.AutofacInterceptorBase.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called before service method is invoked. 
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.AutofacInterceptorBase.MethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Invokes service method
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.AutofacInterceptorBase.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called after service method returns
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/></param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor">
+            <summary>
+            Concrete implementation for <see cref="T:Castle.DynamicProxy.IInterceptor"/>. Calls 
+            <see cref="T:AppBlocks.Autofac.Interceptors.ILoggingInterceptor"/>, <see cref="T:AppBlocks.Autofac.Interceptors.IValidationInterceptor"/>, and 
+            <see cref="T:AppBlocks.Autofac.Interceptors.IWorkflowInterceptor"/> implementations
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.#ctor(AppBlocks.Autofac.Interceptors.ILoggingInterceptor,AppBlocks.Autofac.Interceptors.IValidationInterceptor,AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="loggingInterceptor"><see cref="T:AppBlocks.Autofac.Interceptors.ILoggingInterceptor"/> instance</param>
+            <param name="validationInterceptor"><see cref="T:AppBlocks.Autofac.Interceptors.IValidationInterceptor"/> instance</param>
+            <param name="workflowInterceptor"><see cref="T:AppBlocks.Autofac.Interceptors.IWorkflowInterceptor"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Calls logging, validation and workflow interceptor implementations
+            after service method returns
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.MethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Invoke service method
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Calls logging interceptor, validation interceptor and workflow interceptor
+            before service method is called. 
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="P:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.Logger">
+            <summary>
+            <see cref="T:log4net.ILog"/> instance
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.ILoggingInterceptor">
+            <summary>
+            Defines methods for logging interceptor
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.ILoggingInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Log method input parameters
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.ILoggingInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Log method return parameters
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.IValidationInterceptor">
+            <summary>
+            Defines methods for validation interceptor
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.IValidationInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Write validations against input parameters for service method
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.IValidationInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Write validations against return value for service method
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.IWorkflowInterceptor">
+            <summary>
+            Defines method for workflow interceptors
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.IWorkflowInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Write to workflow based on input parameters to service method 
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.IWorkflowInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Write to workflow based on return value for service method
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.LoggingInterceptor">
+            <summary>
+            LoggingInterceptor performs automatic logging before and after service methods are invoked. 
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.LoggingInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Call service loggers before service method invocation
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.LoggingInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Call service loggers after service method returns
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.LogMediatrNotification`1">
+            <summary>
+            Logs MediatR service notifications 
+            </summary>
+            <typeparam name="TNotification">Notification Type</typeparam>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.LogMediatrNotification`1.Handle(`0,System.Threading.CancellationToken)">
+            <summary>
+            Handle notification
+            </summary>
+            <param name="notification">Notification to process</param>
+            <param name="cancellationToken"><see cref="T:System.Threading.CancellationToken"/> instance</param>
+            <returns>Handling <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.LogMediatrRequest`1">
+            <summary>
+            Logs MediatR service requests
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.LogMediatrRequest`1.Process(`0,System.Threading.CancellationToken)">
+            <summary>
+            Process request
+            </summary>
+            <param name="request">Request Type</param>
+            <param name="cancellationToken"><see cref="T:System.Threading.CancellationToken"/> instance</param>
+            <returns>Processing <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.LogMediatrResponse`2">
+            <summary>
+            Log MediatR response
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.LogMediatrResponse`2.Process(`0,`1,System.Threading.CancellationToken)">
+            <summary>
+            Process response
+            </summary>
+            <param name="request">Request instance</param>
+            <param name="response">Response instance</param>
+            <param name="cancellationToken"><see cref="T:System.Threading.CancellationToken"/> instance</param>
+            <returns>Processing <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.Placeholders.ClassWorkflowWritePlaceholder">
+            <summary>
+            Default implementation for <see cref="T:AppBlocks.Autofac.Common.IWorkflowWriter"/> to satisfy 
+            Autofac keyed services requirements
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.Placeholders.ServiceLoggerPlaceholder">
+            <summary>
+            Default implmentation of <see cref="T:AppBlocks.Autofac.Common.IServiceLogger"/> to satisfy
+            Autofac keyed services requirements
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.Placeholders.ServiceValidatorPlaceholder">
+            <summary>
+            Default implementation for <see cref="T:AppBlocks.Autofac.Common.IServiceValidator"/> to satisfy
+            Autofac keyed services requirements
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.ValidationInterceptor">
+            <summary>
+            ValidationInterceptor calls registered type validators before and after 
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="serviceValidators">Keyed <see cref="T:AppBlocks.Autofac.Common.IServiceValidator"/> instances</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.ValidationInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Call validation interceptor before service method invocation
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.ValidationInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Call validation interceptor after service method returns
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="P:AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger">
+            <summary>
+            Logger Instance
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Interceptors.WorkflowInterceptor">
+            <summary>
+            WorkflowInterceptor calls registered workflow writers before and after
+            Conceptually workflow writer should be used across the application to tie 
+            together data workflow.
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="workflowWriters">Keyed instances of <see cref="T:AppBlocks.Autofac.Common.IWorkflowWriter"/></param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called before service method
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Called after service method returns
+            </summary>
+            <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.GetWorkflowWriters(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            Gets workflow writers for service 
+            </summary>        
+        </member>
+        <member name="P:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger">
+            <summary>
+            <see cref="T:log4net.ILog"/> instance
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Services.ApplicationContextService">
+            <summary>
+            Default implementation for <see cref="T:AppBlocks.Autofac.Common.IContext"/> based on application configuration 
+            file
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Services.ApplicationContextService.#ctor(AppBlocks.Autofac.Common.ApplicationConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration"><see cref="T:AppBlocks.Autofac.Common.ApplicationConfiguration"/> instance</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Services.ApplicationContextService.Initialize(AppBlocks.Autofac.Common.ApplicationConfiguration)">
+            <summary>
+            Initialize application configuration
+            </summary>
+            <param name="configuration"><see cref="T:AppBlocks.Autofac.Common.ApplicationConfiguration"/> instance</param>
+        </member>
+        <member name="P:AppBlocks.Autofac.Services.ApplicationContextService.Item(System.String)">
+            <summary>
+            Gets or Sets value associated with the specified key from <see cref="T:AppBlocks.Autofac.Common.IContext"/>
+            </summary>
+            <param name="key">Key to search</param>
+            <returns>The key value associated with the specified key. If the specified key is not found, a get operation throws a 
+            <see cref="T:System.Collections.Generic.KeyNotFoundException"/>. Set operation creates a new element with the specified key</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+        </member>
+        <member name="M:AppBlocks.Autofac.Services.ApplicationContextService.ContainsKey(System.String)">
+            <summary>
+            Determines if <see cref="T:AppBlocks.Autofac.Common.IContext"/> contains the specified key
+            </summary>
+            <param name="key">Key to search</param>
+            <returns>
+            <c>true</c> if <see cref="T:AppBlocks.Autofac.Common.IContext"/> contains the specified key, <c>false</c> otherwise
+            </returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Services.ApplicationContextService.TryGetValue(System.String,System.Object@)">
+            <summary>
+            Get the value for a specified key from <see cref="T:AppBlocks.Autofac.Common.IContext"/>
+            </summary>
+            <param name="key">Key to search</param>
+            <param name="value">Value if found, otherwise default</param>
+            <returns><c>true</c> if <see cref="T:AppBlocks.Autofac.Common.IContext"/> contains an element with the specified key; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Services.InMemoryCacheService">
+            <summary>
+            InMemoryCache is a wrapper around MemoryCache to simplify creation and maintenance 
+            of in memory cache. 
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Services.InMemoryCacheService.AddItem(System.String,AppBlocks.Autofac.Common.CacheExpirationType,System.TimeSpan,System.Boolean,System.Func{System.Object})">
+            <summary>
+            Add cache item
+            </summary>
+            <param name="key">Cache item key</param>
+            <param name="expirationType"><see cref="T:AppBlocks.Autofac.Common.CacheExpirationType"/> instance</param>
+            <param name="expiration">Expiratation <see cref="T:System.TimeSpan"/></param>
+            <param name="keepValueOnRetrieveFail">Specifies if value should be retained if cache retrieval fails</param>
+            <param name="retrieveFunction">Function used to retrieve cache value</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Services.InMemoryCacheService.GetItem``1(System.String)">
+            <summary>
+            Get item from cache
+            </summary>
+            <typeparam name="T">Item Type</typeparam>
+            <param name="key">Cache key to retrieve</param>
+            <returns></returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksAssemblyAttribute">
+            <summary>
+            Mark assembly AppBlocks assembly. Dynamically loaded assemblies must 
+            be decorated with this assembly attribute.
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime">
+            <summary>
+            Specify lifetime for AppBlocks service
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.SingleInstance">
+            <summary>
+            Single instance across all scopes. Equivalent to Singleton design pattern
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.InstancePerLifetimeScope">
+            <summary>
+            Single instance per scope. 
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.InstancePerDependency">
+            <summary>
+            Instance per dependency. New instance of the service is created for each
+            dependency encountered
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksInterceptorConstants">
+            <summary>
+            Interceptor type constants
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Support.AppBlocksInterceptorConstants.Logging">
+            <summary>
+            Logging interceptor constant
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Support.AppBlocksInterceptorConstants.Validation">
+            <summary>
+            Validation interceptor constant
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksKeyedServiceAttribute">
+            <summary>
+            Specifies a type as a AppBlocks keyed service
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksKeyedServiceAttribute.#ctor(System.String,System.Type,AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime,System.String[],System.String[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ServiceKey">Keyed service key</param>
+            <param name="ServiceType">Type implemented</param>
+            <param name="ServiceDependencyType"><see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> type. Service can be 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/></param>
+            <param name="ServiceScope"><see cref="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime"/> lifetime scope</param>
+            <param name="Interceptors">Service interceptors</param>
+            <param name="Workflows">Type workflow writers</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute">
+            <summary>
+            Specifies a service as live serivce. A live service is not registered if <see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> is <see cref="F:AppBlocks.Autofac.Common.AppBlocksApplicationMode.Test"/>
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute.#ctor(System.String,System.Type,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime,System.String[],System.String[],System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="Name">Service</param>
+            <param name="ServiceType">Type implemented</param>
+            <param name="ServiceScope"><see cref="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime"/> lifetime scope</param>
+            <param name="Interceptors">Service interceptors</param>
+            <param name="Workflows">Type workflow writers</param>
+            <param name="IsKeyed">Service is keyed</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksLoggerServiceAttribute">
+            <summary>
+            Specifies that a service is a custom logger
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksLoggerServiceAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="Name">Type logged by service</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute">
+            <summary>
+            Specifies service is a MediatR notification handler
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ServiceDependencyType"><see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> type. Service can be 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/></param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksMediatrRequestServiceAttribute">
+            <summary>
+            Specifies service is a MediatR request handler
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksMediatrRequestServiceAttribute.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksMediatrRequestServiceAttribute.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ServiceDependencyType"><see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> type. Service can be 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/></param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksNamedServiceAttribute">
+            <summary>
+            Specifies service as a named service
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksNamedServiceAttribute.#ctor(System.String,AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,System.Type,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime,System.String[],System.String[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="Name">Service name</param>
+            <param name="ServiceDependencyType"><see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> type. Service can be 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/></param>
+            <param name="ServiceType">Type implemented</param>
+            <param name="ServiceScope"><see cref="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime"/> lifetime scope</param>
+            <param name="Interceptors">Service interceptors</param>
+            <param name="Workflows">Type workflow writers</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksServiceAttribute">
+            <summary>
+            Specifies service as an AppBlocks service
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksServiceAttribute.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,System.String,System.Type,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime,System.String[],System.String[],System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ServiceDependencyType"><see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> type. Service can be 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/></param>
+            <param name="Name">Service name</param>
+            <param name="ServiceType">Type implemented</param>
+            <param name="ServiceScope"><see cref="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime"/> lifetime scope</param>
+            <param name="Interceptors">Service interceptors</param>
+            <param name="Workflows">Type workflow writers</param>
+            <param name="IsKeyed"><c>true</c> if service is keyed; otherwise <c>false</c></param>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttribute.Name">
+            <summary>
+            Service Name
+            </summary>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttribute.Workflows">
+            <summary>
+            Service workflows
+            </summary>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttribute.ServiceType">
+            <summary>
+            Type implemented
+            </summary>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttribute.Interceptors">
+            <summary>
+            Service interceptors
+            </summary>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttribute.IsKeyed">
+            <summary>
+            Specifies if service is keyed or not
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase">
+            <summary>
+            Base class for specifying AppBlocks service 
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ServiceDependencyType"><see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> type. Service can be 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/></param>
+            <param name="ServiceScope"><see cref="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime"/> lifetime scope</param>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceDependencyType">
+            <summary>
+            <see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> type. Service can be 
+            <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/>
+            </summary>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceScope">
+            <summary>
+            <see cref="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime"/> lifetime scope
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType">
+            <summary>
+            Specifies if a service has a live dependency. A dependency is considered live if it retrieves data via an external source. In <see cref="F:AppBlocks.Autofac.Common.AppBlocksApplicationMode.Test"/> mode
+            live services are not registered. 
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live">
+            <summary>
+            Specify service as a live service. Live services are not registered in <see cref="F:AppBlocks.Autofac.Common.AppBlocksApplicationMode.Test"/> mode
+            </summary>
+        </member>
+        <member name="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive">
+            <summary>
+            Specifies service as a NonLive service. NonLive services are registered in both modes
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksValidatorServiceAttribute">
+            <summary>
+            Specifies type is a validator
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksValidatorServiceAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ClassFullName">Full name of type validated</param>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksValidatorServiceAttribute.ClassFullName">
+            <summary>
+            Service type validated
+            </summary>
+        </member>
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksWorkflowWriterServiceAttribute">
+            <summary>
+            Specifies type is a workflow writer
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksWorkflowWriterServiceAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="WorkflowName">Workflow name to support</param>
+        </member>
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksWorkflowWriterServiceAttribute.WorkflowName">
+            <summary>
+            Workflow supported
+            </summary>
+        </member>
+    </members>
+</doc>

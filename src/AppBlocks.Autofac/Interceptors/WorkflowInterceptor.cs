@@ -193,6 +193,9 @@ namespace AppBlocks.Autofac.Interceptors
                 workflowWriterServiceDictionary.Value[invocation.TargetType.FullName];
         }
 
+        /// <summary>
+        /// <see cref="ILog"/> instance
+        /// </summary>
         public ILog Logger { get; set; }
     }
 }

@@ -46,6 +46,7 @@ namespace AppBlocks.Autofac.Common
         /// </summary>
         /// <param name="builder">Services Container builder</param>
         /// <param name="assembly">Assembly to process</param>
+        /// <param name="appBlocksContainerBuilder"><see cref="AppBlocksContainerBuilder"/> instance for this application</param>
         private static void RegisterAsInterfaces(
             ContainerBuilder builder, 
             Assembly assembly,

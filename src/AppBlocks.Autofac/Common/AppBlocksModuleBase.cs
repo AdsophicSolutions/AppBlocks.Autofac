@@ -74,7 +74,7 @@ namespace AppBlocks.Autofac.Common
         /// <summary>
         /// Override to register your application assembly. Typically you will call 
         /// <see cref="RegisterAssembly(System.Reflection.Assembly, ContainerBuilder, AppBlocksContainerBuilder)"/> here to 
-        /// register attributed services from your <see cref="Assembly"/>
+        /// register attributed services from your <see cref="System.Reflection.Assembly"/>
         /// </summary>
         /// <param name="builder"><see cref="global::Autofac.ContainerBuilder"/> instance</param>
         protected abstract void RegisterAssemblyServices(ContainerBuilder builder);
@@ -82,7 +82,7 @@ namespace AppBlocks.Autofac.Common
         /// <summary>
         /// Scan assembly for attributed Autofac services. 
         /// </summary>
-        /// <param name="assembly"><see cref="Assembly"/> to scam</param>
+        /// <param name="assembly"><see cref="System.Reflection.Assembly"/> to scam</param>
         /// <param name="builder"><see cref="global::Autofac.ContainerBuilder"/> to add services to</param>
         /// <param name="appBlocksContainerBuilder"><see cref="AppBlocksContainerBuilder"/> for the AppBlocks application</param>
         protected void RegisterAssembly(

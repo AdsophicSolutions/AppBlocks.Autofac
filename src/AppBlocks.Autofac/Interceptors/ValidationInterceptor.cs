@@ -94,6 +94,9 @@ namespace AppBlocks.Autofac.Interceptors
             }
         }
 
+        /// <summary>
+        /// Logger Instance
+        /// </summary>
         public ILog Logger { get; set; }
     }
 }

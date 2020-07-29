@@ -90,7 +90,8 @@ namespace AppBlocks.Autofac.Services
         /// Get the value for a specified key from <see cref="IContext"/>
         /// </summary>
         /// <param name="key">Key to search</param>
-        /// <param name="value"><c>true</c> if <see cref="IContext"/> contains an element with the specified key; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value if found, otherwise default</param>
+        /// <returns><c>true</c> if <see cref="IContext"/> contains an element with the specified key; otherwise, <c>false</c>.</returns>
         public bool TryGetValue(string key, out object value) => 
             context.TryGetValue(key, out value);
     }

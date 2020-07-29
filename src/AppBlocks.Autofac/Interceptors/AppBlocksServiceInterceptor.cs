@@ -103,6 +103,9 @@ namespace AppBlocks.Autofac.Interceptors
             }
         }
 
+        /// <summary>
+        /// <see cref="ILog"/> instance
+        /// </summary>
         public ILog Logger { get; set; }
     }
 }
