@@ -1,2 +1,2 @@
-# PLACEHOLDER
-TODO: Add .NET projects to the *src* folder and run `docfx` to generate **REAL** *API Documentation*!
+# Autofac.AppBlocks Documentation
+Please use the navigation bar to navigate to documentation
