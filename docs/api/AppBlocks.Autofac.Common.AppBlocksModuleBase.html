@@ -1,0 +1,492 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AppBlocksModuleBase
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AppBlocksModuleBase
+   ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase">
+  
+  
+  <h1 id="AppBlocks_Autofac_Common_AppBlocksModuleBase" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase" class="text-break">Class AppBlocksModuleBase
+  </h1>
+  <div class="markdown level0 summary"><p>Used to register assemblies as Autofac modules. Inherit from <a class="xref" href="AppBlocks.Autofac.Common.AppBlocksModuleBase.html">AppBlocksModuleBase</a>
+and override methods to register Autofac services.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Autofac.Module</span></div>
+    <div class="level2"><span class="xref">AppBlocksModuleBase</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">Autofac.Core.IModule</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Autofac.Module.Configure(Autofac.Core.Registration.IComponentRegistryBuilder)</span>
+    </div>
+    <div>
+      <span class="xref">Autofac.Module.AttachToComponentRegistration(Autofac.Core.Registration.IComponentRegistryBuilder, Autofac.Core.IComponentRegistration)</span>
+    </div>
+    <div>
+      <span class="xref">Autofac.Module.AttachToRegistrationSource(Autofac.Core.Registration.IComponentRegistryBuilder, Autofac.Core.IRegistrationSource)</span>
+    </div>
+    <div>
+      <span class="xref">Autofac.Module.ThisAssembly</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AppBlocks.Autofac.Common.html">AppBlocks.Autofac.Common</a></h6>
+  <h6><strong>Assembly</strong>: AppBlocks.Autofac.dll</h6>
+  <h5 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class AppBlocksModuleBase : Module, IModule</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase__ctor_AppBlocks_Autofac_Common_AppBlocksContainerBuilder_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.%23ctor(AppBlocks.Autofac.Common.AppBlocksContainerBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L28">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksModuleBase__ctor_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.#ctor*"></a>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase__ctor_AppBlocks_Autofac_Common_AppBlocksContainerBuilder_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.#ctor(AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">AppBlocksModuleBase(AppBlocksContainerBuilder)</h4>
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AppBlocksModuleBase(AppBlocksContainerBuilder appBlocksContainerBuilder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html">AppBlocksContainerBuilder</a></td>
+        <td><span class="parametername">appBlocksContainerBuilder</span></td>
+        <td><p><a class="xref" href="AppBlocks.Autofac.Common.AppBlocksModuleBase.html#AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder">AppBlocksContainerBuilder</a> for the AppBlocks application</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L22">View Source</a>
+  </span>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder">AppBlocksContainerBuilder</h4>
+  <div class="markdown level1 summary"><p>Get <a class="xref" href="AppBlocks.Autofac.Common.AppBlocksModuleBase.html#AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder">AppBlocksContainerBuilder</a> for the AppBlocks application</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly AppBlocksContainerBuilder AppBlocksContainerBuilder</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html">AppBlocksContainerBuilder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase_ApplicationContext.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.ApplicationContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L17">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksModuleBase_ApplicationContext_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.ApplicationContext*"></a>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_ApplicationContext" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.ApplicationContext">ApplicationContext</h4>
+  <div class="markdown level1 summary"><p>Get <a class="xref" href="AppBlocks.Autofac.Common.IContext.html">IContext</a> for the AppBlocks application</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IContext ApplicationContext { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AppBlocks.Autofac.Common.IContext.html">IContext</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase_Load_Autofac_ContainerBuilder_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.Load(Autofac.ContainerBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L40">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksModuleBase_Load_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.Load*"></a>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_Load_Autofac_ContainerBuilder_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.Load(Autofac.ContainerBuilder)">Load(ContainerBuilder)</h4>
+  <div class="markdown level1 summary"><p>Override <span class="xref">Autofac.Module.Load(Autofac.ContainerBuilder)</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Load(ContainerBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Autofac.ContainerBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td><p>Instance of <span class="xref">Autofac.ContainerBuilder</span> being initialized</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Autofac.Module.Load(Autofac.ContainerBuilder)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAssembly_System_Reflection_Assembly_Autofac_ContainerBuilder_AppBlocks_Autofac_Common_AppBlocksContainerBuilder_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssembly(System.Reflection.Assembly%2CAutofac.ContainerBuilder%2CAppBlocks.Autofac.Common.AppBlocksContainerBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L88">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAssembly_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssembly*"></a>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAssembly_System_Reflection_Assembly_Autofac_ContainerBuilder_AppBlocks_Autofac_Common_AppBlocksContainerBuilder_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssembly(System.Reflection.Assembly,Autofac.ContainerBuilder,AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">RegisterAssembly(Assembly, ContainerBuilder, AppBlocksContainerBuilder)</h4>
+  <div class="markdown level1 summary"><p>Scan assembly for attributed Autofac services.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RegisterAssembly(Assembly assembly, ContainerBuilder builder, AppBlocksContainerBuilder appBlocksContainerBuilder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Reflection.Assembly</span></td>
+        <td><span class="parametername">assembly</span></td>
+        <td><p><span class="xref">System.Reflection.Assembly</span> to scam</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Autofac.ContainerBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td><p><span class="xref">Autofac.ContainerBuilder</span> to add services to</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html">AppBlocksContainerBuilder</a></td>
+        <td><span class="parametername">appBlocksContainerBuilder</span></td>
+        <td><p><a class="xref" href="AppBlocks.Autofac.Common.AppBlocksModuleBase.html#AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder">AppBlocksContainerBuilder</a> for the AppBlocks application</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAssemblyServices_Autofac_ContainerBuilder_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssemblyServices(Autofac.ContainerBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L80">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAssemblyServices_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssemblyServices*"></a>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAssemblyServices_Autofac_ContainerBuilder_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAssemblyServices(Autofac.ContainerBuilder)">RegisterAssemblyServices(ContainerBuilder)</h4>
+  <div class="markdown level1 summary"><p>Override to register your application assembly. Typically you will call
+<a class="xref" href="AppBlocks.Autofac.Common.AppBlocksModuleBase.html#AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAssembly_System_Reflection_Assembly_Autofac_ContainerBuilder_AppBlocks_Autofac_Common_AppBlocksContainerBuilder_">RegisterAssembly(Assembly, ContainerBuilder, AppBlocksContainerBuilder)</a> here to
+register attributed services from your <span class="xref">System.Reflection.Assembly</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void RegisterAssemblyServices(ContainerBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Autofac.ContainerBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td><p><span class="xref">Autofac.ContainerBuilder</span> instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAsSingleInstance__1_Autofac_ContainerBuilder___0_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAsSingleInstance%60%601(Autofac.ContainerBuilder%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L105">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAsSingleInstance_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAsSingleInstance*"></a>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterAsSingleInstance__1_Autofac_ContainerBuilder___0_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAsSingleInstance``1(Autofac.ContainerBuilder,``0)">RegisterAsSingleInstance&lt;T&gt;(ContainerBuilder, T)</h4>
+  <div class="markdown level1 summary"><p>Registers an instance of a class as a
+<a class="xref" href="AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.html#AppBlocks_Autofac_Support_AppBlocksInstanceLifetime_SingleInstance">SingleInstance</a> service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RegisterAsSingleInstance&lt;T&gt;(ContainerBuilder builder, T service)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Autofac.ContainerBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td><p><span class="xref">Autofac.ContainerBuilder</span> to add service to</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">service</span></td>
+        <td><p>Instance of class to register</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of class to register</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterExternalServices_Autofac_ContainerBuilder_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterExternalServices(Autofac.ContainerBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L72">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterExternalServices_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterExternalServices*"></a>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_RegisterExternalServices_Autofac_ContainerBuilder_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterExternalServices(Autofac.ContainerBuilder)">RegisterExternalServices(ContainerBuilder)</h4>
+  <div class="markdown level1 summary"><p>Override to add instances of 3rd party classes as AutoFac services.
+This is useful when you want an instance of a 3rd party class to be injected.
+Please consider registering these services with
+<a class="xref" href="AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.html#AppBlocks_Autofac_Support_AppBlocksInstanceLifetime_SingleInstance">SingleInstance</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void RegisterExternalServices(ContainerBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Autofac.ContainerBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Autofac.Core.IModule</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,558 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/rahul/source/repos/AppBlocks.Autofac/src/AppBlocks.Autofac",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.AppBlocksApplicationMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksApplicationMode.html",
+          "hash": "eIFIUf05vPUgvTBCdYanQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html",
+          "hash": "ATGy42OKHIU8lyZJFPxS/A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.AppBlocksModuleBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksModuleBase.html",
+          "hash": "2Gz6l4PQdQ4qdzhIgioIJA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.ApplicationConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.ApplicationConfiguration.html",
+          "hash": "6nxK/9PYZFDE88qVFFEY5A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.CacheExpirationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.CacheExpirationType.html",
+          "hash": "zYLwW4o9S8Wy1K/OyBI5wQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.ICacheService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.ICacheService.html",
+          "hash": "LOdSTG1jGUU4faYm7xu2cg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.IContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.IContext.html",
+          "hash": "ZcN7vEo1nxP1Zu25x8Lumw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.ILoggingConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.ILoggingConfiguration.html",
+          "hash": "Q7WTI9hLT/8LciwBWgtVxQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.IServiceLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.IServiceLogger.html",
+          "hash": "qMPXPvAcZRMtGNzzX5EUHw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.IServiceValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.IServiceValidator.html",
+          "hash": "Qao+cWzRfc3GTPDFXIpdOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.IWorkflowWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.IWorkflowWriter.html",
+          "hash": "biHUzplGgOhswBOskaCwig=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.Utility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.Utility.html",
+          "hash": "qX2zxWJcJnCOEe39Fyfbig=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.html",
+          "hash": "LvcqlKAxDkQ6Ju5Wv1OLFA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html",
+          "hash": "d06Fr2C1EReUMWyGpgqg+A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Interceptors.AutofacInterceptorBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Interceptors.AutofacInterceptorBase.html",
+          "hash": "xFFHBBYsOES4whxCDSCKJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Interceptors.ILoggingInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Interceptors.ILoggingInterceptor.html",
+          "hash": "bC+wvkHikKAYSlIds2L/Fg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Interceptors.IValidationInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Interceptors.IValidationInterceptor.html",
+          "hash": "oV+0gW4hgDlm4mMP9+c89w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Interceptors.IWorkflowInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Interceptors.IWorkflowInterceptor.html",
+          "hash": "pTk+VTHN2gGhhGmK1MHzBA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html",
+          "hash": "oefpXpNvG+C0QiFUqZ35MA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html",
+          "hash": "Mwmt4kZZk6wn0Zi95tWE8A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Interceptors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Interceptors.html",
+          "hash": "qxQQEpjpu3iY3FBb3nD6Hw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksAssemblyAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksAssemblyAttribute.html",
+          "hash": "3Ew1XtXYLSdbvY1REwZeiw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.html",
+          "hash": "vBleruWPS0cnAxOdxGiwQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksInterceptorConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksInterceptorConstants.html",
+          "hash": "bE+7ri3llKOq47Y+eaZXHw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksKeyedServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksKeyedServiceAttribute.html",
+          "hash": "I+z/JAkq/WFHQWrY0MBvXw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute.html",
+          "hash": "8lK2FugQnV1Vrp8HQrjEKw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksLoggerServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksLoggerServiceAttribute.html",
+          "hash": "8dQjfJziPzR5Nst0+TBMJA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute.html",
+          "hash": "Saoi49rAK6fsRmCX/7y0aw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksMediatrRequestServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksMediatrRequestServiceAttribute.html",
+          "hash": "xRQRPPRCn7BGCgH6vnOtbw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksNamedServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksNamedServiceAttribute.html",
+          "hash": "0QhRXpERDRi2J5wrxF4RSA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html",
+          "hash": "UnfmdMhDchJ4JO9NUN0hUQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html",
+          "hash": "3cvXMkS644kmi3VDjeKPrA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html",
+          "hash": "mOTEVBF/5M0kZzH19Pti2A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksValidatorServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksValidatorServiceAttribute.html",
+          "hash": "+GEdiYNtPiMGqAdddrLGUw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksWorkflowWriterServiceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksWorkflowWriterServiceAttribute.html",
+          "hash": "S+Qlo5FsocuhRPHyJfwD7g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Support.html",
+          "hash": "kOkwFvHlYRSMpM8mWJA++g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "6+XVGH+hR77158Ny0F64jQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "URfVN1C1ocMs9yKbCzW6pQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "s/e8D0hZoWzn3BF3+qXWnQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "pboOwdEhXRE8fE21PTgIug=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "+rHUkRZHZRi5gd1aTU6lJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 36,
+          "skipped_file_count": 36
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
