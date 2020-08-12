@@ -12,7 +12,7 @@
           "hash": "eIFIUf05vPUgvTBCdYanQw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html",
-          "hash": "ATGy42OKHIU8lyZJFPxS/A=="
+          "hash": "6NUaH8cRXaa1AhzFOko2fQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksModuleBase.html",
-          "hash": "2Gz6l4PQdQ4qdzhIgioIJA=="
+          "hash": "e/AsIW4dFSS3xeB5NIawSg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "6nxK/9PYZFDE88qVFFEY5A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -60,7 +60,7 @@
           "hash": "zYLwW4o9S8Wy1K/OyBI5wQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "LOdSTG1jGUU4faYm7xu2cg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "ZcN7vEo1nxP1Zu25x8Lumw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "Q7WTI9hLT/8LciwBWgtVxQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "qMPXPvAcZRMtGNzzX5EUHw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "Qao+cWzRfc3GTPDFXIpdOQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "biHUzplGgOhswBOskaCwig=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.Utility.html",
-          "hash": "qX2zxWJcJnCOEe39Fyfbig=="
+          "hash": "QTAazWgj8BfhxvZTtB02aw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -156,7 +156,7 @@
           "hash": "LvcqlKAxDkQ6Ju5Wv1OLFA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html",
-          "hash": "d06Fr2C1EReUMWyGpgqg+A=="
+          "hash": "cb4UnlnS1+Az/+o/I3PhJA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -180,7 +180,7 @@
           "hash": "xFFHBBYsOES4whxCDSCKJg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -192,7 +192,7 @@
           "hash": "bC+wvkHikKAYSlIds2L/Fg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -204,7 +204,7 @@
           "hash": "oV+0gW4hgDlm4mMP9+c89w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -216,7 +216,7 @@
           "hash": "pTk+VTHN2gGhhGmK1MHzBA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -225,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html",
-          "hash": "oefpXpNvG+C0QiFUqZ35MA=="
+          "hash": "1RbaDgHbvkyX5/ePxECgRg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html",
-          "hash": "Mwmt4kZZk6wn0Zi95tWE8A=="
+          "hash": "fXFtCodQE6mttnNNaikH6A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -252,7 +252,7 @@
           "hash": "qxQQEpjpu3iY3FBb3nD6Hw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -264,7 +264,7 @@
           "hash": "3Ew1XtXYLSdbvY1REwZeiw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -276,7 +276,7 @@
           "hash": "vBleruWPS0cnAxOdxGiwQw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -288,7 +288,7 @@
           "hash": "bE+7ri3llKOq47Y+eaZXHw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -297,10 +297,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksKeyedServiceAttribute.html",
-          "hash": "I+z/JAkq/WFHQWrY0MBvXw=="
+          "hash": "IhsuTlACe9N2geNIoFspFQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -309,10 +309,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute.html",
-          "hash": "8lK2FugQnV1Vrp8HQrjEKw=="
+          "hash": "8wULFf2tScYV88WJV9wBhA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -321,10 +321,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksLoggerServiceAttribute.html",
-          "hash": "8dQjfJziPzR5Nst0+TBMJA=="
+          "hash": "pS4XDqpM6M/FDvBIFl5rug=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -333,10 +333,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute.html",
-          "hash": "Saoi49rAK6fsRmCX/7y0aw=="
+          "hash": "sGQoQ6UW6ok3jsl6mFn5Cw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -345,10 +345,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksMediatrRequestServiceAttribute.html",
-          "hash": "xRQRPPRCn7BGCgH6vnOtbw=="
+          "hash": "LfN0JPY9nMH+iPYOs7xSng=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -357,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksNamedServiceAttribute.html",
-          "hash": "0QhRXpERDRi2J5wrxF4RSA=="
+          "hash": "MzFLeFYMkvDHWWPsUuWHGQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -369,22 +369,22 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html",
-          "hash": "UnfmdMhDchJ4JO9NUN0hUQ=="
+          "hash": "sG/V8vsxoUP5u8ROq43jSw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.yml",
+      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html",
-          "hash": "3cvXMkS644kmi3VDjeKPrA=="
+          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html",
+          "hash": "Hg1QalDBFIaMdxQqT7S7aA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -396,7 +396,7 @@
           "hash": "mOTEVBF/5M0kZzH19Pti2A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -405,10 +405,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksValidatorServiceAttribute.html",
-          "hash": "+GEdiYNtPiMGqAdddrLGUw=="
+          "hash": "fI2wgTvNYnOhNoiwn/SKVA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -417,10 +417,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksWorkflowWriterServiceAttribute.html",
-          "hash": "S+Qlo5FsocuhRPHyJfwD7g=="
+          "hash": "B/+TS2ubsb3uVzgKkzMA5Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -429,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.html",
-          "hash": "kOkwFvHlYRSMpM8mWJA++g=="
+          "hash": "l1I6ooM6OSwkML4qtk/vZQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -444,7 +444,7 @@
           "hash": "8ZX4ATKiNnaB6BC1uDOtgA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -453,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "URfVN1C1ocMs9yKbCzW6pQ=="
+          "hash": "dp/l/8iDiqafYk2tlAQPHA=="
         }
       },
       "is_incremental": false,
@@ -468,7 +468,7 @@
           "hash": "s/e8D0hZoWzn3BF3+qXWnQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -492,7 +492,7 @@
           "hash": "nuEOkDtExSmV+1Vg1fkGYw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -511,25 +511,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 0
+          "skipped_file_count": 3
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 36,
-          "skipped_file_count": 0
+          "skipped_file_count": 36
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -542,8 +540,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

@@ -19,7 +19,7 @@ namespace AppBlocks.Autofac.Common
         /// <summary>
         /// Get <see cref="AppBlocksContainerBuilder"/> for the AppBlocks application
         /// </summary>
-        protected readonly AppBlocksContainerBuilder AppBlocksContainerBuilder;
+        protected AppBlocksContainerBuilder AppBlocksContainerBuilder { get; set; }
 
         /// <summary>
         /// Constructor
@@ -85,7 +85,7 @@ namespace AppBlocks.Autofac.Common
         /// <param name="assembly"><see cref="System.Reflection.Assembly"/> to scam</param>
         /// <param name="builder"><see cref="global::Autofac.ContainerBuilder"/> to add services to</param>
         /// <param name="appBlocksContainerBuilder"><see cref="AppBlocksContainerBuilder"/> for the AppBlocks application</param>
-        protected void RegisterAssembly(
+        protected static void RegisterAssembly(
             System.Reflection.Assembly assembly,
             ContainerBuilder builder,
             AppBlocksContainerBuilder appBlocksContainerBuilder)
@@ -102,7 +102,7 @@ namespace AppBlocks.Autofac.Common
         /// <typeparam name="T">Type of class to register </typeparam>
         /// <param name="builder"><see cref="global::Autofac.ContainerBuilder"/> to add service to</param>
         /// <param name="service">Instance of class to register</param>
-        protected void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service)
+        protected static void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service)
             where T : class
         {
             // throw exception if reference is null

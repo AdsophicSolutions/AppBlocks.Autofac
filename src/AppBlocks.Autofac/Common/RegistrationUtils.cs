@@ -421,7 +421,7 @@ namespace AppBlocks.Autofac.Common
         /// Sets service lifetime scope
         /// </summary>        
         private static void SetTypeLifetimeScope(
-            AppBlocksServiceAttributeBase attribute,
+            AppBlocksServiceBaseAttribute attribute,
             IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle> registration)
         {
             //Service is available as all implemented interfaces. 
@@ -454,7 +454,7 @@ namespace AppBlocks.Autofac.Common
             //bool isEnabledForInterception = false;
             // Return if no interceptors are set on service
             if ((attribute.Interceptors?.Count() ?? 0) == 0 &&
-                !(attribute.Workflows ?? new string[0]).Any(s => !string.IsNullOrWhiteSpace(s))) return;
+                !(attribute.Workflows ?? Array.Empty<string>()).Any(s => !string.IsNullOrWhiteSpace(s))) return;
 
             // Add interceptor for service
             registration = registration
@@ -504,7 +504,7 @@ namespace AppBlocks.Autofac.Common
             }
             else
             {
-                return type.GetInterfaces().Count() > 0 ? type.GetInterfaces()[0] : type;
+                return type.GetInterfaces().Length > 0 ? type.GetInterfaces()[0] : type;
             }
         }
     }

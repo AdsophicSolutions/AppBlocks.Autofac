@@ -8,7 +8,7 @@ namespace AppBlocks.Autofac.Support
     /// <summary>
     /// Base class for specifying AppBlocks service 
     /// </summary>
-    public abstract class AppBlocksServiceAttributeBase : Attribute
+    public abstract class AppBlocksServiceBaseAttribute : Attribute
     {
         /// <summary>
         /// Constructor
@@ -16,7 +16,7 @@ namespace AppBlocks.Autofac.Support
         /// <param name="ServiceDependencyType"><see cref="AppBlocksServiceDependencyType"/> type. Service can be 
         /// <see cref="AppBlocksServiceDependencyType.Live"/> or <see cref="AppBlocksServiceDependencyType.NonLive"/></param>
         /// <param name="ServiceScope"><see cref="AppBlocksInstanceLifetime"/> lifetime scope</param>
-        public AppBlocksServiceAttributeBase(AppBlocksServiceDependencyType ServiceDependencyType, 
+        public AppBlocksServiceBaseAttribute(AppBlocksServiceDependencyType ServiceDependencyType, 
             AppBlocksInstanceLifetime ServiceScope)
         {
             this.ServiceDependencyType = ServiceDependencyType;

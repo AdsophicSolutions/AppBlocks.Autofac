@@ -22,7 +22,9 @@ namespace AppBlocks.Autofac.Common
                 var assembly = AssemblyName.GetAssemblyName(assemblyPath);
                 return true;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch { }
+#pragma warning restore CA1031 // Do not catch general exception types
             return false;
         }
 
@@ -33,13 +35,13 @@ namespace AppBlocks.Autofac.Common
         /// <returns>Result from an invocation</returns>
         public static object GetAsyncInvocationResult(IInvocation invocation)
         {
-            var resultMethod = invocation
+            var resultMethod = invocation?
                 .ReturnValue
                 .GetType()
                 .GetMethods()
                 .FirstOrDefault(n => n.Name == "get_Result");
 
-            return resultMethod?.Invoke(invocation.ReturnValue, null);
+            return resultMethod?.Invoke(invocation?.ReturnValue, null);
         }
     }
 }

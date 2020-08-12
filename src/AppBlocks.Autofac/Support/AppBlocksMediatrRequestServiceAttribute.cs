@@ -9,7 +9,7 @@ namespace AppBlocks.Autofac.Support
     /// Specifies service is a MediatR request handler
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class AppBlocksMediatrRequestServiceAttribute : AppBlocksServiceAttributeBase
+    public class AppBlocksMediatrRequestServiceAttribute : AppBlocksServiceBaseAttribute
     {
         /// <summary>
         /// Constructor

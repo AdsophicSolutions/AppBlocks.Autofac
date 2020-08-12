@@ -9,7 +9,7 @@ namespace AppBlocks.Autofac.Support
     /// Specifies service is a MediatR notification handler
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class AppBlocksMediatrNotificationServiceAttribute : AppBlocksServiceAttributeBase
+    public class AppBlocksMediatrNotificationServiceAttribute : AppBlocksServiceBaseAttribute
     {
         /// <summary>
         /// Constructor

@@ -189,7 +189,7 @@ of Autofac services.</p>
       </tr>
     </tbody>
   </table>
-  <h3 id="fields">Fields
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
@@ -198,15 +198,16 @@ of Autofac services.</p>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksContainerBuilder.cs/#L28">View Source</a>
   </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationConfiguration_" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration*"></a>
   <h4 id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationConfiguration" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration">ApplicationConfiguration</h4>
   <div class="markdown level1 summary"><p><a class="xref" href="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationConfiguration">ApplicationConfiguration</a> for the AppBlocks application</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected readonly ApplicationConfiguration ApplicationConfiguration</code></pre>
+    <pre><code class="lang-csharp hljs">protected ApplicationConfiguration ApplicationConfiguration { get; set; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -228,6 +229,7 @@ of Autofac services.</p>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksContainerBuilder.cs/#L40">View Source</a>
   </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationContext_" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext*"></a>
   <h4 id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationContext" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext">ApplicationContext</h4>
   <div class="markdown level1 summary"><p><a class="xref" href="AppBlocks.Autofac.Common.IContext.html">IContext</a> provides a dictionary of key / value pairs
 that defined the application context. Default <a class="xref" href="AppBlocks.Autofac.Common.IContext.html">IContext</a>
@@ -236,9 +238,9 @@ is generated via <a class="xref" href="AppBlocks.Autofac.Common.AppBlocksContain
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IContext ApplicationContext</code></pre>
+    <pre><code class="lang-csharp hljs">protected IContext ApplicationContext { get; set; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -260,15 +262,16 @@ is generated via <a class="xref" href="AppBlocks.Autofac.Common.AppBlocksContain
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksContainerBuilder.cs/#L33">View Source</a>
   </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationMode_" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode*"></a>
   <h4 id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationMode" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode">ApplicationMode</h4>
   <div class="markdown level1 summary"><p><a class="xref" href="AppBlocks.Autofac.Common.AppBlocksApplicationMode.html">AppBlocksApplicationMode</a> for AppBlocks application</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected readonly AppBlocksApplicationMode ApplicationMode</code></pre>
+    <pre><code class="lang-csharp hljs">protected AppBlocksApplicationMode ApplicationMode { get; set; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -409,7 +412,7 @@ register attributed services from your <span class="xref">System.Reflection.Asse
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void RegisterAsSingleInstance&lt;T&gt;(ContainerBuilder builder, T service)
+    <pre><code class="lang-csharp hljs">protected static void RegisterAsSingleInstance&lt;T&gt;(ContainerBuilder builder, T service)
     where T : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -490,20 +493,20 @@ Please consider registering these services with
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ShouldRegisterService_System_Type_AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type%2CAppBlocks.Autofac.Support.AppBlocksServiceAttributeBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ShouldRegisterService_System_Type_AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type%2CAppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksContainerBuilder.cs/#L201">View Source</a>
   </span>
   <a id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ShouldRegisterService_" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService*"></a>
-  <h4 id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ShouldRegisterService_System_Type_AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase_" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase)">ShouldRegisterService(Type, AppBlocksServiceAttributeBase)</h4>
+  <h4 id="AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ShouldRegisterService_System_Type_AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_" data-uid="AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute)">ShouldRegisterService(Type, AppBlocksServiceBaseAttribute)</h4>
   <div class="markdown level1 summary"><p>Override to prevent certain services from being registered. This may be useful while running
 tests when you want to mock certain services and prevent the live service from being registered</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttributeBase serviceAttribute)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual bool ShouldRegisterService(Type type, AppBlocksServiceBaseAttribute serviceAttribute)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -522,7 +525,7 @@ tests when you want to mock certain services and prevent the live service from b
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html">AppBlocksServiceAttributeBase</a></td>
+        <td><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html">AppBlocksServiceBaseAttribute</a></td>
         <td><span class="parametername">serviceAttribute</span></td>
         <td><p><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html">AppBlocksServiceAttribute</a> on the service</p>
 </td>

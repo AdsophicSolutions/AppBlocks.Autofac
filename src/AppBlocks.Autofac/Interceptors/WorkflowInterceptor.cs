@@ -62,7 +62,9 @@ namespace AppBlocks.Autofac.Interceptors
                     // Call writer method
                     writer.Value.PreMethodInvocationOutput(invocation);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any exceptions
                     if (Logger.IsErrorEnabled)
@@ -83,6 +85,8 @@ namespace AppBlocks.Autofac.Interceptors
         /// <param name="invocation"><see cref="IInvocation"/> instance</param>
         public void PostMethodInvoke(IInvocation invocation)
         {
+            if (invocation == null) throw new ArgumentNullException("Parameter invocation cannot be null");
+
             // Get workflow writers for service type
             var writers = GetWorkflowWriters(invocation);
 
@@ -100,7 +104,9 @@ namespace AppBlocks.Autofac.Interceptors
                     // Call writer with service return value
                     writer.Value.PostMethodInvocationOutput(invocation);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any errors
                     if (Logger.IsErrorEnabled)
@@ -136,7 +142,7 @@ namespace AppBlocks.Autofac.Interceptors
 
             // Just in case check. This should not happen. All AppBlock services
             // must be decorated with service attribute
-            if (appblocksServiceAttribute.Count() == 0)
+            if (!appblocksServiceAttribute.Any())
             {
                 throw new ArgumentException($"Oops! Not sure how you ended up here, but service is not decorated with AutofacServiceAttribute");
             }
@@ -146,7 +152,7 @@ namespace AppBlocks.Autofac.Interceptors
 
             // Look for workflow names for service. Initialize as none 
             // if no workflows are set
-            if ((typedServiceAttribute.Workflows ?? new string[0]).Count() == 0)
+            if ((typedServiceAttribute.Workflows ?? Array.Empty<string>()).Length == 0)
             {
                 // initialize type with no workflows.  
                 workflowWriterServiceDictionary.Value[invocation.TargetType.FullName] = null;

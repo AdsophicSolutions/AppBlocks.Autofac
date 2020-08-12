@@ -53,19 +53,40 @@ references:
 - uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration
   name: ApplicationConfiguration
   href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationConfiguration
-  commentId: F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration
+  commentId: P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration
+  fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration
+  nameWithType: AppBlocksContainerBuilder.ApplicationConfiguration
+- uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration*
+  name: ApplicationConfiguration
+  href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationConfiguration_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration
+  isSpec: "True"
   fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration
   nameWithType: AppBlocksContainerBuilder.ApplicationConfiguration
 - uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext
   name: ApplicationContext
   href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationContext
-  commentId: F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext
+  commentId: P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext
+  fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext
+  nameWithType: AppBlocksContainerBuilder.ApplicationContext
+- uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext*
+  name: ApplicationContext
+  href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationContext_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext
+  isSpec: "True"
   fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext
   nameWithType: AppBlocksContainerBuilder.ApplicationContext
 - uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode
   name: ApplicationMode
   href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationMode
-  commentId: F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode
+  commentId: P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode
+  fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode
+  nameWithType: AppBlocksContainerBuilder.ApplicationMode
+- uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode*
+  name: ApplicationMode
+  href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ApplicationMode_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode
+  isSpec: "True"
   fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode
   nameWithType: AppBlocksContainerBuilder.ApplicationMode
 - uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer
@@ -136,12 +157,12 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterExternalServices
   nameWithType: AppBlocksContainerBuilder.RegisterExternalServices
-- uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase)
-  name: ShouldRegisterService(Type, AppBlocksServiceAttributeBase)
-  href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ShouldRegisterService_System_Type_AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase_
-  commentId: M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase)
-  fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type, AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase)
-  nameWithType: AppBlocksContainerBuilder.ShouldRegisterService(Type, AppBlocksServiceAttributeBase)
+- uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute)
+  name: ShouldRegisterService(Type, AppBlocksServiceBaseAttribute)
+  href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ShouldRegisterService_System_Type_AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_
+  commentId: M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute)
+  fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type, AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute)
+  nameWithType: AppBlocksContainerBuilder.ShouldRegisterService(Type, AppBlocksServiceBaseAttribute)
 - uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService*
   name: ShouldRegisterService
   href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_ShouldRegisterService_
@@ -171,7 +192,14 @@ references:
 - uid: AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder
   name: AppBlocksContainerBuilder
   href: api/AppBlocks.Autofac.Common.AppBlocksModuleBase.html#AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder
-  commentId: F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder
+  commentId: P:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder
+  fullName: AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder
+  nameWithType: AppBlocksModuleBase.AppBlocksContainerBuilder
+- uid: AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder*
+  name: AppBlocksContainerBuilder
+  href: api/AppBlocks.Autofac.Common.AppBlocksModuleBase.html#AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder
+  isSpec: "True"
   fullName: AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder
   nameWithType: AppBlocksModuleBase.AppBlocksContainerBuilder
 - uid: AppBlocks.Autofac.Common.AppBlocksModuleBase.ApplicationContext
@@ -1217,51 +1245,51 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Support.AppBlocksServiceAttribute.Workflows
   nameWithType: AppBlocksServiceAttribute.Workflows
-- uid: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase
-  name: AppBlocksServiceAttributeBase
-  href: api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html
-  commentId: T:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase
-  fullName: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase
-  nameWithType: AppBlocksServiceAttributeBase
-- uid: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)
-  name: AppBlocksServiceAttributeBase(AppBlocksServiceDependencyType, AppBlocksInstanceLifetime)
-  href: api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html#AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase__ctor_AppBlocks_Autofac_Support_AppBlocksServiceDependencyType_AppBlocks_Autofac_Support_AppBlocksInstanceLifetime_
-  commentId: M:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)
-  fullName: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.AppBlocksServiceAttributeBase(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType, AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)
-  nameWithType: AppBlocksServiceAttributeBase.AppBlocksServiceAttributeBase(AppBlocksServiceDependencyType, AppBlocksInstanceLifetime)
-- uid: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.#ctor*
-  name: AppBlocksServiceAttributeBase
-  href: api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html#AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase__ctor_
-  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.#ctor
+- uid: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute
+  name: AppBlocksServiceBaseAttribute
+  href: api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html
+  commentId: T:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute
+  fullName: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute
+  nameWithType: AppBlocksServiceBaseAttribute
+- uid: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)
+  name: AppBlocksServiceBaseAttribute(AppBlocksServiceDependencyType, AppBlocksInstanceLifetime)
+  href: api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute__ctor_AppBlocks_Autofac_Support_AppBlocksServiceDependencyType_AppBlocks_Autofac_Support_AppBlocksInstanceLifetime_
+  commentId: M:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)
+  fullName: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.AppBlocksServiceBaseAttribute(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType, AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)
+  nameWithType: AppBlocksServiceBaseAttribute.AppBlocksServiceBaseAttribute(AppBlocksServiceDependencyType, AppBlocksInstanceLifetime)
+- uid: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.#ctor*
+  name: AppBlocksServiceBaseAttribute
+  href: api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute__ctor_
+  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.#ctor
   isSpec: "True"
-  fullName: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.AppBlocksServiceAttributeBase
-  nameWithType: AppBlocksServiceAttributeBase.AppBlocksServiceAttributeBase
-- uid: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceDependencyType
+  fullName: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.AppBlocksServiceBaseAttribute
+  nameWithType: AppBlocksServiceBaseAttribute.AppBlocksServiceBaseAttribute
+- uid: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType
   name: ServiceDependencyType
-  href: api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html#AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase_ServiceDependencyType
-  commentId: P:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceDependencyType
-  fullName: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceDependencyType
-  nameWithType: AppBlocksServiceAttributeBase.ServiceDependencyType
-- uid: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceDependencyType*
+  href: api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceDependencyType
+  commentId: P:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType
+  fullName: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType
+  nameWithType: AppBlocksServiceBaseAttribute.ServiceDependencyType
+- uid: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType*
   name: ServiceDependencyType
-  href: api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html#AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase_ServiceDependencyType_
-  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceDependencyType
+  href: api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceDependencyType_
+  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType
   isSpec: "True"
-  fullName: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceDependencyType
-  nameWithType: AppBlocksServiceAttributeBase.ServiceDependencyType
-- uid: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceScope
+  fullName: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType
+  nameWithType: AppBlocksServiceBaseAttribute.ServiceDependencyType
+- uid: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope
   name: ServiceScope
-  href: api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html#AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase_ServiceScope
-  commentId: P:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceScope
-  fullName: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceScope
-  nameWithType: AppBlocksServiceAttributeBase.ServiceScope
-- uid: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceScope*
+  href: api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceScope
+  commentId: P:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope
+  fullName: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope
+  nameWithType: AppBlocksServiceBaseAttribute.ServiceScope
+- uid: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope*
   name: ServiceScope
-  href: api/AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.html#AppBlocks_Autofac_Support_AppBlocksServiceAttributeBase_ServiceScope_
-  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceScope
+  href: api/AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceScope_
+  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope
   isSpec: "True"
-  fullName: AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceScope
-  nameWithType: AppBlocksServiceAttributeBase.ServiceScope
+  fullName: AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope
+  nameWithType: AppBlocksServiceBaseAttribute.ServiceScope
 - uid: AppBlocks.Autofac.Support.AppBlocksServiceDependencyType
   name: AppBlocksServiceDependencyType
   href: api/AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html

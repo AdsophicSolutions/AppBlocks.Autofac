@@ -36,7 +36,7 @@ namespace AppBlocks.Autofac.Interceptors
         protected virtual void MethodInvoke(IInvocation invocation)
         {
             // Invoke service method
-            invocation.Proceed();
+            invocation?.Proceed();
         }
 
         /// <summary>

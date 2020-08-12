@@ -25,19 +25,19 @@ namespace AppBlocks.Autofac.Common
         /// <summary>
         /// <see cref="ApplicationConfiguration"/> for the AppBlocks application
         /// </summary>
-        protected readonly ApplicationConfiguration ApplicationConfiguration;
+        protected ApplicationConfiguration ApplicationConfiguration { get; set; }
 
         /// <summary>
         /// <see cref="AppBlocksApplicationMode"/> for AppBlocks application
         /// </summary>
-        protected internal readonly AppBlocksApplicationMode ApplicationMode;
+        protected internal AppBlocksApplicationMode ApplicationMode { get; set; }
 
         /// <summary>
         /// <see cref="IContext"/> provides a dictionary of key / value pairs 
         /// that defined the application context. Default <see cref="IContext"/>
         /// is generated via <see cref="ApplicationConfiguration"/> source file
         /// </summary>
-        protected internal IContext ApplicationContext;
+        protected internal IContext ApplicationContext { get; set; }
 
         /// <summary>
         /// Constructor
@@ -118,7 +118,7 @@ namespace AppBlocks.Autofac.Common
             RegisterExternalDirectories(builder);
         }
 
-        private void RegisterMediatr(ContainerBuilder builder)
+        private static void RegisterMediatr(ContainerBuilder builder)
         {
             // Register all types from IMediatR assembly
             builder
@@ -198,7 +198,7 @@ namespace AppBlocks.Autofac.Common
         /// <param name="type"><see cref="Type"/> for service being registered</param>
         /// <param name="serviceAttribute"><see cref="AppBlocksServiceAttribute"/> on the service</param>
         /// <returns><c>true</c> if you want service to be registered; otherwise <c>false</c>.</returns>
-        protected internal virtual bool ShouldRegisterService(Type type, AppBlocksServiceAttributeBase serviceAttribute) => true;
+        protected internal virtual bool ShouldRegisterService(Type type, AppBlocksServiceBaseAttribute serviceAttribute) => true;
 
         /// <summary>
         /// Scan assembly for attributed Autofac services. 
@@ -220,7 +220,7 @@ namespace AppBlocks.Autofac.Common
         /// <typeparam name="T">Type of class to register </typeparam>
         /// <param name="builder"><see cref="global::Autofac.ContainerBuilder"/> to add service to</param>
         /// <param name="service">Instance of class to register</param>
-        protected void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service)
+        protected static void RegisterAsSingleInstance<T>(ContainerBuilder builder, T service)
             where T : class
         {
             // throw exception if reference is null
@@ -237,7 +237,7 @@ namespace AppBlocks.Autofac.Common
         private void RegisterExternalDirectories(ContainerBuilder builder)
         {
             //Iterate through list of directories set up as Autofac probe directories 
-            foreach (string directory in (ApplicationConfiguration?.AutofacDirectories.Value ?? new string[0]))
+            foreach (string directory in (ApplicationConfiguration?.AutofacDirectories.Value ?? Array.Empty<string>()))
             {
                 if (!Directory.Exists(directory)) throw new InvalidDataException($"Configured directory path {directory} is invalid");
 
@@ -251,7 +251,7 @@ namespace AppBlocks.Autofac.Common
         /// Registers InMemoryCache service 
         /// </summary>
         /// <param name="builder"></param>
-        private void RegisterInMemoryCache(ContainerBuilder builder)
+        private static void RegisterInMemoryCache(ContainerBuilder builder)
         {
             // Global in memory cache registration
             builder.Register(c => new InMemoryCacheService())
@@ -259,7 +259,7 @@ namespace AppBlocks.Autofac.Common
                 .SingleInstance();
         }
 
-        private void RegisterInterceptors(ContainerBuilder builder)
+        private static void RegisterInterceptors(ContainerBuilder builder)
         {
             // Typed registration
             logger.Debug("Registering Interceptor");

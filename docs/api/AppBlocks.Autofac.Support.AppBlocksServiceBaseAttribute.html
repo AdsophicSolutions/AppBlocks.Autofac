@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AppBlocksLiveServiceAttribute
+    <title>Class AppBlocksServiceBaseAttribute
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AppBlocksLiveServiceAttribute
+    <meta name="title" content="Class AppBlocksServiceBaseAttribute
    ">
     <meta name="generator" content="docfx 2.56.2.0">
     
@@ -68,45 +68,25 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute">
+            <article class="content wrap" id="_content" data-uid="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute">
   
   
-  <h1 id="AppBlocks_Autofac_Support_AppBlocksLiveServiceAttribute" data-uid="AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute" class="text-break">Class AppBlocksLiveServiceAttribute
+  <h1 id="AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute" data-uid="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute" class="text-break">Class AppBlocksServiceBaseAttribute
   </h1>
-  <div class="markdown level0 summary"><p>Specifies a service as live serivce. A live service is not registered if <a class="xref" href="AppBlocks.Autofac.Common.AppBlocksApplicationMode.html">AppBlocksApplicationMode</a> is <a class="xref" href="AppBlocks.Autofac.Common.AppBlocksApplicationMode.html#AppBlocks_Autofac_Common_AppBlocksApplicationMode_Test">Test</a></p>
+  <div class="markdown level0 summary"><p>Base class for specifying AppBlocks service</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">System.Attribute</span></div>
-    <div class="level2"><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html">AppBlocksServiceBaseAttribute</a></div>
-    <div class="level3"><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html">AppBlocksServiceAttribute</a></div>
-    <div class="level4"><span class="xref">AppBlocksLiveServiceAttribute</span></div>
+    <div class="level2"><span class="xref">AppBlocksServiceBaseAttribute</span></div>
+      <div class="level3"><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute.html">AppBlocksMediatrNotificationServiceAttribute</a></div>
+      <div class="level3"><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksMediatrRequestServiceAttribute.html">AppBlocksMediatrRequestServiceAttribute</a></div>
+      <div class="level3"><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html">AppBlocksServiceAttribute</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceAttribute_Name">AppBlocksServiceAttribute.Name</a>
-    </div>
-    <div>
-      <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceAttribute_Workflows">AppBlocksServiceAttribute.Workflows</a>
-    </div>
-    <div>
-      <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceAttribute_ServiceType">AppBlocksServiceAttribute.ServiceType</a>
-    </div>
-    <div>
-      <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceAttribute_Interceptors">AppBlocksServiceAttribute.Interceptors</a>
-    </div>
-    <div>
-      <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceAttribute_IsKeyed">AppBlocksServiceAttribute.IsKeyed</a>
-    </div>
-    <div>
-      <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceDependencyType">AppBlocksServiceBaseAttribute.ServiceDependencyType</a>
-    </div>
-    <div>
-      <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.html#AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceScope">AppBlocksServiceBaseAttribute.ServiceScope</a>
-    </div>
     <div>
       <span class="xref">System.Attribute.Equals(System.Object)</span>
     </div>
@@ -236,27 +216,27 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="AppBlocks.Autofac.Support.html">AppBlocks.Autofac.Support</a></h6>
   <h6><strong>Assembly</strong>: AppBlocks.Autofac.dll</h6>
-  <h5 id="AppBlocks_Autofac_Support_AppBlocksLiveServiceAttribute_syntax">Syntax</h5>
+  <h5 id="AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AppBlocksLiveServiceAttribute : AppBlocksServiceAttribute</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class AppBlocksServiceBaseAttribute : Attribute</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Support_AppBlocksLiveServiceAttribute__ctor_System_String_System_Type_AppBlocks_Autofac_Support_AppBlocksInstanceLifetime_System_String___System_String___System_Boolean_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute.%23ctor(System.String%2CSystem.Type%2CAppBlocks.Autofac.Support.AppBlocksInstanceLifetime%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute__ctor_AppBlocks_Autofac_Support_AppBlocksServiceDependencyType_AppBlocks_Autofac_Support_AppBlocksInstanceLifetime_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.%23ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType%2CAppBlocks.Autofac.Support.AppBlocksInstanceLifetime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Support/AppBlocksLiveServiceAttribute.cs/#L21">View Source</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Support/AppBlocksServiceBaseAttribute.cs/#L19">View Source</a>
   </span>
-  <a id="AppBlocks_Autofac_Support_AppBlocksLiveServiceAttribute__ctor_" data-uid="AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute.#ctor*"></a>
-  <h4 id="AppBlocks_Autofac_Support_AppBlocksLiveServiceAttribute__ctor_System_String_System_Type_AppBlocks_Autofac_Support_AppBlocksInstanceLifetime_System_String___System_String___System_Boolean_" data-uid="AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute.#ctor(System.String,System.Type,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime,System.String[],System.String[],System.Boolean)">AppBlocksLiveServiceAttribute(String, Type, AppBlocksInstanceLifetime, String[], String[], Boolean)</h4>
+  <a id="AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute__ctor_" data-uid="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.#ctor*"></a>
+  <h4 id="AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute__ctor_AppBlocks_Autofac_Support_AppBlocksServiceDependencyType_AppBlocks_Autofac_Support_AppBlocksInstanceLifetime_" data-uid="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)">AppBlocksServiceBaseAttribute(AppBlocksServiceDependencyType, AppBlocksInstanceLifetime)</h4>
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AppBlocksLiveServiceAttribute(string Name = &quot;&quot;, Type ServiceType = null, AppBlocksInstanceLifetime ServiceScope = AppBlocksInstanceLifetime.InstancePerLifetimeScope, string[] Interceptors = null, string[] Workflows = null, bool IsKeyed = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public AppBlocksServiceBaseAttribute(AppBlocksServiceDependencyType ServiceDependencyType, AppBlocksInstanceLifetime ServiceScope)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -269,15 +249,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">Name</span></td>
-        <td><p>Service</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Type</span></td>
-        <td><span class="parametername">ServiceType</span></td>
-        <td><p>Type implemented</p>
+        <td><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html">AppBlocksServiceDependencyType</a></td>
+        <td><span class="parametername">ServiceDependencyType</span></td>
+        <td><p><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html">AppBlocksServiceDependencyType</a> type. Service can be
+<a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html#AppBlocks_Autofac_Support_AppBlocksServiceDependencyType_Live">Live</a> or <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html#AppBlocks_Autofac_Support_AppBlocksServiceDependencyType_NonLive">NonLive</a></p>
 </td>
       </tr>
       <tr>
@@ -286,23 +261,70 @@
         <td><p><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.html">AppBlocksInstanceLifetime</a> lifetime scope</p>
 </td>
       </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceDependencyType.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Support/AppBlocksServiceBaseAttribute.cs/#L30">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceDependencyType_" data-uid="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType*"></a>
+  <h4 id="AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceDependencyType" data-uid="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType">ServiceDependencyType</h4>
+  <div class="markdown level1 summary"><p><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html">AppBlocksServiceDependencyType</a> type. Service can be
+<a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html#AppBlocks_Autofac_Support_AppBlocksServiceDependencyType_Live">Live</a> or <a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html#AppBlocks_Autofac_Support_AppBlocksServiceDependencyType_NonLive">NonLive</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AppBlocksServiceDependencyType ServiceDependencyType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">Interceptors</span></td>
-        <td><p>Service interceptors</p>
-</td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">Workflows</span></td>
-        <td><p>Type workflow writers</p>
-</td>
+        <td><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.html">AppBlocksServiceDependencyType</a></td>
+        <td></td>
       </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceScope.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Support/AppBlocksServiceBaseAttribute.cs/#L35">View Source</a>
+  </span>
+  <a id="AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceScope_" data-uid="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope*"></a>
+  <h4 id="AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute_ServiceScope" data-uid="AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope">ServiceScope</h4>
+  <div class="markdown level1 summary"><p><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.html">AppBlocksInstanceLifetime</a> lifetime scope</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AppBlocksInstanceLifetime ServiceScope { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">IsKeyed</span></td>
-        <td><p>Service is keyed</p>
-</td>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AppBlocks.Autofac.Support.AppBlocksInstanceLifetime.html">AppBlocksInstanceLifetime</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -314,10 +336,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Support_AppBlocksLiveServiceAttribute.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Support.AppBlocksLiveServiceAttribute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Support_AppBlocksServiceBaseAttribute.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Support/AppBlocksLiveServiceAttribute.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Support/AppBlocksServiceBaseAttribute.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

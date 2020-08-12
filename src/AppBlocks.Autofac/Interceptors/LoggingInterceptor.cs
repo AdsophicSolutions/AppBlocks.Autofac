@@ -18,7 +18,7 @@ namespace AppBlocks.Autofac.Interceptors
         ServiceScope:AppBlocksInstanceLifetime.SingleInstance, 
         Interceptors: new string[0], 
         Workflows:null,
-        IsKeyed:false)]
+        IsKeyed: false)]
     internal class LoggingInterceptor : ILoggingInterceptor
     {
         private readonly IIndex<string, IServiceLogger> serviceLoggers;
@@ -51,7 +51,9 @@ namespace AppBlocks.Autofac.Interceptors
                     // Call logger 
                     serviceLogger.PreMethodInvocationLog(invocation);
                 }
-                catch(Exception e)
+#pragma warning disable CA1031 // Do not catch general exception types
+                catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any errors
                     if(Logger.IsErrorEnabled)
@@ -90,7 +92,9 @@ namespace AppBlocks.Autofac.Interceptors
                     // Call log method
                     serviceLogger.PostMethodInvocationLog(invocation);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any exceptions
                     if (Logger.IsErrorEnabled)

@@ -7,7 +7,7 @@ namespace AppBlocks.Autofac.Support
     /// Specifies service as an AppBlocks service
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class AppBlocksServiceAttribute : AppBlocksServiceAttributeBase
+    public class AppBlocksServiceAttribute : AppBlocksServiceBaseAttribute
     {
         /// <summary>
         /// Constructor

@@ -165,7 +165,7 @@ and override methods to register Autofac services.</p>
       </tr>
     </tbody>
   </table>
-  <h3 id="fields">Fields
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
@@ -174,15 +174,16 @@ and override methods to register Autofac services.</p>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Common/AppBlocksModuleBase.cs/#L22">View Source</a>
   </span>
+  <a id="AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder_" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder*"></a>
   <h4 id="AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder" data-uid="AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder">AppBlocksContainerBuilder</h4>
   <div class="markdown level1 summary"><p>Get <a class="xref" href="AppBlocks.Autofac.Common.AppBlocksModuleBase.html#AppBlocks_Autofac_Common_AppBlocksModuleBase_AppBlocksContainerBuilder">AppBlocksContainerBuilder</a> for the AppBlocks application</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected readonly AppBlocksContainerBuilder AppBlocksContainerBuilder</code></pre>
+    <pre><code class="lang-csharp hljs">protected AppBlocksContainerBuilder AppBlocksContainerBuilder { get; set; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -197,8 +198,6 @@ and override methods to register Autofac services.</p>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Common_AppBlocksModuleBase_ApplicationContext.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Common.AppBlocksModuleBase.ApplicationContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -282,7 +281,7 @@ and override methods to register Autofac services.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void RegisterAssembly(Assembly assembly, ContainerBuilder builder, AppBlocksContainerBuilder appBlocksContainerBuilder)</code></pre>
+    <pre><code class="lang-csharp hljs">protected static void RegisterAssembly(Assembly assembly, ContainerBuilder builder, AppBlocksContainerBuilder appBlocksContainerBuilder)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -365,7 +364,7 @@ register attributed services from your <span class="xref">System.Reflection.Asse
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void RegisterAsSingleInstance&lt;T&gt;(ContainerBuilder builder, T service)
+    <pre><code class="lang-csharp hljs">protected static void RegisterAsSingleInstance&lt;T&gt;(ContainerBuilder builder, T service)
     where T : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>

@@ -19,8 +19,8 @@ namespace AppBlocks.Autofac.Support
                 Name,
                 typeof(IServiceLogger),
                 AppBlocksInstanceLifetime.SingleInstance,
-                new string[0],
-                new string[0],
+                Array.Empty<string>(),
+                Array.Empty<string>(),
                 true)
         {
             if (string.IsNullOrWhiteSpace(Name)) throw new Exception("Name cannot be null or whitespace");

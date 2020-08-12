@@ -51,7 +51,9 @@ namespace AppBlocks.Autofac.Interceptors
                 // Call workflow interceptor
                 workflowInterceptor.PostMethodInvoke(invocation);
             }
-            catch(Exception e)
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 // Log any errors
                 if (Logger.IsErrorEnabled)
@@ -70,10 +72,12 @@ namespace AppBlocks.Autofac.Interceptors
                 // call base
                 base.MethodInvoke(invocation);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 // log any errors
-                Logger.Error($"Exception thrown running {invocation.TargetType.FullName}.{invocation.Method.Name}", e);
+                Logger.Error($"Exception thrown running {invocation?.TargetType.FullName}.{invocation?.Method.Name}", e);
             }
         }
 
@@ -95,7 +99,9 @@ namespace AppBlocks.Autofac.Interceptors
                 // call workflow interceptor
                 workflowInterceptor.PreMethodInvoke(invocation);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 // Log any errors. 
                 if (Logger.IsErrorEnabled)

@@ -28,28 +28,28 @@
             of Autofac services. 
             </summary>
         </member>
-        <member name="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration">
+        <member name="P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration">
             <summary>
-            <see cref="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> for the AppBlocks application
+            <see cref="P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> for the AppBlocks application
             </summary>
         </member>
-        <member name="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode">
+        <member name="P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationMode">
             <summary>
             <see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> for AppBlocks application
             </summary>
         </member>
-        <member name="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext">
+        <member name="P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationContext">
             <summary>
             <see cref="T:AppBlocks.Autofac.Common.IContext"/> provides a dictionary of key / value pairs 
             that defined the application context. Default <see cref="T:AppBlocks.Autofac.Common.IContext"/>
-            is generated via <see cref="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> source file
+            is generated via <see cref="P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> source file
             </summary>
         </member>
         <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.#ctor(AppBlocks.Autofac.Common.ApplicationConfiguration,AppBlocks.Autofac.Common.AppBlocksApplicationMode)">
             <summary>
             Constructor
             </summary>
-            <param name="applicationConfiguration">Instance of <see cref="F:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> for the AppBlocks application</param>
+            <param name="applicationConfiguration">Instance of <see cref="P:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ApplicationConfiguration"/> for the AppBlocks application</param>
             <param name="applicationMode"><see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> for the AppBlocks application. <see cref="T:AppBlocks.Autofac.Common.AppBlocksApplicationMode"/> can be Live or Test</param>
         </member>
         <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.#ctor(AppBlocks.Autofac.Common.AppBlocksApplicationMode)">
@@ -82,7 +82,7 @@
             </summary>
             <param name="builder"><see cref="T:Autofac.ContainerBuilder"/> instance</param>
         </member>
-        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase)">
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService(System.Type,AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute)">
             <summary>
             Override to prevent certain services from being registered. This may be useful while running 
             tests when you want to mock certain services and prevent the live service from being registered
@@ -124,16 +124,16 @@
             Get <see cref="T:AppBlocks.Autofac.Common.IContext"/> for the AppBlocks application
             </summary>
         </member>
-        <member name="F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder">
+        <member name="P:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder">
             <summary>
-            Get <see cref="F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application
+            Get <see cref="P:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application
             </summary>
         </member>
         <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.#ctor(AppBlocks.Autofac.Common.AppBlocksContainerBuilder)">
             <summary>
             Constructor
             </summary>
-            <param name="appBlocksContainerBuilder"><see cref="F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application</param>
+            <param name="appBlocksContainerBuilder"><see cref="P:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application</param>
         </member>
         <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.Load(Autofac.ContainerBuilder)">
             <summary>
@@ -164,7 +164,7 @@
             </summary>
             <param name="assembly"><see cref="T:System.Reflection.Assembly"/> to scam</param>
             <param name="builder"><see cref="T:Autofac.ContainerBuilder"/> to add services to</param>
-            <param name="appBlocksContainerBuilder"><see cref="F:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application</param>
+            <param name="appBlocksContainerBuilder"><see cref="P:AppBlocks.Autofac.Common.AppBlocksModuleBase.AppBlocksContainerBuilder"/> for the AppBlocks application</param>
         </member>
         <member name="M:AppBlocks.Autofac.Common.AppBlocksModuleBase.RegisterAsSingleInstance``1(Autofac.ContainerBuilder,``0)">
             <summary>
@@ -428,7 +428,7 @@
             Make sure attributes are valid types
             </summary>        
         </member>
-        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.SetTypeLifetimeScope(AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase,Autofac.Builder.IRegistrationBuilder{System.Object,Autofac.Builder.ConcreteReflectionActivatorData,Autofac.Builder.SingleRegistrationStyle})">
+        <member name="M:AppBlocks.Autofac.Common.RegistrationUtils.SetTypeLifetimeScope(AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute,Autofac.Builder.IRegistrationBuilder{System.Object,Autofac.Builder.ConcreteReflectionActivatorData,Autofac.Builder.SingleRegistrationStyle})">
             <summary>
             Sets service lifetime scope
             </summary>        
@@ -972,12 +972,12 @@
             Specifies if service is keyed or not
             </summary>
         </member>
-        <member name="T:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase">
+        <member name="T:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute">
             <summary>
             Base class for specifying AppBlocks service 
             </summary>
         </member>
-        <member name="M:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)">
+        <member name="M:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.#ctor(AppBlocks.Autofac.Support.AppBlocksServiceDependencyType,AppBlocks.Autofac.Support.AppBlocksInstanceLifetime)">
             <summary>
             Constructor
             </summary>
@@ -985,13 +985,13 @@
             <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/></param>
             <param name="ServiceScope"><see cref="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime"/> lifetime scope</param>
         </member>
-        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceDependencyType">
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceDependencyType">
             <summary>
             <see cref="T:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType"/> type. Service can be 
             <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.Live"/> or <see cref="F:AppBlocks.Autofac.Support.AppBlocksServiceDependencyType.NonLive"/>
             </summary>
         </member>
-        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceAttributeBase.ServiceScope">
+        <member name="P:AppBlocks.Autofac.Support.AppBlocksServiceBaseAttribute.ServiceScope">
             <summary>
             <see cref="T:AppBlocks.Autofac.Support.AppBlocksInstanceLifetime"/> lifetime scope
             </summary>

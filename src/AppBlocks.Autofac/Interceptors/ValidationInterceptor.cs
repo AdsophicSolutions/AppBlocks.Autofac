@@ -39,7 +39,7 @@ namespace AppBlocks.Autofac.Interceptors
         public void PreMethodInvoke(IInvocation invocation)
         {
             // Look for service validator for service
-            if (serviceValidators.TryGetValue(invocation.TargetType.FullName, out IServiceValidator serviceValidator) &&
+            if (serviceValidators.TryGetValue(invocation?.TargetType.FullName, out IServiceValidator serviceValidator) &&
                 !disabledServiceValidators.Contains(serviceValidator.GetType().FullName))
             {
                 try
@@ -47,7 +47,9 @@ namespace AppBlocks.Autofac.Interceptors
                     // Call validator method to validate input parameters
                     serviceValidator.ValidateInputParameters(invocation);
                 }
-                catch(Exception e)
+#pragma warning disable CA1031 // Do not catch general exception types
+                catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log errors
                     if (Logger.IsErrorEnabled)
@@ -71,7 +73,7 @@ namespace AppBlocks.Autofac.Interceptors
         {
             // Look for service validator for service 
             // Ignore if service validator is disabled
-            if (serviceValidators.TryGetValue(invocation.TargetType.FullName, out IServiceValidator serviceValidator) &&
+            if (serviceValidators.TryGetValue(invocation?.TargetType.FullName, out IServiceValidator serviceValidator) &&
                 !disabledServiceValidators.Contains(serviceValidator.GetType().FullName))
             {
                 try
@@ -79,7 +81,9 @@ namespace AppBlocks.Autofac.Interceptors
                     // Call service validator with method return value
                     serviceValidator.ValidateResult(invocation);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log error
                     if (Logger.IsErrorEnabled)

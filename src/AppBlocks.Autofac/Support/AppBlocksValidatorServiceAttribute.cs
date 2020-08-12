@@ -19,8 +19,8 @@ namespace AppBlocks.Autofac.Support
                 ClassFullName,
                 typeof(IServiceValidator),
                 AppBlocksInstanceLifetime.SingleInstance,
-                new string[0],
-                new string[0],
+                Array.Empty<string>(),
+                Array.Empty<string>(),
                 true)
         {
             if (string.IsNullOrWhiteSpace(ClassFullName)) throw new Exception("ClassFullName Name cannot be null or whitespace");

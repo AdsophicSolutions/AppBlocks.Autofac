@@ -19,8 +19,8 @@ namespace AppBlocks.Autofac.Support
                     WorkflowName,
                     typeof(IWorkflowWriter),
                     AppBlocksInstanceLifetime.SingleInstance,
-                    new string[0],
-                    new string[0],
+                    Array.Empty<string>(),
+                    Array.Empty<string>(),
                     true)
         {
             if (string.IsNullOrWhiteSpace(WorkflowName)) throw new Exception("Workflow Name cannot be null or whitespace");
