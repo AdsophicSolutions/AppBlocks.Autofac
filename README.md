@@ -1,4 +1,7 @@
-## Welcome to GitHub Pages
+## AppBlocks.Autofac
+
+### Introduction
+AppBlocks intends to simplify the task of integrating Autofac into your application with emphasis on building supportable and testable applications. AppBlocks supports modular development through dynamic assembly loading. New assemblies can be added to an application using configuration files. It supports the introduction of dynamically loaded support code, thus decoupling support code from application code. Additionally, it actively prevents support code from negatively impacting application code. That means that the support related code can evolve on its own and be released to production environment without the risk of changing application functionality.       
 
 You can use the [editor on GitHub](https://github.com/AdsophicSolutions/AppBlocks.Autofac/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
