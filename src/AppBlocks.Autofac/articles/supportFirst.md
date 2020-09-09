@@ -1,0 +1,2 @@
+# AppBlocks Support First
+The primary idea behind AppBlocks is providing an architecture to improve the efficiency of writing enterprise applications. All enterprise applications require support. Enterprise applications should support faster debugging and analysis of issues. One of the roadblocks is that developers do not like inter-mingling support code with business code. It makes business code less readable. Secondly, support code needs to be added add-hoc basis. Often, issues in production are not addressable right away, sometimes never at all. 

@@ -2,4 +2,7 @@
   href: intro.md
 
 - name: Examples
-  href: examples.md
+  href: Examples.md
+
+- name: Support First
+  href: supportFirst.md
