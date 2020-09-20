@@ -465,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/examples.html",
-          "hash": "sohwrRC6gCN6iuN9UvEFMw=="
+          "hash": "yt1/H3uFJW7lTA6Zp8f5Rw=="
         }
       },
       "is_incremental": false,
@@ -480,7 +480,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "pjj0eZm3CCrKroG6XY7iBQ=="
+          "hash": "xzBaJkCMt8PZ1D8iqLzCXw=="
         }
       },
       "is_incremental": false,
@@ -504,7 +504,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/testing.html",
-          "hash": "gTK7nuLLdS1WBBVHnxzOqA=="
+          "hash": "rTCCnv+pGc6r8Dkwz6PMQw=="
         }
       },
       "is_incremental": false,
@@ -517,6 +517,17 @@
         ".html": {
           "relative_path": "articles/toc.html",
           "hash": "jc0q6tL/0ZToCemvZYxj1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/AppBlocks.QuickStart.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/AppBlocks.QuickStart.png"
         }
       },
       "is_incremental": false,
@@ -568,6 +579,13 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 36,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
