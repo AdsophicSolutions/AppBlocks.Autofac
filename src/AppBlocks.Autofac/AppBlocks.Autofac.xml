@@ -65,6 +65,14 @@
             </summary>
             <returns>Reference to <see cref="T:Autofac.IContainer"/></returns>
         </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder)">
+            <summary>
+            Initializes <see cref="T:Autofac.IContainer"/> for an 
+            AppBlocks application. Used for Web project integration where
+            <see cref="T:Autofac.IContainer"/> implementation is passed in as a parameter 
+            </summary>
+            <param name="builder">Builder to initialize</param>
+        </member>
         <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterExternalServices(Autofac.ContainerBuilder)">
             <summary>
             Override to add instances of 3rd party classes as AutoFac services. 
