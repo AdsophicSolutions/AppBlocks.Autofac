@@ -74,6 +74,17 @@ namespace AppBlocks.Autofac.Common
             return builder.Build();
         }
 
+        /// <summary>
+        /// Initializes <see cref="global::Autofac.IContainer"/> for an 
+        /// AppBlocks application. Used for Web project integration where
+        /// <see cref="global::Autofac.IContainer"/> implementation is passed in as a parameter 
+        /// </summary>
+        /// <param name="builder">Builder to initialize</param>
+        public void BuildContainer(ContainerBuilder builder) 
+        {
+            InitializeContainer(builder);
+        }
+
         private void InitializeContainer(ContainerBuilder builder)
         {
             // Registation ApplicationConfiguration as single instance
