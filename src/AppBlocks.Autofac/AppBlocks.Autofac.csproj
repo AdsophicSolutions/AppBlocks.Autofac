@@ -13,6 +13,8 @@
     <PackageProjectUrl>https://adsophicsolutions.github.io/AppBlocks.Autofac/index.html</PackageProjectUrl>
     <RepositoryUrl>https://github.com/AdsophicSolutions/AppBlocks.Autofac</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>* Support for web project integration</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
