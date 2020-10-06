@@ -1092,6 +1092,64 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Support.AppBlocksLoggerServiceAttribute.AppBlocksLoggerServiceAttribute
   nameWithType: AppBlocksLoggerServiceAttribute.AppBlocksLoggerServiceAttribute
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging
+  name: AppBlocksLogging
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html
+  commentId: T:AppBlocks.Autofac.Support.AppBlocksLogging
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging
+  nameWithType: AppBlocksLogging
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging.GetLoggerFactory
+  name: GetLoggerFactory()
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html#AppBlocks_Autofac_Support_AppBlocksLogging_GetLoggerFactory
+  commentId: M:AppBlocks.Autofac.Support.AppBlocksLogging.GetLoggerFactory
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging.GetLoggerFactory()
+  nameWithType: AppBlocksLogging.GetLoggerFactory()
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging.GetLoggerFactory*
+  name: GetLoggerFactory
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html#AppBlocks_Autofac_Support_AppBlocksLogging_GetLoggerFactory_
+  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksLogging.GetLoggerFactory
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging.GetLoggerFactory
+  nameWithType: AppBlocksLogging.GetLoggerFactory
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging.Instance
+  name: Instance
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html#AppBlocks_Autofac_Support_AppBlocksLogging_Instance
+  commentId: P:AppBlocks.Autofac.Support.AppBlocksLogging.Instance
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging.Instance
+  nameWithType: AppBlocksLogging.Instance
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging.Instance*
+  name: Instance
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html#AppBlocks_Autofac_Support_AppBlocksLogging_Instance_
+  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksLogging.Instance
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging.Instance
+  nameWithType: AppBlocksLogging.Instance
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging.UseDefault
+  name: UseDefault()
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html#AppBlocks_Autofac_Support_AppBlocksLogging_UseDefault
+  commentId: M:AppBlocks.Autofac.Support.AppBlocksLogging.UseDefault
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging.UseDefault()
+  nameWithType: AppBlocksLogging.UseDefault()
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging.UseDefault*
+  name: UseDefault
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html#AppBlocks_Autofac_Support_AppBlocksLogging_UseDefault_
+  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksLogging.UseDefault
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging.UseDefault
+  nameWithType: AppBlocksLogging.UseDefault
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging.UseLog4Net(System.String)
+  name: UseLog4Net(String)
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html#AppBlocks_Autofac_Support_AppBlocksLogging_UseLog4Net_System_String_
+  commentId: M:AppBlocks.Autofac.Support.AppBlocksLogging.UseLog4Net(System.String)
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging.UseLog4Net(System.String)
+  nameWithType: AppBlocksLogging.UseLog4Net(String)
+- uid: AppBlocks.Autofac.Support.AppBlocksLogging.UseLog4Net*
+  name: UseLog4Net
+  href: api/AppBlocks.Autofac.Support.AppBlocksLogging.html#AppBlocks_Autofac_Support_AppBlocksLogging_UseLog4Net_
+  commentId: Overload:AppBlocks.Autofac.Support.AppBlocksLogging.UseLog4Net
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Support.AppBlocksLogging.UseLog4Net
+  nameWithType: AppBlocksLogging.UseLog4Net
 - uid: AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute
   name: AppBlocksMediatrNotificationServiceAttribute
   href: api/AppBlocks.Autofac.Support.AppBlocksMediatrNotificationServiceAttribute.html

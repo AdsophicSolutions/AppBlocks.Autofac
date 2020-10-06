@@ -7,6 +7,7 @@ using System.Reflection;
 
 namespace AppBlocks.Autofac.Common
 {
+    
     /// <summary>
     /// Implementation for <see cref="global::Autofac.Module"/> that injects 
     /// <see cref="ILog"/> instance into a AppBlocks service
@@ -44,11 +45,11 @@ namespace AppBlocks.Autofac.Common
 
         protected override void AttachToComponentRegistration(IComponentRegistryBuilder componentRegistry, IComponentRegistration registration)
         {
-            // Handle constructor parameters.
-            registration.Preparing += OnComponentPreparing;
+            //// Handle constructor parameters.
+            //registration.Preparing += OnComponentPreparing;
 
-            // Handle properties.
-            registration.Activated += (sender, e) => InjectLoggerProperties(e.Instance);
+            //// Handle properties.
+            //registration.Activated += (sender, e) => InjectLoggerProperties(e.Instance);
 
             base.AttachToComponentRegistration(componentRegistry, registration);
         }
