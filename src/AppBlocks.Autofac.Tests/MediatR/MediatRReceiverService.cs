@@ -20,13 +20,11 @@ namespace AppBlocks.Autofac.Tests.MediatR
         private readonly ILogger<MediatRReceiverService> logger;
         private IMediator Mediator { get; }
 
-        public MediatRReceiverService(ILogger<MediatRReceiverService> logger)
+        public MediatRReceiverService(
+            ILogger<MediatRReceiverService> logger, 
+            IMediator mediator)
         {
             this.logger = logger;
-        }
-
-        public MediatRReceiverService(IMediator mediator)
-        {
             Mediator = mediator;
         }
 

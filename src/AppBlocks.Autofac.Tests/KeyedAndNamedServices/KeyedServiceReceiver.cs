@@ -14,19 +14,16 @@ namespace AppBlocks.Autofac.Tests.KeyedAndNamedServices
     {
         private readonly ILogger<KeyedServiceReceiver> logger;
 
-        public KeyedServiceReceiver(ILogger<KeyedServiceReceiver> logger)
-        {
-            this.logger = logger;
-        }
-
         private static int callCount;
         public static int GetCallCount() => callCount;
         public static void ResetCount() => callCount = 0;
 
         private readonly IIndex<string, IKeyedService> keyedServices;
 
-        public KeyedServiceReceiver(IIndex<string, IKeyedService> keyedServices)
+        public KeyedServiceReceiver(ILogger<KeyedServiceReceiver> logger,
+            IIndex<string, IKeyedService> keyedServices)
         {
+            this.logger = logger;
             this.keyedServices = keyedServices;
         }
 
