@@ -12,7 +12,7 @@
           "hash": "3RHk2VcwpwpEfwns5MsXug=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -21,10 +21,22 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html",
-          "hash": "3tV89zvS/C8HQeHPMbh1rw=="
+          "hash": "mGEBrF0f9Kor4rRS/OWvMg=="
         }
       },
       "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Common.AppBlocksLogging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksLogging.html",
+          "hash": "vEarPQbm0J2KtUX5HUNbwg=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -45,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.ApplicationConfiguration.html",
-          "hash": "CZCVn9Ac8dbd2mMjf9WJLw=="
+          "hash": "/WCZapebl/jxwHD7cwM3RA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -60,7 +72,7 @@
           "hash": "ME4LPOBmNUQiIMPKTE7WDA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +84,7 @@
           "hash": "sM35bX0dW7ON6dY6pOx8Kw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +96,7 @@
           "hash": "oG9kfFTd/T8o/4J2iICcBQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +108,7 @@
           "hash": "8Am70bT1MQPneoq5Ul66Rw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +120,7 @@
           "hash": "l5aGcTGmgoERBrDMlCrkrA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,7 +132,7 @@
           "hash": "AJE7st4Z4INhuoTeW1Uuhw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -132,7 +144,7 @@
           "hash": "zUVOW5PtfYTu4xM3Uad0wA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -144,7 +156,7 @@
           "hash": "u9WCAuRoS2zjHxZvRucQfw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -153,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.html",
-          "hash": "LvcqlKAxDkQ6Ju5Wv1OLFA=="
+          "hash": "kYYOCLSaJAlufsn6eJD2EQ=="
         }
       },
       "is_incremental": false,
@@ -165,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html",
-          "hash": "md9v7YNG+dz7OLq1L+Ei/g=="
+          "hash": "2FB27BhwcDGMb3PqEzhNAg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -180,7 +192,7 @@
           "hash": "rAsjUIppcVwLGuzn+LWNEg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -192,7 +204,7 @@
           "hash": "DNtcMkulGN7A2O6yg00cig=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -204,7 +216,7 @@
           "hash": "VBD9g53RkVA2XDnxJSWrsg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -216,7 +228,7 @@
           "hash": "cYvrnjqn7OPmB4cOiAQ6JQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -225,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html",
-          "hash": "f3r3/ZLEp0W249PZpzWyEw=="
+          "hash": "lnyqJye+G2OS55cp7pNYeg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -237,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html",
-          "hash": "KfGXlp3MKKoWDmo1YhN6VA=="
+          "hash": "rJ+NsAQPvhj8TDWumX5dYA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -252,7 +264,7 @@
           "hash": "qxQQEpjpu3iY3FBb3nD6Hw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -264,7 +276,7 @@
           "hash": "YtZLGvT//C+cLEVaEOLYrw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -276,7 +288,7 @@
           "hash": "Q7cLD8RTzstVc+b9UbqUNw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -288,7 +300,7 @@
           "hash": "qY7vvzqLYgFy3bke/eXMhA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -300,7 +312,7 @@
           "hash": "dzAQofk2lTCjIeryYVQL7Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -312,7 +324,7 @@
           "hash": "YzAHiyESoR1CoaVq9BQvmg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -324,19 +336,7 @@
           "hash": "h5y7DeCRwR86CoXysgz32Q=="
         }
       },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksLogging.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AppBlocks.Autofac.Support.AppBlocksLogging.html",
-          "hash": "CLo/CHggBcTFVVnACajD7A=="
-        }
-      },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -348,7 +348,7 @@
           "hash": "ZUNTLgxJ596gPQMqUsDpjw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -360,7 +360,7 @@
           "hash": "9lAbxXedrNZL9n8MwaF15g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -372,7 +372,7 @@
           "hash": "4Ah1LnQ5mAqGJkkGNK7Jvg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -384,7 +384,7 @@
           "hash": "r6JgMIgzBOt5hVTK0xlOuw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -396,7 +396,7 @@
           "hash": "Co9m5JJvBoG23+koSYhMyw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -408,7 +408,7 @@
           "hash": "7TI4hGZ3euEzXDrSR54NaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -420,7 +420,7 @@
           "hash": "F4sVQcL1NTUhoKWHNUY4YA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -432,7 +432,7 @@
           "hash": "pF8xs237W0U0bQQ1zdmcrg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -441,10 +441,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Support.html",
-          "hash": "yGX3/eAqZCZyiH4FNaef7w=="
+          "hash": "l1I6ooM6OSwkML4qtk/vZQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -456,7 +456,7 @@
           "hash": "8ZX4ATKiNnaB6BC1uDOtgA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -465,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "DGs32wxZUP4LIPvq9yEBJw=="
+          "hash": "bACj/eqM/mvnesxJq34Y8w=="
         }
       },
       "is_incremental": false,
@@ -589,7 +589,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 37,
-          "skipped_file_count": 35
+          "skipped_file_count": 36
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

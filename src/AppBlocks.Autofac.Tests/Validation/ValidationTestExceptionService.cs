@@ -1,5 +1,6 @@
 ﻿using AppBlocks.Autofac.Support;
 using log4net;
+using Microsoft.Extensions.Logging;
 using System.Reflection;
 
 namespace AppBlocks.Autofac.Tests.Validation
@@ -7,11 +8,15 @@ namespace AppBlocks.Autofac.Tests.Validation
     [AppBlocksService]
     public class ValidationTestExceptionService : IValidationTestExceptionService
     {
-        private static readonly ILog logger =
-            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         private static int callCount = 0;
         public static int GetCallCount() => callCount;
+
+        private readonly ILogger<ValidationTestExceptionService> logger;
+
+        public ValidationTestExceptionService(ILogger<ValidationTestExceptionService> logger)
+        {
+            this.logger = logger;
+        }
 
         internal static void ResetCount()
         {
@@ -22,8 +27,7 @@ namespace AppBlocks.Autofac.Tests.Validation
         {
             callCount++;
 
-            if (logger.IsInfoEnabled)
-                logger.Info($"{nameof(ValidationTestExceptionService)}.{nameof(Method1)} called successfully");
+            logger.LogInformation($"{nameof(ValidationTestExceptionService)}.{nameof(Method1)} called successfully");
         }
     }
 }

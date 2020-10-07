@@ -5,6 +5,7 @@ using Autofac;
 using log4net;
 using MediatR;
 using MediatR.Pipeline;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace AppBlocks.Autofac.Common
     /// </summary>
     public abstract class AppBlocksContainerBuilder
     {
-        private static readonly ILog logger =
-            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly static ILogger<AppBlocksContainerBuilder> logger =
+            new Logger<AppBlocksContainerBuilder>(AppBlocksLogging.Instance.GetLoggerFactory());
 
         /// <summary>
         /// <see cref="ApplicationConfiguration"/> for the AppBlocks application
@@ -99,7 +100,11 @@ namespace AppBlocks.Autofac.Common
                 .SingleInstance();
 
             // Register LoggingModule to inject logger
-            builder.RegisterModule<LoggingModule>();
+            //builder.RegisterModule<LoggingModule>();
+
+            // Register log factory to create loggers
+            builder.RegisterInstance(AppBlocksLogging.Instance.GetLoggerFactory()).As<ILoggerFactory>().SingleInstance();
+            builder.RegisterGeneric(typeof(Logger<>)).As(typeof(ILogger<>)).SingleInstance();
 
             // MediatR registration
             RegisterMediatr(builder);
@@ -273,7 +278,8 @@ namespace AppBlocks.Autofac.Common
         private static void RegisterInterceptors(ContainerBuilder builder)
         {
             // Typed registration
-            logger.Debug("Registering Interceptor");
+            logger.LogDebug("Registering Interceptor");
+
             builder.RegisterType<AppBlocksServiceInterceptor>().AsSelf().SingleInstance();
             //logger.Debug("Registering Validation Interceptor");
             //builder.RegisterType<ValidationInterceptor>().AsSelf().SingleInstance();

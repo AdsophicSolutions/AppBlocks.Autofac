@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,8 +14,7 @@ namespace AppBlocks.Autofac.Common
     /// </summary>
     public class ApplicationConfiguration
     {
-        private static readonly log4net.ILog logger =
-                log4net.LogManager.GetLogger(typeof(ApplicationConfiguration));
+        private readonly ILogger<ApplicationConfiguration> logger;
 
         internal Lazy<IList<string>> ConfigurationFilePaths { get; } = new Lazy<IList<string>>(() => new List<string>());
         internal Lazy<IList<string>> AutofacDirectories { get; } = new Lazy<IList<string>>(() => new List<string>());
@@ -27,7 +27,7 @@ namespace AppBlocks.Autofac.Common
         public ApplicationConfiguration(string configurationFilePath) 
             : this(new [] { configurationFilePath})
         {
-            
+            logger = new Logger<ApplicationConfiguration>(AppBlocksLogging.Instance.GetLoggerFactory());
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace AppBlocks.Autofac.Common
                     $"All configuration file paths passed to {GetType().FullName} must exist and be accessible");
             }
 
-            if (logger.IsDebugEnabled) logger.Debug($"Adding configuration file path {configurationFilePath}");
+            logger.LogDebug($"Adding configuration file path {configurationFilePath}");
 
             //Add to list of directories to be processed
             ConfigurationFilePaths.Value.Add(configurationFilePath);
@@ -127,8 +127,7 @@ namespace AppBlocks.Autofac.Common
                 if (!Directory.Exists(autofacSourceDirectory))
                     throw new Exception($"Autofac source directory does not exist: {autofacSourceDirectory}");
 
-                if (logger.IsDebugEnabled) 
-                    logger.Debug($"Adding Autofac source directory {autofacSourceDirectory}");
+                logger.LogDebug($"Adding Autofac source directory {autofacSourceDirectory}");
 
                 // Add directory to the list of source directories
                 AutofacDirectories.Value.Add(autofacSourceDirectory);

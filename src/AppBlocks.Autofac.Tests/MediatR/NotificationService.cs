@@ -1,6 +1,7 @@
 ﻿using AppBlocks.Autofac.Support;
 using log4net;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -12,14 +13,19 @@ namespace AppBlocks.Autofac.Tests.MediatR
 {
     [AppBlocksMediatrNotificationService]
     public class NotificationService : INotificationHandler<Notification>
-    {
-        private static readonly ILog logger =
-            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+    {   
 
         private static int callCount;
 
         public static int GetCallCount() => callCount;
         public static void ResetCount() => callCount = 0;
+
+        private readonly ILogger<NotificationService> logger;
+
+        public NotificationService(ILogger<NotificationService> logger)
+        {
+            this.logger = logger;
+        }
 
         public Task Handle(Notification notification, 
             CancellationToken cancellationToken)
@@ -30,9 +36,7 @@ namespace AppBlocks.Autofac.Tests.MediatR
                 {
                     callCount++;
 
-                    if (logger.IsInfoEnabled)
-                        logger.Info($"{nameof(NotificationService)}.{nameof(Handle)} Received message {notification.Message}");
-                    
+                    logger.LogInformation($"{nameof(NotificationService)}.{nameof(Handle)} Received message {notification.Message}");
                 }
             });
         }

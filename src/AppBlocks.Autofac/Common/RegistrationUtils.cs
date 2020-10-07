@@ -5,6 +5,7 @@ using Autofac.Builder;
 using Autofac.Extras.DynamicProxy;
 using log4net;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,10 @@ namespace AppBlocks.Autofac.Common
     /// <summary>
     /// Utility method containing shared AppBlocks registration logic
     /// </summary>
-    internal static class RegistrationUtils
+    internal class RegistrationUtils
     {
-        private static readonly ILog logger =
-            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILogger<RegistrationUtils> logger = 
+            new Logger<RegistrationUtils>(AppBlocksLogging.Instance.GetLoggerFactory());        
 
         internal static void RegisterAssembly(Assembly assembly,
             ContainerBuilder builder,
@@ -93,8 +94,7 @@ namespace AppBlocks.Autofac.Common
                     // Perform attribute validations
                     ValidateRegistration(i.AttributeInformation);
 
-                    if (logger.IsDebugEnabled)
-                        logger.Debug($"Registering {i.TypeInformation.FullName} as implemented interfaces");
+                    logger.LogDebug($"Registering {i.TypeInformation.FullName} as implemented interfaces");
 
                     // Register type with Autofac container builder. 
                     var registration = builder.RegisterType(i.TypeInformation).AsImplementedInterfaces();
@@ -157,8 +157,7 @@ namespace AppBlocks.Autofac.Common
                     ValidateRegistration(i.AttributeInformation);
 
                     //Find out what to Interface to use for service registration
-                    if (logger.IsDebugEnabled)
-                        logger.Debug($"Registering {i.TypeInformation.FullName} as named service {i.AttributeInformation.Name}");
+                    logger.LogDebug($"Registering {i.TypeInformation.FullName} as named service {i.AttributeInformation.Name}");
 
                     // Register type with Autofac container builder. 
                     var registrationType = GetServiceRegistrationType(i.TypeInformation, i.AttributeInformation);
@@ -223,9 +222,8 @@ namespace AppBlocks.Autofac.Common
                     //Find out what to Interface to use for service registration. For keyed service, we enforce
                     //having attribute declared with non-null ServiceType. In other words, keyed services 
                     //must explicitly specify service type.  
-                    if (logger.IsDebugEnabled)
-                        logger.Debug($"Registering {i.TypeInformation.FullName} as keyed service of type {i.AttributeInformation.ServiceType.FullName} " +
-                            $"with key {i.AttributeInformation.Name}");
+                    logger.LogDebug($"Registering {i.TypeInformation.FullName} as keyed service of type {i.AttributeInformation.ServiceType.FullName} " +
+                        $"with key {i.AttributeInformation.Name}");
 
                     // Register type with Autofac container builder
                     var registrationType = GetServiceRegistrationType(i.TypeInformation, i.AttributeInformation);
@@ -288,8 +286,7 @@ namespace AppBlocks.Autofac.Common
                            $"Mediatr.IRequestHandler<,>");
                    }
 
-                   if (logger.IsDebugEnabled)
-                       logger.Debug($"Registering {i.TypeInformation.FullName} as Mediatr Request Handler");
+                   logger.LogDebug($"Registering {i.TypeInformation.FullName} as Mediatr Request Handler");
 
                    // Register type with interfaces
                    var registration = builder
@@ -350,8 +347,7 @@ namespace AppBlocks.Autofac.Common
                            $"Mediatr.INotificationHandler<>");
                    }
 
-                   if (logger.IsDebugEnabled)
-                       logger.Debug($"Registering {i.TypeInformation.FullName} as Mediatr Notification Handler");
+                   logger.LogDebug($"Registering {i.TypeInformation.FullName} as Mediatr Notification Handler");
 
                    // Register type with implemented interfaces
                    var registration = builder
@@ -379,9 +375,8 @@ namespace AppBlocks.Autofac.Common
                         $"Registering using {nameof(AppBlocksServiceAttribute)} is not permitted";
 
                 var exception = new InvalidOperationException(message);
-
-                if (logger.IsErrorEnabled)
-                    logger.Error("Error registering service", exception);
+                
+                logger.LogError("Error registering service", exception);
 
                 throw new InvalidOperationException(message);
             }
@@ -394,9 +389,8 @@ namespace AppBlocks.Autofac.Common
                         $"Registering using {nameof(AppBlocksValidatorServiceAttribute)} is not permitted";
 
                 var exception = new InvalidOperationException(message);
-
-                if (logger.IsErrorEnabled)
-                    logger.Error("Error registering service", exception);
+                
+                logger.LogError("Error registering service", exception);
 
                 throw new InvalidOperationException(message);
             }
@@ -409,9 +403,8 @@ namespace AppBlocks.Autofac.Common
                         $"Registering using {nameof(AppBlocksWorkflowWriterServiceAttribute)} is not permitted";
 
                 var exception = new InvalidOperationException(message);
-
-                if (logger.IsErrorEnabled)
-                    logger.Error("Error registering service", exception);
+                
+                logger.LogError("Error registering service", exception);
 
                 throw new InvalidOperationException(message);
             }

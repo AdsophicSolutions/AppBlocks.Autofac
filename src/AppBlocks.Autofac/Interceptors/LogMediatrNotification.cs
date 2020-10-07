@@ -1,6 +1,7 @@
 ﻿using log4net;
 using MediatR;
 using MediatR.Pipeline;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,8 +17,12 @@ namespace AppBlocks.Autofac.Interceptors
     internal class LogMediatrNotification<TNotification> : 
         INotificationHandler<TNotification> where TNotification : INotification
     {
-        private static readonly ILog logger =
-            LogManager.GetLogger(typeof(LogMediatrNotification<>).Assembly, "AppBlocks.Autofac.Interceptors.LogMediatrNotification");
+        private readonly ILogger<LogMediatrNotification<TNotification>> logger;            
+
+        public LogMediatrNotification(ILogger<LogMediatrNotification<TNotification>> logger)
+        {
+            this.logger = logger;
+        }
 
         /// <summary>
         /// Handle notification
@@ -28,12 +33,10 @@ namespace AppBlocks.Autofac.Interceptors
         public Task Handle(TNotification notification, 
             CancellationToken cancellationToken)
         {
-            return Task.Factory.StartNew(() =>
+            return Task.Run(() =>
             {
-                if (logger.IsInfoEnabled)
-                    logger.Info($"Logging notification from {notification?.GetType().FullName}. Notification details {notification}");
-            }
-           );
+                logger.LogInformation($"Logging notification from {notification?.GetType().FullName}. Notification details {notification}");
+            }, CancellationToken.None);
         }
     }
 }

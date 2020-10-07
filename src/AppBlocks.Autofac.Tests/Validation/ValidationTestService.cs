@@ -1,5 +1,6 @@
 ﻿using AppBlocks.Autofac.Support;
 using log4net;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -10,13 +11,16 @@ namespace AppBlocks.Autofac.Tests.Validation
     [AppBlocksService]
     public class ValidationTestService : IValidationTestService
     {
-        private static readonly ILog logger =
-            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger<ValidationTestService> logger;
+
+        public ValidationTestService(ILogger<ValidationTestService> logger)
+        {
+            this.logger = logger;
+        }
 
         public void Method1()
         {
-            if (logger.IsInfoEnabled)
-                logger.Info($"{nameof(ValidationTestService)}.{nameof(Method1)} called successfully");
+            logger.LogInformation($"{nameof(ValidationTestService)}.{nameof(Method1)} called successfully");
         }
     }
 }
