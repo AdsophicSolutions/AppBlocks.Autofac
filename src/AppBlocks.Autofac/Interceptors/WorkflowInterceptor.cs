@@ -76,8 +76,9 @@ namespace AppBlocks.Autofac.Interceptors
                 {
                     // Log any exceptions
                     if (logger.IsEnabled(LogLevel.Error))
-                        logger.LogError($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PreMethodInvoke method call. " +
-                        $"Writer will be disabled", e);
+                        logger.LogError(e, 
+                            $"Workflow writer { writer.Key}:{ writer.Value.GetType().FullName} threw an exception during PreMethodInvoke method call. " + 
+                            $"Writer will be disabled");
 
                     // Disable workflow writer if it throws an exception
                     disabledWorkflowWriters.Add(writer.Key);
@@ -116,8 +117,9 @@ namespace AppBlocks.Autofac.Interceptors
                 {
                     // Log any errors
                     if (logger.IsEnabled(LogLevel.Error))
-                        logger.LogError($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
-                        $"Writer will be disabled", e);
+                        logger.LogError(e, 
+                            $"Workflow writer { writer.Key}:{ writer.Value.GetType().FullName} threw an exception during PostMethodInvoke method call. " + 
+                            $"Writer will be disabled");
 
                     // Disable writer. Writers that throw exceptions are disabled
                     disabledWorkflowWriters.Add(writer.Key);

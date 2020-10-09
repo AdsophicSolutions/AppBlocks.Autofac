@@ -62,8 +62,8 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any errors
-                    logger.LogError($"Service logger {serviceLogger.GetType().FullName} threw an exception " +
-                        $"during PreMethodInvocationLog method call. Logger will be disabled", e);
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError(e, $"Service logger { serviceLogger.GetType().FullName} threw an exception " + $"during PreMethodInvocationLog method call. Logger will be disabled");
 
                     // Disable logger if any exceptions occur. 
                     disabledServiceLoggers.Add(serviceLogger.GetType().FullName);
@@ -75,8 +75,10 @@ namespace AppBlocks.Autofac.Interceptors
                 // Do not log if type is excluded from logging
                 if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
-                    logger.LogInformation($"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name} " +
-                        $"with parameters: {(invocation.Arguments.Length == 0 ? "None" : string.Join(", ", invocation.Arguments))}");
+                    if (logger.IsEnabled(LogLevel.Information))
+                        logger.LogInformation($"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name} " +
+                        $"with parameters: {(invocation.Arguments.Length == 0 ? "None" : string.Join(", ", invocation.Arguments))}",
+                        invocation.Arguments);
                 }
             }
         }
@@ -101,8 +103,10 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any exceptions
-                    logger.LogError($"Service logger {serviceLogger.GetType().FullName} threw an exception during PostmethodInvocationLog method call. " +
-                        $"Logger will be disabled", e);
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError(e, 
+                            $"Service logger { serviceLogger.GetType().FullName} threw an exception during PostmethodInvocationLog method call. " + 
+                            $"Logger will be disabled");
 
                     // Disable custom logger on exception. 
                     disabledServiceLoggers.Add(serviceLogger.GetType().FullName);
@@ -113,8 +117,10 @@ namespace AppBlocks.Autofac.Interceptors
                 // Use default logger if not excluded from logging
                 if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
-                    logger.LogInformation($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
-                            $"Returned {invocation.ReturnValue}");
+                    if (logger.IsEnabled(LogLevel.Information))
+                        logger.LogInformation($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                            $"Returned {invocation.ReturnValue}", 
+                            invocation.ReturnValue);
                 }
             }
         }

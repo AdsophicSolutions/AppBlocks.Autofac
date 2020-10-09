@@ -208,6 +208,19 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Common.AppBlocksLogging.Instance
   nameWithType: AppBlocksLogging.Instance
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)
+  name: SetLoggerFactory(ILoggerFactory)
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_SetLoggerFactory_Microsoft_Extensions_Logging_ILoggerFactory_
+  commentId: M:AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)
+  nameWithType: AppBlocksLogging.SetLoggerFactory(ILoggerFactory)
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory*
+  name: SetLoggerFactory
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_SetLoggerFactory_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory
+  nameWithType: AppBlocksLogging.SetLoggerFactory
 - uid: AppBlocks.Autofac.Common.AppBlocksLogging.UseDefault
   name: UseDefault()
   href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_UseDefault

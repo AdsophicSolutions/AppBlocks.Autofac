@@ -72,5 +72,17 @@ namespace AppBlocks.Autofac.Common
 
             return loggerFactory;
         }
+
+        /// <summary>
+        /// Sets logger factory implementation
+        /// </summary>
+        /// <param name="loggerFactory">Logger factory to use</param>
+        public void SetLoggerFactory(ILoggerFactory loggerFactory)
+        {
+            if(this.loggerFactory != null)
+                throw new Exception("Logger factory is already initialized. AppBlocks does not currently support multiple logging destinations");
+
+            this.loggerFactory = loggerFactory;
+        }
     }
 }

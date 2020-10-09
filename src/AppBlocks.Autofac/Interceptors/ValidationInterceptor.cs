@@ -58,8 +58,9 @@ namespace AppBlocks.Autofac.Interceptors
                 {
                     // Log errors
                     if (logger.IsEnabled(LogLevel.Error))
-                        logger.LogError($"Service Validator {serviceValidator.GetType().FullName} threw an exception during PreMethodInvoke method call" +
-                        $"Validator will be disabled", e);
+                        logger.LogError(e, 
+                            $"Service Validator { serviceValidator.GetType().FullName} threw an exception during PreMethodInvoke method call" + 
+                            $"Validator will be disabled");
 
                     // Disable validator. Validators are disabled if they throw 
                     // an exception
@@ -90,8 +91,9 @@ namespace AppBlocks.Autofac.Interceptors
                 {
                     // Log error
                     if (logger.IsEnabled(LogLevel.Error))
-                        logger.LogError($"Service Validator {serviceValidator.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
-                        $"Validator will be disabled", e);
+                        logger.LogError(e, 
+                            $"Service Validator { serviceValidator.GetType().FullName} threw an exception during PostMethodInvoke method call. " + 
+                            $"Validator will be disabled");
 
 
                     // Disable validator if validator throws exception

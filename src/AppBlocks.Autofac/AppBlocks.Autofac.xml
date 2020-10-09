@@ -153,6 +153,12 @@
             </summary>
             <returns>Reference to <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/></returns>
         </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Sets logger factory implementation
+            </summary>
+            <param name="loggerFactory">Logger factory to use</param>
+        </member>
         <member name="T:AppBlocks.Autofac.Common.AppBlocksModuleBase">
             <summary>
             Used to register assemblies as Autofac modules. Inherit from <see cref="T:AppBlocks.Autofac.Common.AppBlocksModuleBase"/>

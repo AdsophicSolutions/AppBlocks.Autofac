@@ -63,7 +63,7 @@ namespace AppBlocks.Autofac.Interceptors
             {
                 // Log any errors  
                 if (logger.IsEnabled(LogLevel.Error))
-                    logger.LogError($"Error executing {nameof(PostMethodInvoke)}", e);
+                    logger.LogError(e, $"Error executing {nameof(PostMethodInvoke)}");
             }
         }
 
@@ -84,7 +84,7 @@ namespace AppBlocks.Autofac.Interceptors
             {
                 // log any errors
                 if (logger.IsEnabled(LogLevel.Error))
-                    logger.LogError($"Exception thrown running {invocation?.TargetType.FullName}.{invocation?.Method.Name}", e);
+                    logger.LogError(e, $"Exception thrown running { invocation?.TargetType.FullName}.{ invocation?.Method.Name}");
             }
         }
 
@@ -112,7 +112,7 @@ namespace AppBlocks.Autofac.Interceptors
             {
                 // Log any errors.   
                 if (logger.IsEnabled(LogLevel.Error))
-                    logger.LogError($"Error executing {nameof(PreMethodInvoke)}", e);
+                    logger.LogError(e, $"Error executing { nameof(PreMethodInvoke)}");
             }
         }
     }

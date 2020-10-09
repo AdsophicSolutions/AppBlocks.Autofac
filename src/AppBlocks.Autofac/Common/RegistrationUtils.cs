@@ -381,7 +381,7 @@ namespace AppBlocks.Autofac.Common
                 var exception = new InvalidOperationException(message);
 
                 if (logger.IsEnabled(LogLevel.Error))
-                    logger.LogError("Error registering service", exception);
+                    logger.LogError(exception, "Error registering service");
 
                 throw new InvalidOperationException(message);
             }
@@ -396,7 +396,7 @@ namespace AppBlocks.Autofac.Common
                 var exception = new InvalidOperationException(message);
 
                 if (logger.IsEnabled(LogLevel.Error))
-                    logger.LogError("Error registering service", exception);
+                    logger.LogError(exception, "Error registering service");
 
                 throw new InvalidOperationException(message);
             }
@@ -411,7 +411,7 @@ namespace AppBlocks.Autofac.Common
                 var exception = new InvalidOperationException(message);
 
                 if (logger.IsEnabled(LogLevel.Error))
-                    logger.LogError("Error registering service", exception);
+                    logger.LogError(exception, "Error registering service");
 
                 throw new InvalidOperationException(message);
             }
