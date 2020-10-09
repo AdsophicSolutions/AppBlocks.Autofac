@@ -15,10 +15,8 @@ namespace AppBlocks.Autofac.Tests
     {
         [AssemblyInitialize]
         public static void Initialize(TestContext testContext)
-        {
-            AppBlocksLogging.Instance.UseLog4Net("log4net.config");
-            //var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            //XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        {   
+            AppBlocksLogging.Instance.UseLog4Net("log4net.config");         
         }
 
         [AssemblyCleanup]

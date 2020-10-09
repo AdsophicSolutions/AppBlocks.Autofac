@@ -75,7 +75,8 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any exceptions
-                    logger.LogError($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PreMethodInvoke method call. " +
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PreMethodInvoke method call. " +
                         $"Writer will be disabled", e);
 
                     // Disable workflow writer if it throws an exception
@@ -114,7 +115,8 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any errors
-                    logger.LogError($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
                         $"Writer will be disabled", e);
 
                     // Disable writer. Writers that throw exceptions are disabled

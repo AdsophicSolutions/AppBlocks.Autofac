@@ -57,8 +57,8 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log errors
-
-                    logger.LogError($"Service Validator {serviceValidator.GetType().FullName} threw an exception during PreMethodInvoke method call" +
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError($"Service Validator {serviceValidator.GetType().FullName} threw an exception during PreMethodInvoke method call" +
                         $"Validator will be disabled", e);
 
                     // Disable validator. Validators are disabled if they throw 
@@ -89,8 +89,8 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log error
-
-                    logger.LogError($"Service Validator {serviceValidator.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError($"Service Validator {serviceValidator.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
                         $"Validator will be disabled", e);
 
 

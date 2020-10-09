@@ -27,7 +27,8 @@ namespace AppBlocks.Autofac.Tests.Validation
         {
             callCount++;
 
-            logger.LogInformation($"{nameof(ValidationTestExceptionService)}.{nameof(Method1)} called successfully");
+            if (logger.IsEnabled(LogLevel.Information))
+                logger.LogInformation($"{ nameof(ValidationTestExceptionService)}.{ nameof(Method1)} called successfully");
         }
     }
 }

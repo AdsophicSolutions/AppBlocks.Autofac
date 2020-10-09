@@ -34,8 +34,9 @@ namespace AppBlocks.Autofac.Interceptors
         public Task Process(TRequest request, TResponse response, CancellationToken cancellationToken)
         {
             return Task.Run(() =>
-            {   
-                logger.LogInformation($"Logging response from {response?.GetType().FullName}. Response details {response}");
+            {
+                if (logger.IsEnabled(LogLevel.Information))
+                    logger.LogInformation($"Logging response from {response?.GetType().FullName}. Response details {response}");
             }, CancellationToken.None);
         }
     }

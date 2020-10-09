@@ -33,10 +33,10 @@ namespace AppBlocks.Autofac.Interceptors
         {
             return Task.Run(() =>
             {
-                logger.LogInformation($"Logging request from {request?.GetType().FullName}. Request Details {request}");
+                if (logger.IsEnabled(LogLevel.Information))
+                    logger.LogInformation($"Logging request from {request?.GetType().FullName}. Request Details {request}");
+
             }, CancellationToken.None);
         }
-
-        //public ILog Logger { get; set; }
     }
 }

@@ -99,9 +99,6 @@ namespace AppBlocks.Autofac.Common
                 .As<IContext>()
                 .SingleInstance();
 
-            // Register LoggingModule to inject logger
-            //builder.RegisterModule<LoggingModule>();
-
             // Register log factory to create loggers
             builder.RegisterInstance(AppBlocksLogging.Instance.GetLoggerFactory()).As<ILoggerFactory>().SingleInstance();
             builder.RegisterGeneric(typeof(Logger<>)).As(typeof(ILogger<>)).SingleInstance();
@@ -278,7 +275,8 @@ namespace AppBlocks.Autofac.Common
         private static void RegisterInterceptors(ContainerBuilder builder)
         {
             // Typed registration
-            logger.LogDebug("Registering Interceptor");
+            if (logger.IsEnabled(LogLevel.Debug))
+                logger.LogDebug("Registering Interceptor");
 
             builder.RegisterType<AppBlocksServiceInterceptor>().AsSelf().SingleInstance();
             //logger.Debug("Registering Validation Interceptor");

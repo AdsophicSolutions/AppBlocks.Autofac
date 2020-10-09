@@ -102,7 +102,8 @@ namespace AppBlocks.Autofac.Common
                     $"All configuration file paths passed to {GetType().FullName} must exist and be accessible");
             }
 
-            logger.LogDebug($"Adding configuration file path {configurationFilePath}");
+            if (logger.IsEnabled(LogLevel.Debug))
+                logger.LogDebug($"Adding configuration file path {configurationFilePath}");
 
             //Add to list of directories to be processed
             ConfigurationFilePaths.Value.Add(configurationFilePath);
@@ -127,7 +128,8 @@ namespace AppBlocks.Autofac.Common
                 if (!Directory.Exists(autofacSourceDirectory))
                     throw new Exception($"Autofac source directory does not exist: {autofacSourceDirectory}");
 
-                logger.LogDebug($"Adding Autofac source directory {autofacSourceDirectory}");
+                if (logger.IsEnabled(LogLevel.Debug))
+                    logger.LogDebug($"Adding Autofac source directory {autofacSourceDirectory}");
 
                 // Add directory to the list of source directories
                 AutofacDirectories.Value.Add(autofacSourceDirectory);

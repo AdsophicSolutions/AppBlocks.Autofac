@@ -32,7 +32,8 @@ namespace AppBlocks.Autofac.Tests.Workflow
         {
             callCount++;
 
-            logger.LogInformation($"{nameof(WorkflowWriterTestExceptionService)}.{nameof(Method1)} called successfully");
+            if (logger.IsEnabled(LogLevel.Information))
+                logger.LogInformation($"{ nameof(WorkflowWriterTestExceptionService)}.{ nameof(Method1)} called successfully");
         }
     }
 }

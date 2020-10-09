@@ -94,7 +94,8 @@ namespace AppBlocks.Autofac.Common
                     // Perform attribute validations
                     ValidateRegistration(i.AttributeInformation);
 
-                    logger.LogDebug($"Registering {i.TypeInformation.FullName} as implemented interfaces");
+                    if (logger.IsEnabled(LogLevel.Debug))
+                        logger.LogDebug($"Registering {i.TypeInformation.FullName} as implemented interfaces");
 
                     // Register type with Autofac container builder. 
                     var registration = builder.RegisterType(i.TypeInformation).AsImplementedInterfaces();
@@ -157,7 +158,8 @@ namespace AppBlocks.Autofac.Common
                     ValidateRegistration(i.AttributeInformation);
 
                     //Find out what to Interface to use for service registration
-                    logger.LogDebug($"Registering {i.TypeInformation.FullName} as named service {i.AttributeInformation.Name}");
+                    if (logger.IsEnabled(LogLevel.Debug))
+                        logger.LogDebug($"Registering {i.TypeInformation.FullName} as named service {i.AttributeInformation.Name}");
 
                     // Register type with Autofac container builder. 
                     var registrationType = GetServiceRegistrationType(i.TypeInformation, i.AttributeInformation);
@@ -222,7 +224,8 @@ namespace AppBlocks.Autofac.Common
                     //Find out what to Interface to use for service registration. For keyed service, we enforce
                     //having attribute declared with non-null ServiceType. In other words, keyed services 
                     //must explicitly specify service type.  
-                    logger.LogDebug($"Registering {i.TypeInformation.FullName} as keyed service of type {i.AttributeInformation.ServiceType.FullName} " +
+                    if (logger.IsEnabled(LogLevel.Debug))
+                        logger.LogDebug($"Registering {i.TypeInformation.FullName} as keyed service of type {i.AttributeInformation.ServiceType.FullName} " +
                         $"with key {i.AttributeInformation.Name}");
 
                     // Register type with Autofac container builder
@@ -285,8 +288,8 @@ namespace AppBlocks.Autofac.Common
                        throw new Exception($"{i.TypeInformation.FullName} must closed type of " +
                            $"Mediatr.IRequestHandler<,>");
                    }
-
-                   logger.LogDebug($"Registering {i.TypeInformation.FullName} as Mediatr Request Handler");
+                   if (logger.IsEnabled(LogLevel.Debug))
+                       logger.LogDebug($"Registering {i.TypeInformation.FullName} as Mediatr Request Handler");
 
                    // Register type with interfaces
                    var registration = builder
@@ -347,7 +350,8 @@ namespace AppBlocks.Autofac.Common
                            $"Mediatr.INotificationHandler<>");
                    }
 
-                   logger.LogDebug($"Registering {i.TypeInformation.FullName} as Mediatr Notification Handler");
+                   if (logger.IsEnabled(LogLevel.Debug))
+                       logger.LogDebug($"Registering {i.TypeInformation.FullName} as Mediatr Notification Handler");
 
                    // Register type with implemented interfaces
                    var registration = builder
@@ -375,8 +379,9 @@ namespace AppBlocks.Autofac.Common
                         $"Registering using {nameof(AppBlocksServiceAttribute)} is not permitted";
 
                 var exception = new InvalidOperationException(message);
-                
-                logger.LogError("Error registering service", exception);
+
+                if (logger.IsEnabled(LogLevel.Error))
+                    logger.LogError("Error registering service", exception);
 
                 throw new InvalidOperationException(message);
             }
@@ -389,8 +394,9 @@ namespace AppBlocks.Autofac.Common
                         $"Registering using {nameof(AppBlocksValidatorServiceAttribute)} is not permitted";
 
                 var exception = new InvalidOperationException(message);
-                
-                logger.LogError("Error registering service", exception);
+
+                if (logger.IsEnabled(LogLevel.Error))
+                    logger.LogError("Error registering service", exception);
 
                 throw new InvalidOperationException(message);
             }
@@ -403,8 +409,9 @@ namespace AppBlocks.Autofac.Common
                         $"Registering using {nameof(AppBlocksWorkflowWriterServiceAttribute)} is not permitted";
 
                 var exception = new InvalidOperationException(message);
-                
-                logger.LogError("Error registering service", exception);
+
+                if (logger.IsEnabled(LogLevel.Error))
+                    logger.LogError("Error registering service", exception);
 
                 throw new InvalidOperationException(message);
             }

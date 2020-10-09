@@ -40,7 +40,8 @@ namespace AppBlocks.Autofac.Tests.MediatR
             {
                 callCount++;
 
-                logger.LogInformation($"Received response in " +
+                if (logger.IsEnabled(LogLevel.Information))
+                    logger.LogInformation($"Received response in " +
                     $"{nameof(MediatRReceiverService)}.{nameof(RunRequest)}");
             }
         }
@@ -51,7 +52,8 @@ namespace AppBlocks.Autofac.Tests.MediatR
 
             callCount++;
 
-            logger.LogInformation($"Publishing notification in " +
+            if (logger.IsEnabled(LogLevel.Information))
+                logger.LogInformation($"Publishing notification in " +
                 $"{nameof(MediatRReceiverService)}.{nameof(RunNotification)}");
 
             Mediator.Publish(notification).GetAwaiter().GetResult();

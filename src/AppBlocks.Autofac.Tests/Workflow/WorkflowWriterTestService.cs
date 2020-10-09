@@ -25,7 +25,8 @@ namespace AppBlocks.Autofac.Tests.Workflow
 
         public void Method1()
         {
-            logger.LogInformation($"{nameof(WorkflowWriterTestService)}.{nameof(Method1)} called successfully");
+            if (logger.IsEnabled(LogLevel.Information))
+                logger.LogInformation($"{nameof(WorkflowWriterTestService)}.{nameof(Method1)} called successfully");
         }
     }
 }

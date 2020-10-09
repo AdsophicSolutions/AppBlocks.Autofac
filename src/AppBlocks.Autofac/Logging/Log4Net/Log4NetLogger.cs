@@ -79,37 +79,39 @@ namespace AppBlocks.Autofac.Logging.Log4Net
         {
             if (!IsEnabled(logLevel)) return;
 
-            if (formatter == null) throw new ArgumentNullException(nameof(formatter));
+            // Format message
+            if (formatter == null) throw new ArgumentNullException("Formatter cannot be null");
+            string message = formatter(state, null);
 
-            string message = null;
-            if (null != formatter)
-                message = formatter(state, exception);
+            // If event id name is not null. Add event id information to log
+            if (eventId.Name != null) 
+                message = $"{message} EventId: {eventId.Id}, Event Name: {eventId.Name}";
+            else if(eventId.Id != 0)
+                message = $"{message} EventId: {eventId.Id}";
 
-            if (!string.IsNullOrEmpty(message) || exception != null)
+            switch (logLevel)
             {
-                switch (logLevel)
-                {
-                    case LogLevel.Critical:
-                        log.Fatal(message);
-                        break;
-                    case LogLevel.Debug:
-                    case LogLevel.Trace:
-                        log.Debug(message);
-                        break;
-                    case LogLevel.Error:
-                        log.Error(message);
-                        break;
-                    case LogLevel.Information:
-                        log.Info(message);
-                        break;
-                    case LogLevel.Warning:
-                        log.Warn(message);
-                        break;
-                    default:
-                        log.Warn($"Encountered unknown log level {logLevel}, writing out as Info.");
-                        log.Info(message, exception);
-                        break;
-                }
+                case LogLevel.Critical:
+                    log.Fatal(message);
+                    break;
+                case LogLevel.Debug:
+                case LogLevel.Trace:
+                    log.Debug(message);
+                    break;
+                case LogLevel.Error:
+                    if (exception == null) log.Error(message); 
+                    else log.Error(exception);
+                    break;
+                case LogLevel.Information:
+                    log.Info(message);
+                    break;
+                case LogLevel.Warning:
+                    log.Warn(message);
+                    break;
+                default:
+                    log.Warn($"Encountered unknown log level {logLevel}, writing out as Info.");
+                    if (exception == null) log.Info(message); else log.Info(message, exception);
+                    break;
             }
         }
     }

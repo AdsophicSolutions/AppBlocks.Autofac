@@ -424,12 +424,6 @@
             <param name="fullTypeName">Full name of type to check</param>
             <returns><c>true</c> if type should be excluded; otherwise <c>false</c>;</returns>
         </member>
-        <member name="T:AppBlocks.Autofac.Common.LoggingModule">
-            <summary>
-            Implementation for <see cref="T:Autofac.Module"/> that injects 
-            <see cref="T:log4net.ILog"/> instance into a AppBlocks service
-            </summary>
-        </member>
         <member name="T:AppBlocks.Autofac.Common.RegistrationUtils">
             <summary>
             Utility method containing shared AppBlocks registration logic

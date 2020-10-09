@@ -36,7 +36,8 @@ namespace AppBlocks.Autofac.Tests.MediatR
                 {
                     callCount++;
 
-                    logger.LogInformation($"{nameof(RequestResponseService)}.{nameof(Handle)} Received input {request.Input}");
+                    if (logger.IsEnabled(LogLevel.Information))
+                        logger.LogInformation($"{nameof(RequestResponseService)}.{nameof(Handle)} Received input {request.Input}");
 
                     return new Response { Output = "1" };
                 }

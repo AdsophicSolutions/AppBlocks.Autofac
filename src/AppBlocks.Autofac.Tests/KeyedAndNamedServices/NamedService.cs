@@ -26,7 +26,8 @@ namespace AppBlocks.Autofac.Tests.KeyedAndNamedServices
         {
             callCount++;
 
-            logger.LogInformation($"{nameof(NamedService)}.{nameof(RunService)} called successfully");
+            if (logger.IsEnabled(LogLevel.Information))
+                logger.LogInformation($"{nameof(NamedService)}.{nameof(RunService)} called successfully");
         }
     }
 }

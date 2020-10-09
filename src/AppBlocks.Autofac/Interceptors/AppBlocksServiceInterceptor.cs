@@ -61,8 +61,9 @@ namespace AppBlocks.Autofac.Interceptors
             catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
             {
-                // Log any errors                
-                logger.LogError($"Error executing {nameof(PostMethodInvoke)}", e);
+                // Log any errors  
+                if (logger.IsEnabled(LogLevel.Error))
+                    logger.LogError($"Error executing {nameof(PostMethodInvoke)}", e);
             }
         }
 
@@ -82,7 +83,8 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
             {
                 // log any errors
-                logger.LogError($"Exception thrown running {invocation?.TargetType.FullName}.{invocation?.Method.Name}", e);
+                if (logger.IsEnabled(LogLevel.Error))
+                    logger.LogError($"Exception thrown running {invocation?.TargetType.FullName}.{invocation?.Method.Name}", e);
             }
         }
 
@@ -108,8 +110,9 @@ namespace AppBlocks.Autofac.Interceptors
             catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
             {
-                // Log any errors.                 
-                logger.LogError($"Error executing {nameof(PreMethodInvoke)}", e);
+                // Log any errors.   
+                if (logger.IsEnabled(LogLevel.Error))
+                    logger.LogError($"Error executing {nameof(PreMethodInvoke)}", e);
             }
         }
     }

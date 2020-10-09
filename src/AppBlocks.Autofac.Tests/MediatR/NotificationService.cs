@@ -36,7 +36,8 @@ namespace AppBlocks.Autofac.Tests.MediatR
                 {
                     callCount++;
 
-                    logger.LogInformation($"{nameof(NotificationService)}.{nameof(Handle)} Received message {notification.Message}");
+                    if (logger.IsEnabled(LogLevel.Information))
+                        logger.LogInformation($"{nameof(NotificationService)}.{nameof(Handle)} Received message {notification.Message}");
                 }
             });
         }

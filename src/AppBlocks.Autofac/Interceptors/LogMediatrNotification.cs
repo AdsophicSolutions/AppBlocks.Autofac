@@ -35,7 +35,8 @@ namespace AppBlocks.Autofac.Interceptors
         {
             return Task.Run(() =>
             {
-                logger.LogInformation($"Logging notification from {notification?.GetType().FullName}. Notification details {notification}");
+                if (logger.IsEnabled(LogLevel.Information))
+                    logger.LogInformation($"Logging notification from {notification?.GetType().FullName}. Notification details {notification}");
             }, CancellationToken.None);
         }
     }

@@ -20,7 +20,8 @@ namespace AppBlocks.Autofac.Tests.Validation
 
         public void Method1()
         {
-            logger.LogInformation($"{nameof(ValidationTestService)}.{nameof(Method1)} called successfully");
+            if (logger.IsEnabled(LogLevel.Information))
+                logger.LogInformation($"{nameof(ValidationTestService)}.{nameof(Method1)} called successfully");
         }
     }
 }
