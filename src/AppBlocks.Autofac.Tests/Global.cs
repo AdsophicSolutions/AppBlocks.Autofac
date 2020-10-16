@@ -18,24 +18,28 @@ namespace AppBlocks.Autofac.Tests
         [AssemblyInitialize]
         public static void Initialize(TestContext testContext)
         {
-            /*
-            Log.Logger = new LoggerConfiguration()
-                         .Enrich
-                         .FromLogContext()
-                         .WriteTo
-                         .Console()
-                         .CreateLogger();
-
-            var loggerFactory = LoggerFactory.Create(builder =>
+            // set via test.runsettings. Tests can be run using serilog
+            // or using log4net
+            if ((string)testContext.Properties["logType"] == "serilog")
             {
-                builder.AddSerilog();                
+
+                Log.Logger = new LoggerConfiguration()
+                             .Enrich
+                             .FromLogContext()
+                             .WriteTo
+                             .Console()
+                             .CreateLogger();
+
+                var loggerFactory = LoggerFactory.Create(builder =>
+                {
+                    builder.AddSerilog();
+                }
+                );
+
+                AppBlocksLogging.Instance.SetLoggerFactory(loggerFactory);
             }
-            );
-
-            AppBlocksLogging.Instance.SetLoggerFactory(loggerFactory);
-            */
-
-            AppBlocksLogging.Instance.UseLog4Net("log4net.config");         
+            else 
+                AppBlocksLogging.Instance.UseLog4Net("log4net.config");
         }
 
         [AssemblyCleanup]

@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html",
-          "hash": "j6WaqNqRrDDET2/PAwpq6Q=="
+          "hash": "WpTDHkABjRaiAfeLAi26gw=="
         }
       },
       "is_incremental": true,
@@ -240,7 +240,7 @@
           "hash": "zxBpk6gFjUL3S7U6MaxXZQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -252,7 +252,7 @@
           "hash": "0J3l8RTnaDyLn6bC0uQp/g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -264,7 +264,7 @@
           "hash": "qxQQEpjpu3iY3FBb3nD6Hw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -589,7 +589,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 37,
-          "skipped_file_count": 35
+          "skipped_file_count": 37
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

@@ -101,6 +101,12 @@ references:
   commentId: M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder)
   fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder)
   nameWithType: AppBlocksContainerBuilder.BuildContainer(ContainerBuilder)
+- uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder,System.Boolean)
+  name: BuildContainer(ContainerBuilder, Boolean)
+  href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_BuildContainer_Autofac_ContainerBuilder_System_Boolean_
+  commentId: M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder,System.Boolean)
+  fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder, System.Boolean)
+  nameWithType: AppBlocksContainerBuilder.BuildContainer(ContainerBuilder, Boolean)
 - uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer*
   name: BuildContainer
   href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_BuildContainer_
