@@ -19,15 +19,22 @@ namespace AppBlocks.Autofac.Logging.Log4Net
         private readonly ConcurrentDictionary<string, Log4NetLogger> loggers =
             new ConcurrentDictionary<string, Log4NetLogger>();
 
+        private static bool isRepositoryConfigured;
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="log4NetConfigFile">Path to log4net configuration file</param>
         internal Log4NetProvider(string log4NetConfigFile)
         {
-            //var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            var logRepository = LogManager.GetRepository();
-            XmlConfigurator.Configure(logRepository, new FileInfo(log4NetConfigFile));
+            if (!isRepositoryConfigured)
+            {
+                //var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+                var logRepository = LogManager.GetRepository();
+                XmlConfigurator.Configure(logRepository, new FileInfo(log4NetConfigFile));
+
+                isRepositoryConfigured = true;
+            }
         }
 
         /// <summary>

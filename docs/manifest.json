@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.ApplicationConfiguration.html",
-          "hash": "/WCZapebl/jxwHD7cwM3RA=="
+          "hash": "mTeLPDd2GxIJIwI9GEh28Q=="
         }
       },
       "is_incremental": true,
@@ -269,6 +269,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html",
+          "hash": "+6Au2hJHrZ8WKokMfP1Wmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AppBlocks.Autofac.Logging.Log4Net.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AppBlocks.Autofac.Logging.Log4Net.html",
+          "hash": "sxN9jOd3V3udSmbsRB+Azw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AppBlocks.Autofac.Support.AppBlocksAssemblyAttribute.yml",
       "output": {
         ".html": {
@@ -465,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "bACj/eqM/mvnesxJq34Y8w=="
+          "hash": "GRNHmpDrg6B9hCqKARjyqA=="
         }
       },
       "is_incremental": false,
@@ -588,8 +612,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 37,
-          "skipped_file_count": 37
+          "total_file_count": 39,
+          "skipped_file_count": 39
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

@@ -26,8 +26,7 @@ namespace AppBlocks.Autofac.Common
         /// <param name="configurationFilePath"><see cref="string"/> path to configuration json file</param>
         public ApplicationConfiguration(string configurationFilePath) 
             : this(new [] { configurationFilePath})
-        {
-            logger = new Logger<ApplicationConfiguration>(AppBlocksLogging.Instance.GetLoggerFactory());
+        {            
         }
 
         /// <summary>
@@ -36,6 +35,8 @@ namespace AppBlocks.Autofac.Common
         /// <param name="configurationFilePaths">IEnumerable list of configuration directories</param>
         public ApplicationConfiguration(IEnumerable<string> configurationFilePaths)
         {
+            logger = new Logger<ApplicationConfiguration>(AppBlocksLogging.Instance.GetLoggerFactory());
+
             //List of directories cannot be null or empty
             if ((configurationFilePaths?.Count() ?? 0) == 0)
             {

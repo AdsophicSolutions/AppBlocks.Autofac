@@ -1016,6 +1016,49 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PreMethodInvoke
   nameWithType: WorkflowInterceptor.PreMethodInvoke
+- uid: AppBlocks.Autofac.Logging.Log4Net
+  name: AppBlocks.Autofac.Logging.Log4Net
+  href: api/AppBlocks.Autofac.Logging.Log4Net.html
+  commentId: N:AppBlocks.Autofac.Logging.Log4Net
+  fullName: AppBlocks.Autofac.Logging.Log4Net
+  nameWithType: AppBlocks.Autofac.Logging.Log4Net
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions
+  name: Log4netExtensions
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html
+  commentId: T:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions
+  nameWithType: Log4netExtensions
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)
+  name: AddLog4Net(ILoggerFactory)
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_Microsoft_Extensions_Logging_ILoggerFactory_
+  commentId: M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)
+  nameWithType: Log4netExtensions.AddLog4Net(ILoggerFactory)
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory,System.String)
+  name: AddLog4Net(ILoggerFactory, String)
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_Microsoft_Extensions_Logging_ILoggerFactory_System_String_
+  commentId: M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory,System.String)
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory, System.String)
+  nameWithType: Log4netExtensions.AddLog4Net(ILoggerFactory, String)
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder)
+  name: AddLog4Net(ILoggingBuilder)
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_Microsoft_Extensions_Logging_ILoggingBuilder_
+  commentId: M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder)
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder)
+  nameWithType: Log4netExtensions.AddLog4Net(ILoggingBuilder)
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder,System.String)
+  name: AddLog4Net(ILoggingBuilder, String)
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_Microsoft_Extensions_Logging_ILoggingBuilder_System_String_
+  commentId: M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder,System.String)
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder, System.String)
+  nameWithType: Log4netExtensions.AddLog4Net(ILoggingBuilder, String)
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net*
+  name: AddLog4Net
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_
+  commentId: Overload:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net
+  nameWithType: Log4netExtensions.AddLog4Net
 - uid: AppBlocks.Autofac.Support
   name: AppBlocks.Autofac.Support
   href: api/AppBlocks.Autofac.Support.html

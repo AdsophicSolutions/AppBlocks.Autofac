@@ -9,7 +9,7 @@ namespace AppBlocks.Autofac.Logging.Log4Net
     /// Extensions for <see cref="ILoggerFactory"/> to support 
     /// adding log4net to Microsoft logging framework
     /// </summary>
-    internal static class Log4netExtensions
+    public static class Log4netExtensions
     {
         /// <summary>
         /// Add log4net logging to Microsoft logging framework
@@ -18,7 +18,9 @@ namespace AppBlocks.Autofac.Logging.Log4Net
         /// <param name="log4NetConfigFile">Path to log4net configuration file</param>
         /// <returns><see cref="ILoggerFactory"/> reference</returns>
         public static ILoggerFactory AddLog4Net(this ILoggerFactory factory, string log4NetConfigFile)
-        {   
+        {
+            if (factory == null) throw new ArgumentNullException("Factory argument cannot be null");
+
             using (var provider = new Log4NetProvider(log4NetConfigFile))
             {
                 factory.AddProvider(provider);
