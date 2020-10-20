@@ -40,6 +40,7 @@ namespace AppBlocks.Autofac.Common
             // Intialize log4net logging
             loggerFactory = LoggerFactory.Create(builder =>
             {
+                builder.SetMinimumLevel(LogLevel.Trace);
                 builder.AddLog4Net(log4NetConfigFile);
             }
            );

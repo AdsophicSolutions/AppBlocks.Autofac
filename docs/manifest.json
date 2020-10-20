@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksLogging.html",
-          "hash": "75Pq1o1NX8Io9kVxVPtFkQ=="
+          "hash": "Z8adSekq/tULJldzS5BVfA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -168,7 +168,7 @@
           "hash": "kYYOCLSaJAlufsn6eJD2EQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -613,7 +613,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 39,
-          "skipped_file_count": 39
+          "skipped_file_count": 38
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
