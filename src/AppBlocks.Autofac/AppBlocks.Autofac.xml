@@ -73,6 +73,16 @@
             </summary>
             <param name="builder">Builder to initialize</param>
         </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder,System.Boolean)">
+            <summary>
+            Initializes <see cref="T:Autofac.IContainer"/> for an 
+            AppBlocks application. Used for Web project integration where
+            <see cref="T:Autofac.IContainer"/> implementation is passed in as a parameter 
+            </summary>
+            <param name="builder">Builder to initialize</param>
+            <param name="registerAppBlocksLogging"><c>true</c> if AppBlocks should be used; otherwise <c>false</c>. 
+            Required to support Asp.Net Core since we want to use logger factory registered in Asp.NET core services </param>
+        </member>
         <member name="M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.RegisterExternalServices(Autofac.ContainerBuilder)">
             <summary>
             Override to add instances of 3rd party classes as AutoFac services. 
@@ -120,6 +130,44 @@
             Registers InMemoryCache service 
             </summary>
             <param name="builder"></param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Common.AppBlocksLogging">
+            <summary>
+            Configure logging for application
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksLogging.#ctor">
+            <summary>
+            Constructor Private
+            </summary>
+        </member>
+        <member name="P:AppBlocks.Autofac.Common.AppBlocksLogging.Instance">
+            <summary>
+            Returns singleton instance
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksLogging.UseLog4Net(System.String)">
+            <summary>
+            Initialize logging to use log4net
+            </summary>
+            <param name="log4NetConfigFile">Path to log4net configuration file</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksLogging.UseDefault">
+            <summary>
+            Initialize logging to log to console. Not recommended for production environments
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksLogging.GetLoggerFactory">
+            <summary>
+            Gets an intialized logger factory implementation
+            </summary>
+            <returns>Reference to <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/></returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Sets logger factory implementation
+            </summary>
+            <param name="loggerFactory">Logger factory to use</param>
         </member>
         <member name="T:AppBlocks.Autofac.Common.AppBlocksModuleBase">
             <summary>
@@ -392,12 +440,6 @@
             <param name="fullTypeName">Full name of type to check</param>
             <returns><c>true</c> if type should be excluded; otherwise <c>false</c>;</returns>
         </member>
-        <member name="T:AppBlocks.Autofac.Common.LoggingModule">
-            <summary>
-            Implementation for <see cref="T:Autofac.Module"/> that injects 
-            <see cref="T:log4net.ILog"/> instance into a AppBlocks service
-            </summary>
-        </member>
         <member name="T:AppBlocks.Autofac.Common.RegistrationUtils">
             <summary>
             Utility method containing shared AppBlocks registration logic
@@ -506,10 +548,11 @@
             <see cref="T:AppBlocks.Autofac.Interceptors.IWorkflowInterceptor"/> implementations
             </summary>
         </member>
-        <member name="M:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.#ctor(AppBlocks.Autofac.Interceptors.ILoggingInterceptor,AppBlocks.Autofac.Interceptors.IValidationInterceptor,AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)">
+        <member name="M:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor},AppBlocks.Autofac.Interceptors.ILoggingInterceptor,AppBlocks.Autofac.Interceptors.IValidationInterceptor,AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)">
             <summary>
             Constructor
             </summary>
+            <param name="logger">Reference to logger instance</param>
             <param name="loggingInterceptor"><see cref="T:AppBlocks.Autofac.Interceptors.ILoggingInterceptor"/> instance</param>
             <param name="validationInterceptor"><see cref="T:AppBlocks.Autofac.Interceptors.IValidationInterceptor"/> instance</param>
             <param name="workflowInterceptor"><see cref="T:AppBlocks.Autofac.Interceptors.IWorkflowInterceptor"/> instance</param>
@@ -533,11 +576,6 @@
             before service method is called. 
             </summary>
             <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
-        </member>
-        <member name="P:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.Logger">
-            <summary>
-            <see cref="T:log4net.ILog"/> instance
-            </summary>
         </member>
         <member name="T:AppBlocks.Autofac.Interceptors.ILoggingInterceptor">
             <summary>
@@ -674,10 +712,11 @@
             ValidationInterceptor calls registered type validators before and after 
             </summary>
         </member>
-        <member name="M:AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})">
+        <member name="M:AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.ValidationInterceptor},Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})">
             <summary>
             Constructor
             </summary>
+            <param name="logger">Referenc to logger instance</param>
             <param name="serviceValidators">Keyed <see cref="T:AppBlocks.Autofac.Common.IServiceValidator"/> instances</param>
         </member>
         <member name="M:AppBlocks.Autofac.Interceptors.ValidationInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
@@ -692,11 +731,6 @@
             </summary>
             <param name="invocation"><see cref="T:Castle.DynamicProxy.IInvocation"/> instance</param>
         </member>
-        <member name="P:AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger">
-            <summary>
-            Logger Instance
-            </summary>
-        </member>
         <member name="T:AppBlocks.Autofac.Interceptors.WorkflowInterceptor">
             <summary>
             WorkflowInterceptor calls registered workflow writers before and after
@@ -704,10 +738,11 @@
             together data workflow.
             </summary>
         </member>
-        <member name="M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})">
+        <member name="M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.ValidationInterceptor},Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})">
             <summary>
             Constructor
             </summary>
+            <param name="logger">Reference to logger instance</param>
             <param name="workflowWriters">Keyed instances of <see cref="T:AppBlocks.Autofac.Common.IWorkflowWriter"/></param>
         </member>
         <member name="M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">
@@ -727,10 +762,98 @@
             Gets workflow writers for service 
             </summary>        
         </member>
-        <member name="P:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger">
+        <member name="T:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions">
             <summary>
-            <see cref="T:log4net.ILog"/> instance
+            Extensions for <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/> to support 
+            adding log4net to Microsoft logging framework
             </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory,System.String)">
+            <summary>
+            Add log4net logging to Microsoft logging framework
+            </summary>
+            <param name="factory">Reference to <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/></param>
+            <param name="log4NetConfigFile">Path to log4net configuration file</param>
+            <returns><see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/> reference</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Add log4net logging to Microsoft logging framework. log4net configuration 
+            file is defaulted to log4net.config in the output directory
+            </summary>
+            <param name="factory">Reference to <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/></param>
+            <returns><see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/> reference</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder,System.String)">
+            <summary>
+            Add log4net logging to Microsoft logging framework
+            </summary>
+            <param name="builder">Reference to <see cref="T:Microsoft.Extensions.Logging.ILoggingBuilder"/></param>
+            <param name="log4NetConfigFile">Path to log4net configuration file</param>
+            <returns>Reference to <see cref="T:Microsoft.Extensions.Logging.ILoggingBuilder"/></returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder)">
+            <summary>
+            Add log4net logging to Microsoft logging framework. log4net configuration 
+            file is defaulted to log4net.config in the output directory
+            </summary>
+            <param name="builder">Reference to <see cref="T:Microsoft.Extensions.Logging.ILoggingBuilder"/></param>        
+            <returns>Reference to <see cref="T:Microsoft.Extensions.Logging.ILoggingBuilder"/></returns>
+        </member>
+        <member name="T:AppBlocks.Autofac.Logging.Log4Net.Log4NetLogger">
+            <summary>
+            Implementation for <see cref="T:Microsoft.Extensions.Logging.ILogger"/>
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4NetLogger.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name">Name of the logger to be created</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4NetLogger.BeginScope``1(``0)">
+            <summary>
+            Implementation for <see cref="M:Microsoft.Extensions.Logging.ILogger.BeginScope``1(``0)"/>
+            </summary>
+            <typeparam name="TState">State type</typeparam>
+            <param name="state">Reference to state</param>
+            <returns>null</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4NetLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">
+            <summary>
+            Implementation for <see cref="M:Microsoft.Extensions.Logging.ILogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)"/>
+            </summary>
+            <param name="logLevel">LogLevel to check</param>
+            <returns><c>true</c> if <see cref="T:Microsoft.Extensions.Logging.LogLevel"/> is enabled; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4NetLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <summary>
+            Log statement to log to log4net
+            </summary>
+            <typeparam name="TState">State type</typeparam>
+            <param name="logLevel">Logging <see cref="T:Microsoft.Extensions.Logging.LogLevel"/></param>
+            <param name="eventId"><see cref="T:Microsoft.Extensions.Logging.EventId"/> for this statement</param>
+            <param name="state">Reference to state</param>
+            <param name="exception"><see cref="T:System.Exception"/> if relevant. Does not apply to all log levels</param>
+            <param name="formatter">Format function</param>
+        </member>
+        <member name="T:AppBlocks.Autofac.Logging.Log4Net.Log4NetProvider">
+            <summary>
+            Log4Net provider
+            </summary>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4NetProvider.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="log4NetConfigFile">Path to log4net configuration file</param>
+        </member>
+        <member name="M:AppBlocks.Autofac.Logging.Log4Net.Log4NetProvider.CreateLogger(System.String)">
+            <summary>
+            Implementation for <see cref="M:Microsoft.Extensions.Logging.ILoggerProvider.CreateLogger(System.String)"/>
+            </summary>
+            <param name="loggerName">Logger Name</param>
+            <returns><see cref="T:Microsoft.Extensions.Logging.ILogger"/> instance</returns>
         </member>
         <member name="T:AppBlocks.Autofac.Services.ApplicationContextService">
             <summary>

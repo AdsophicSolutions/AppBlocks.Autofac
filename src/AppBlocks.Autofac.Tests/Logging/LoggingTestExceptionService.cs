@@ -1,5 +1,6 @@
 ﻿using AppBlocks.Autofac.Support;
 using log4net;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -10,11 +11,15 @@ namespace AppBlocks.Autofac.Tests.Logging
     [AppBlocksService]
     public class LoggingTestExceptionService : ILoggingTestExceptionService
     {
-        private static readonly ILog logger =
-            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         private static int callCount = 0;
         public static int GetCallCount() => callCount;
+
+        private readonly ILogger<LoggingTestExceptionService> logger;
+
+        public LoggingTestExceptionService(ILogger<LoggingTestExceptionService> logger)
+        {
+            this.logger = logger;
+        }
 
         internal static void ResetCount()
         {   callCount = 0;
@@ -24,8 +29,7 @@ namespace AppBlocks.Autofac.Tests.Logging
         {
             callCount++;
 
-            if (logger.IsInfoEnabled)
-                logger.Info($"{nameof(LoggingTestExceptionService)}.{nameof(Method1)} called successfully");
+            logger.LogInformation($"{nameof(LoggingTestExceptionService)}.{nameof(Method1)} called successfully");
         }
     }
 }

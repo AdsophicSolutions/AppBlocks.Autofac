@@ -120,19 +120,19 @@ public class ValidationInterceptor : IValidationInterceptor</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor__ctor_Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IServiceValidator__.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor.%23ctor(Autofac.Features.Indexed.IIndex%7BSystem.String%2CAppBlocks.Autofac.Common.IServiceValidator%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/phaseII/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor__ctor_Microsoft_Extensions_Logging_ILogger_AppBlocks_Autofac_Interceptors_ValidationInterceptor__Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IServiceValidator__.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor.%23ctor(Microsoft.Extensions.Logging.ILogger%7BAppBlocks.Autofac.Interceptors.ValidationInterceptor%7D%2CAutofac.Features.Indexed.IIndex%7BSystem.String%2CAppBlocks.Autofac.Common.IServiceValidator%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L30">View Source</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/phaseII/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L33">View Source</a>
   </span>
   <a id="AppBlocks_Autofac_Interceptors_ValidationInterceptor__ctor_" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor*"></a>
-  <h4 id="AppBlocks_Autofac_Interceptors_ValidationInterceptor__ctor_Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IServiceValidator__" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})">ValidationInterceptor(IIndex&lt;String, IServiceValidator&gt;)</h4>
+  <h4 id="AppBlocks_Autofac_Interceptors_ValidationInterceptor__ctor_Microsoft_Extensions_Logging_ILogger_AppBlocks_Autofac_Interceptors_ValidationInterceptor__Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IServiceValidator__" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.ValidationInterceptor},Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})">ValidationInterceptor(ILogger&lt;ValidationInterceptor&gt;, IIndex&lt;String, IServiceValidator&gt;)</h4>
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ValidationInterceptor(IIndex&lt;string, IServiceValidator&gt; serviceValidators)</code></pre>
+    <pre><code class="lang-csharp hljs">public ValidationInterceptor(ILogger&lt;ValidationInterceptor&gt; logger, IIndex&lt;string, IServiceValidator&gt; serviceValidators)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -145,6 +145,12 @@ public class ValidationInterceptor : IValidationInterceptor</code></pre>
     </thead>
     <tbody>
       <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;<a class="xref" href="AppBlocks.Autofac.Interceptors.ValidationInterceptor.html">ValidationInterceptor</a>&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>Referenc to logger instance</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">Autofac.Features.Indexed.IIndex</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="AppBlocks.Autofac.Common.IServiceValidator.html">IServiceValidator</a>&gt;</td>
         <td><span class="parametername">serviceValidators</span></td>
         <td><p>Keyed <a class="xref" href="AppBlocks.Autofac.Common.IServiceValidator.html">IServiceValidator</a> instances</p>
@@ -152,47 +158,14 @@ public class ValidationInterceptor : IValidationInterceptor</code></pre>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor_Logger.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L104">View Source</a>
-  </span>
-  <a id="AppBlocks_Autofac_Interceptors_ValidationInterceptor_Logger_" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger*"></a>
-  <h4 id="AppBlocks_Autofac_Interceptors_ValidationInterceptor_Logger" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger">Logger</h4>
-  <div class="markdown level1 summary"><p>Logger Instance</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ILog Logger { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">log4net.ILog</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor_PostMethodInvoke_Castle_DynamicProxy_IInvocation_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/phaseII/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor_PostMethodInvoke_Castle_DynamicProxy_IInvocation_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L72">View Source</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/phaseII/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L76">View Source</a>
   </span>
   <a id="AppBlocks_Autofac_Interceptors_ValidationInterceptor_PostMethodInvoke_" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.PostMethodInvoke*"></a>
   <h4 id="AppBlocks_Autofac_Interceptors_ValidationInterceptor_PostMethodInvoke_Castle_DynamicProxy_IInvocation_" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">PostMethodInvoke(IInvocation)</h4>
@@ -223,10 +196,10 @@ public class ValidationInterceptor : IValidationInterceptor</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor_PreMethodInvoke_Castle_DynamicProxy_IInvocation_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/phaseII/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor_PreMethodInvoke_Castle_DynamicProxy_IInvocation_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L39">View Source</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/phaseII/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L44">View Source</a>
   </span>
   <a id="AppBlocks_Autofac_Interceptors_ValidationInterceptor_PreMethodInvoke_" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.PreMethodInvoke*"></a>
   <h4 id="AppBlocks_Autofac_Interceptors_ValidationInterceptor_PreMethodInvoke_Castle_DynamicProxy_IInvocation_" data-uid="AppBlocks.Autofac.Interceptors.ValidationInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">PreMethodInvoke(IInvocation)</h4>
@@ -267,10 +240,10 @@ public class ValidationInterceptor : IValidationInterceptor</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/phaseII/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_ValidationInterceptor.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.ValidationInterceptor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/phaseII/src/AppBlocks.Autofac/Interceptors/ValidationInterceptor.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

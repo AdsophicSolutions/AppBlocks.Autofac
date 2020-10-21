@@ -101,6 +101,12 @@ references:
   commentId: M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder)
   fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder)
   nameWithType: AppBlocksContainerBuilder.BuildContainer(ContainerBuilder)
+- uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder,System.Boolean)
+  name: BuildContainer(ContainerBuilder, Boolean)
+  href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_BuildContainer_Autofac_ContainerBuilder_System_Boolean_
+  commentId: M:AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder,System.Boolean)
+  fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer(Autofac.ContainerBuilder, System.Boolean)
+  nameWithType: AppBlocksContainerBuilder.BuildContainer(ContainerBuilder, Boolean)
 - uid: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.BuildContainer*
   name: BuildContainer
   href: api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html#AppBlocks_Autofac_Common_AppBlocksContainerBuilder_BuildContainer_
@@ -176,6 +182,77 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Common.AppBlocksContainerBuilder.ShouldRegisterService
   nameWithType: AppBlocksContainerBuilder.ShouldRegisterService
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging
+  name: AppBlocksLogging
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html
+  commentId: T:AppBlocks.Autofac.Common.AppBlocksLogging
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging
+  nameWithType: AppBlocksLogging
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.GetLoggerFactory
+  name: GetLoggerFactory()
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_GetLoggerFactory
+  commentId: M:AppBlocks.Autofac.Common.AppBlocksLogging.GetLoggerFactory
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.GetLoggerFactory()
+  nameWithType: AppBlocksLogging.GetLoggerFactory()
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.GetLoggerFactory*
+  name: GetLoggerFactory
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_GetLoggerFactory_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksLogging.GetLoggerFactory
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.GetLoggerFactory
+  nameWithType: AppBlocksLogging.GetLoggerFactory
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.Instance
+  name: Instance
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_Instance
+  commentId: P:AppBlocks.Autofac.Common.AppBlocksLogging.Instance
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.Instance
+  nameWithType: AppBlocksLogging.Instance
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.Instance*
+  name: Instance
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_Instance_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksLogging.Instance
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.Instance
+  nameWithType: AppBlocksLogging.Instance
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)
+  name: SetLoggerFactory(ILoggerFactory)
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_SetLoggerFactory_Microsoft_Extensions_Logging_ILoggerFactory_
+  commentId: M:AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)
+  nameWithType: AppBlocksLogging.SetLoggerFactory(ILoggerFactory)
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory*
+  name: SetLoggerFactory
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_SetLoggerFactory_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.SetLoggerFactory
+  nameWithType: AppBlocksLogging.SetLoggerFactory
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.UseDefault
+  name: UseDefault()
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_UseDefault
+  commentId: M:AppBlocks.Autofac.Common.AppBlocksLogging.UseDefault
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.UseDefault()
+  nameWithType: AppBlocksLogging.UseDefault()
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.UseDefault*
+  name: UseDefault
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_UseDefault_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksLogging.UseDefault
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.UseDefault
+  nameWithType: AppBlocksLogging.UseDefault
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.UseLog4Net(System.String)
+  name: UseLog4Net(String)
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_UseLog4Net_System_String_
+  commentId: M:AppBlocks.Autofac.Common.AppBlocksLogging.UseLog4Net(System.String)
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.UseLog4Net(System.String)
+  nameWithType: AppBlocksLogging.UseLog4Net(String)
+- uid: AppBlocks.Autofac.Common.AppBlocksLogging.UseLog4Net*
+  name: UseLog4Net
+  href: api/AppBlocks.Autofac.Common.AppBlocksLogging.html#AppBlocks_Autofac_Common_AppBlocksLogging_UseLog4Net_
+  commentId: Overload:AppBlocks.Autofac.Common.AppBlocksLogging.UseLog4Net
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Common.AppBlocksLogging.UseLog4Net
+  nameWithType: AppBlocksLogging.UseLog4Net
 - uid: AppBlocks.Autofac.Common.AppBlocksModuleBase
   name: AppBlocksModuleBase
   href: api/AppBlocks.Autofac.Common.AppBlocksModuleBase.html
@@ -634,12 +711,15 @@ references:
   commentId: T:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor
   fullName: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor
   nameWithType: AppBlocksServiceInterceptor
-- uid: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.#ctor(AppBlocks.Autofac.Interceptors.ILoggingInterceptor,AppBlocks.Autofac.Interceptors.IValidationInterceptor,AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)
-  name: AppBlocksServiceInterceptor(ILoggingInterceptor, IValidationInterceptor, IWorkflowInterceptor)
-  href: api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html#AppBlocks_Autofac_Interceptors_AppBlocksServiceInterceptor__ctor_AppBlocks_Autofac_Interceptors_ILoggingInterceptor_AppBlocks_Autofac_Interceptors_IValidationInterceptor_AppBlocks_Autofac_Interceptors_IWorkflowInterceptor_
-  commentId: M:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.#ctor(AppBlocks.Autofac.Interceptors.ILoggingInterceptor,AppBlocks.Autofac.Interceptors.IValidationInterceptor,AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)
-  fullName: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.AppBlocksServiceInterceptor(AppBlocks.Autofac.Interceptors.ILoggingInterceptor, AppBlocks.Autofac.Interceptors.IValidationInterceptor, AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)
-  nameWithType: AppBlocksServiceInterceptor.AppBlocksServiceInterceptor(ILoggingInterceptor, IValidationInterceptor, IWorkflowInterceptor)
+- uid: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor},AppBlocks.Autofac.Interceptors.ILoggingInterceptor,AppBlocks.Autofac.Interceptors.IValidationInterceptor,AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)
+  name: AppBlocksServiceInterceptor(ILogger<AppBlocksServiceInterceptor>, ILoggingInterceptor, IValidationInterceptor, IWorkflowInterceptor)
+  href: api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html#AppBlocks_Autofac_Interceptors_AppBlocksServiceInterceptor__ctor_Microsoft_Extensions_Logging_ILogger_AppBlocks_Autofac_Interceptors_AppBlocksServiceInterceptor__AppBlocks_Autofac_Interceptors_ILoggingInterceptor_AppBlocks_Autofac_Interceptors_IValidationInterceptor_AppBlocks_Autofac_Interceptors_IWorkflowInterceptor_
+  commentId: M:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor},AppBlocks.Autofac.Interceptors.ILoggingInterceptor,AppBlocks.Autofac.Interceptors.IValidationInterceptor,AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)
+  name.vb: AppBlocksServiceInterceptor(ILogger(Of AppBlocksServiceInterceptor), ILoggingInterceptor, IValidationInterceptor, IWorkflowInterceptor)
+  fullName: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.AppBlocksServiceInterceptor(Microsoft.Extensions.Logging.ILogger<AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor>, AppBlocks.Autofac.Interceptors.ILoggingInterceptor, AppBlocks.Autofac.Interceptors.IValidationInterceptor, AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)
+  fullName.vb: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.AppBlocksServiceInterceptor(Microsoft.Extensions.Logging.ILogger(Of AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor), AppBlocks.Autofac.Interceptors.ILoggingInterceptor, AppBlocks.Autofac.Interceptors.IValidationInterceptor, AppBlocks.Autofac.Interceptors.IWorkflowInterceptor)
+  nameWithType: AppBlocksServiceInterceptor.AppBlocksServiceInterceptor(ILogger<AppBlocksServiceInterceptor>, ILoggingInterceptor, IValidationInterceptor, IWorkflowInterceptor)
+  nameWithType.vb: AppBlocksServiceInterceptor.AppBlocksServiceInterceptor(ILogger(Of AppBlocksServiceInterceptor), ILoggingInterceptor, IValidationInterceptor, IWorkflowInterceptor)
 - uid: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.#ctor*
   name: AppBlocksServiceInterceptor
   href: api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html#AppBlocks_Autofac_Interceptors_AppBlocksServiceInterceptor__ctor_
@@ -647,19 +727,6 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.AppBlocksServiceInterceptor
   nameWithType: AppBlocksServiceInterceptor.AppBlocksServiceInterceptor
-- uid: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.Logger
-  name: Logger
-  href: api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html#AppBlocks_Autofac_Interceptors_AppBlocksServiceInterceptor_Logger
-  commentId: P:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.Logger
-  fullName: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.Logger
-  nameWithType: AppBlocksServiceInterceptor.Logger
-- uid: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.Logger*
-  name: Logger
-  href: api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html#AppBlocks_Autofac_Interceptors_AppBlocksServiceInterceptor_Logger_
-  commentId: Overload:AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.Logger
-  isSpec: "True"
-  fullName: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.Logger
-  nameWithType: AppBlocksServiceInterceptor.Logger
 - uid: AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.MethodInvoke(Castle.DynamicProxy.IInvocation)
   name: MethodInvoke(IInvocation)
   href: api/AppBlocks.Autofac.Interceptors.AppBlocksServiceInterceptor.html#AppBlocks_Autofac_Interceptors_AppBlocksServiceInterceptor_MethodInvoke_Castle_DynamicProxy_IInvocation_
@@ -859,15 +926,15 @@ references:
   commentId: T:AppBlocks.Autofac.Interceptors.ValidationInterceptor
   fullName: AppBlocks.Autofac.Interceptors.ValidationInterceptor
   nameWithType: ValidationInterceptor
-- uid: AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})
-  name: ValidationInterceptor(IIndex<String, IServiceValidator>)
-  href: api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html#AppBlocks_Autofac_Interceptors_ValidationInterceptor__ctor_Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IServiceValidator__
-  commentId: M:AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})
-  name.vb: ValidationInterceptor(IIndex(Of String, IServiceValidator))
-  fullName: AppBlocks.Autofac.Interceptors.ValidationInterceptor.ValidationInterceptor(Autofac.Features.Indexed.IIndex<System.String, AppBlocks.Autofac.Common.IServiceValidator>)
-  fullName.vb: AppBlocks.Autofac.Interceptors.ValidationInterceptor.ValidationInterceptor(Autofac.Features.Indexed.IIndex(Of System.String, AppBlocks.Autofac.Common.IServiceValidator))
-  nameWithType: ValidationInterceptor.ValidationInterceptor(IIndex<String, IServiceValidator>)
-  nameWithType.vb: ValidationInterceptor.ValidationInterceptor(IIndex(Of String, IServiceValidator))
+- uid: AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.ValidationInterceptor},Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})
+  name: ValidationInterceptor(ILogger<ValidationInterceptor>, IIndex<String, IServiceValidator>)
+  href: api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html#AppBlocks_Autofac_Interceptors_ValidationInterceptor__ctor_Microsoft_Extensions_Logging_ILogger_AppBlocks_Autofac_Interceptors_ValidationInterceptor__Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IServiceValidator__
+  commentId: M:AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.ValidationInterceptor},Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IServiceValidator})
+  name.vb: ValidationInterceptor(ILogger(Of ValidationInterceptor), IIndex(Of String, IServiceValidator))
+  fullName: AppBlocks.Autofac.Interceptors.ValidationInterceptor.ValidationInterceptor(Microsoft.Extensions.Logging.ILogger<AppBlocks.Autofac.Interceptors.ValidationInterceptor>, Autofac.Features.Indexed.IIndex<System.String, AppBlocks.Autofac.Common.IServiceValidator>)
+  fullName.vb: AppBlocks.Autofac.Interceptors.ValidationInterceptor.ValidationInterceptor(Microsoft.Extensions.Logging.ILogger(Of AppBlocks.Autofac.Interceptors.ValidationInterceptor), Autofac.Features.Indexed.IIndex(Of System.String, AppBlocks.Autofac.Common.IServiceValidator))
+  nameWithType: ValidationInterceptor.ValidationInterceptor(ILogger<ValidationInterceptor>, IIndex<String, IServiceValidator>)
+  nameWithType.vb: ValidationInterceptor.ValidationInterceptor(ILogger(Of ValidationInterceptor), IIndex(Of String, IServiceValidator))
 - uid: AppBlocks.Autofac.Interceptors.ValidationInterceptor.#ctor*
   name: ValidationInterceptor
   href: api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html#AppBlocks_Autofac_Interceptors_ValidationInterceptor__ctor_
@@ -875,19 +942,6 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Interceptors.ValidationInterceptor.ValidationInterceptor
   nameWithType: ValidationInterceptor.ValidationInterceptor
-- uid: AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger
-  name: Logger
-  href: api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html#AppBlocks_Autofac_Interceptors_ValidationInterceptor_Logger
-  commentId: P:AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger
-  fullName: AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger
-  nameWithType: ValidationInterceptor.Logger
-- uid: AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger*
-  name: Logger
-  href: api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html#AppBlocks_Autofac_Interceptors_ValidationInterceptor_Logger_
-  commentId: Overload:AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger
-  isSpec: "True"
-  fullName: AppBlocks.Autofac.Interceptors.ValidationInterceptor.Logger
-  nameWithType: ValidationInterceptor.Logger
 - uid: AppBlocks.Autofac.Interceptors.ValidationInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)
   name: PostMethodInvoke(IInvocation)
   href: api/AppBlocks.Autofac.Interceptors.ValidationInterceptor.html#AppBlocks_Autofac_Interceptors_ValidationInterceptor_PostMethodInvoke_Castle_DynamicProxy_IInvocation_
@@ -920,15 +974,15 @@ references:
   commentId: T:AppBlocks.Autofac.Interceptors.WorkflowInterceptor
   fullName: AppBlocks.Autofac.Interceptors.WorkflowInterceptor
   nameWithType: WorkflowInterceptor
-- uid: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})
-  name: WorkflowInterceptor(IIndex<String, IWorkflowWriter>)
-  href: api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html#AppBlocks_Autofac_Interceptors_WorkflowInterceptor__ctor_Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IWorkflowWriter__
-  commentId: M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})
-  name.vb: WorkflowInterceptor(IIndex(Of String, IWorkflowWriter))
-  fullName: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.WorkflowInterceptor(Autofac.Features.Indexed.IIndex<System.String, AppBlocks.Autofac.Common.IWorkflowWriter>)
-  fullName.vb: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.WorkflowInterceptor(Autofac.Features.Indexed.IIndex(Of System.String, AppBlocks.Autofac.Common.IWorkflowWriter))
-  nameWithType: WorkflowInterceptor.WorkflowInterceptor(IIndex<String, IWorkflowWriter>)
-  nameWithType.vb: WorkflowInterceptor.WorkflowInterceptor(IIndex(Of String, IWorkflowWriter))
+- uid: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.ValidationInterceptor},Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})
+  name: WorkflowInterceptor(ILogger<ValidationInterceptor>, IIndex<String, IWorkflowWriter>)
+  href: api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html#AppBlocks_Autofac_Interceptors_WorkflowInterceptor__ctor_Microsoft_Extensions_Logging_ILogger_AppBlocks_Autofac_Interceptors_ValidationInterceptor__Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IWorkflowWriter__
+  commentId: M:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.ValidationInterceptor},Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})
+  name.vb: WorkflowInterceptor(ILogger(Of ValidationInterceptor), IIndex(Of String, IWorkflowWriter))
+  fullName: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.WorkflowInterceptor(Microsoft.Extensions.Logging.ILogger<AppBlocks.Autofac.Interceptors.ValidationInterceptor>, Autofac.Features.Indexed.IIndex<System.String, AppBlocks.Autofac.Common.IWorkflowWriter>)
+  fullName.vb: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.WorkflowInterceptor(Microsoft.Extensions.Logging.ILogger(Of AppBlocks.Autofac.Interceptors.ValidationInterceptor), Autofac.Features.Indexed.IIndex(Of System.String, AppBlocks.Autofac.Common.IWorkflowWriter))
+  nameWithType: WorkflowInterceptor.WorkflowInterceptor(ILogger<ValidationInterceptor>, IIndex<String, IWorkflowWriter>)
+  nameWithType.vb: WorkflowInterceptor.WorkflowInterceptor(ILogger(Of ValidationInterceptor), IIndex(Of String, IWorkflowWriter))
 - uid: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor*
   name: WorkflowInterceptor
   href: api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html#AppBlocks_Autofac_Interceptors_WorkflowInterceptor__ctor_
@@ -936,19 +990,6 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.WorkflowInterceptor
   nameWithType: WorkflowInterceptor.WorkflowInterceptor
-- uid: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger
-  name: Logger
-  href: api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html#AppBlocks_Autofac_Interceptors_WorkflowInterceptor_Logger
-  commentId: P:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger
-  fullName: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger
-  nameWithType: WorkflowInterceptor.Logger
-- uid: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger*
-  name: Logger
-  href: api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html#AppBlocks_Autofac_Interceptors_WorkflowInterceptor_Logger_
-  commentId: Overload:AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger
-  isSpec: "True"
-  fullName: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger
-  nameWithType: WorkflowInterceptor.Logger
 - uid: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)
   name: PostMethodInvoke(IInvocation)
   href: api/AppBlocks.Autofac.Interceptors.WorkflowInterceptor.html#AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PostMethodInvoke_Castle_DynamicProxy_IInvocation_
@@ -975,6 +1016,49 @@ references:
   isSpec: "True"
   fullName: AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PreMethodInvoke
   nameWithType: WorkflowInterceptor.PreMethodInvoke
+- uid: AppBlocks.Autofac.Logging.Log4Net
+  name: AppBlocks.Autofac.Logging.Log4Net
+  href: api/AppBlocks.Autofac.Logging.Log4Net.html
+  commentId: N:AppBlocks.Autofac.Logging.Log4Net
+  fullName: AppBlocks.Autofac.Logging.Log4Net
+  nameWithType: AppBlocks.Autofac.Logging.Log4Net
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions
+  name: Log4netExtensions
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html
+  commentId: T:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions
+  nameWithType: Log4netExtensions
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)
+  name: AddLog4Net(ILoggerFactory)
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_Microsoft_Extensions_Logging_ILoggerFactory_
+  commentId: M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)
+  nameWithType: Log4netExtensions.AddLog4Net(ILoggerFactory)
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory,System.String)
+  name: AddLog4Net(ILoggerFactory, String)
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_Microsoft_Extensions_Logging_ILoggerFactory_System_String_
+  commentId: M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory,System.String)
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory, System.String)
+  nameWithType: Log4netExtensions.AddLog4Net(ILoggerFactory, String)
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder)
+  name: AddLog4Net(ILoggingBuilder)
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_Microsoft_Extensions_Logging_ILoggingBuilder_
+  commentId: M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder)
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder)
+  nameWithType: Log4netExtensions.AddLog4Net(ILoggingBuilder)
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder,System.String)
+  name: AddLog4Net(ILoggingBuilder, String)
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_Microsoft_Extensions_Logging_ILoggingBuilder_System_String_
+  commentId: M:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder,System.String)
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggingBuilder, System.String)
+  nameWithType: Log4netExtensions.AddLog4Net(ILoggingBuilder, String)
+- uid: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net*
+  name: AddLog4Net
+  href: api/AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.html#AppBlocks_Autofac_Logging_Log4Net_Log4netExtensions_AddLog4Net_
+  commentId: Overload:AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Logging.Log4Net.Log4netExtensions.AddLog4Net
+  nameWithType: Log4netExtensions.AddLog4Net
 - uid: AppBlocks.Autofac.Support
   name: AppBlocks.Autofac.Support
   href: api/AppBlocks.Autofac.Support.html

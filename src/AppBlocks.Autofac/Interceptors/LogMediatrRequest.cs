@@ -1,5 +1,6 @@
 ﻿using log4net;
 using MediatR.Pipeline;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -15,8 +16,12 @@ namespace AppBlocks.Autofac.Interceptors
     /// <typeparam name="TRequest">Request type</typeparam>
     internal class LogMediatrRequest<TRequest> : IRequestPreProcessor<TRequest>
     {
-        private static readonly ILog logger =
-            LogManager.GetLogger(typeof(LogMediatrRequest<>).Assembly, "AppBlocks.Autofac.Interceptors.LogMediatrRequest");
+        private readonly ILogger<LogMediatrRequest<TRequest>> logger;
+
+        public LogMediatrRequest(ILogger<LogMediatrRequest<TRequest>> logger)
+        {
+            this.logger = logger;
+        }
 
         /// <summary>
         /// Process request
@@ -26,14 +31,12 @@ namespace AppBlocks.Autofac.Interceptors
         /// <returns>Processing <see cref="Task"/></returns>
         public Task Process(TRequest request, CancellationToken cancellationToken)
         {
-            return Task.Factory.StartNew(() =>
+            return Task.Run(() =>
             {
-                if (logger.IsInfoEnabled)
-                    logger.Info($"Logging request from {request?.GetType().FullName}. Request Details {request}");
-            }
-            );
-        }
+                if (logger.IsEnabled(LogLevel.Information))
+                    logger.LogInformation($"Logging request from {request?.GetType().FullName}. Request Details {request}");
 
-        //public ILog Logger { get; set; }
+            }, CancellationToken.None);
+        }
     }
 }

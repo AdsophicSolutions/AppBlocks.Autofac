@@ -3,6 +3,7 @@ using AppBlocks.Autofac.Support;
 using Autofac.Features.Indexed;
 using Castle.DynamicProxy;
 using log4net;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 
@@ -20,15 +21,19 @@ namespace AppBlocks.Autofac.Interceptors
         IsKeyed: false)]
     public class ValidationInterceptor : IValidationInterceptor
     {
+        private readonly ILogger<ValidationInterceptor> logger;
         private readonly IIndex<string, IServiceValidator> serviceValidators;
         private readonly HashSet<string> disabledServiceValidators = new HashSet<string>();
 
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="logger">Referenc to logger instance</param>
         /// <param name="serviceValidators">Keyed <see cref="IServiceValidator"/> instances</param>
-        public ValidationInterceptor(IIndex<string, IServiceValidator> serviceValidators)
+        public ValidationInterceptor(ILogger<ValidationInterceptor> logger,
+            IIndex<string, IServiceValidator> serviceValidators)
         {
+            this.logger = logger;
             this.serviceValidators = serviceValidators;
         }
 
@@ -52,11 +57,10 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log errors
-                    if (Logger.IsErrorEnabled)
-                    {
-                        Logger.Error($"Service Validator {serviceValidator.GetType().FullName} threw an exception during PreMethodInvoke method call" +
-                            $"Validator will be disabled", e);
-                    }
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError(e, 
+                            $"Service Validator { serviceValidator.GetType().FullName} threw an exception during PreMethodInvoke method call" + 
+                            $"Validator will be disabled");
 
                     // Disable validator. Validators are disabled if they throw 
                     // an exception
@@ -86,21 +90,16 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log error
-                    if (Logger.IsErrorEnabled)
-                    {
-                        Logger.Error($"Service Validator {serviceValidator.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
-                            $"Validator will be disabled", e);
-                    }
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError(e, 
+                            $"Service Validator { serviceValidator.GetType().FullName} threw an exception during PostMethodInvoke method call. " + 
+                            $"Validator will be disabled");
+
 
                     // Disable validator if validator throws exception
                     disabledServiceValidators.Add(serviceValidator.GetType().FullName);
                 }
             }
         }
-
-        /// <summary>
-        /// Logger Instance
-        /// </summary>
-        public ILog Logger { get; set; }
     }
 }

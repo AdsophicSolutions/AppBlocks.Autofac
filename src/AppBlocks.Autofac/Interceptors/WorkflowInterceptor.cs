@@ -1,8 +1,10 @@
 ﻿using AppBlocks.Autofac.Common;
 using AppBlocks.Autofac.Support;
 using Autofac.Features.Indexed;
+using Castle.Core.Logging;
 using Castle.DynamicProxy;
 using log4net;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,8 @@ namespace AppBlocks.Autofac.Interceptors
         Workflows: null,
         IsKeyed: false)]
     public class WorkflowInterceptor : IWorkflowInterceptor
-    {   
+    {
+        private readonly ILogger<ValidationInterceptor> logger;
         private readonly IIndex<string, IWorkflowWriter> workflowWriters;
         private readonly Lazy<Dictionary<string, Dictionary<string, IWorkflowWriter>>> workflowWriterServiceDictionary =
             new Lazy<Dictionary<string, Dictionary<string, IWorkflowWriter>>>(() => new Dictionary<string, Dictionary<string, IWorkflowWriter>>());
@@ -33,9 +36,12 @@ namespace AppBlocks.Autofac.Interceptors
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="logger">Reference to logger instance</param>
         /// <param name="workflowWriters">Keyed instances of <see cref="IWorkflowWriter"/></param>
-        public WorkflowInterceptor(IIndex<string, IWorkflowWriter> workflowWriters)
-        {            
+        public WorkflowInterceptor(ILogger<ValidationInterceptor> logger,
+            IIndex<string, IWorkflowWriter> workflowWriters)
+        {
+            this.logger = logger;
             this.workflowWriters = workflowWriters;
         }
 
@@ -45,6 +51,8 @@ namespace AppBlocks.Autofac.Interceptors
         /// <param name="invocation"><see cref="IInvocation"/> instance</param>
         public void PreMethodInvoke(IInvocation invocation)
         {
+            if (invocation == null) return;
+
             // Get workflow writers for service 
             var writers = GetWorkflowWriters(invocation);
 
@@ -67,11 +75,10 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any exceptions
-                    if (Logger.IsErrorEnabled)
-                    {
-                        Logger.Error($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PreMethodInvoke method call. " +
-                            $"Writer will be disabled", e);
-                    }
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError(e, 
+                            $"Workflow writer { writer.Key}:{ writer.Value.GetType().FullName} threw an exception during PreMethodInvoke method call. " + 
+                            $"Writer will be disabled");
 
                     // Disable workflow writer if it throws an exception
                     disabledWorkflowWriters.Add(writer.Key);
@@ -109,11 +116,10 @@ namespace AppBlocks.Autofac.Interceptors
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     // Log any errors
-                    if (Logger.IsErrorEnabled)
-                    {
-                        Logger.Error($"Workflow writer {writer.Key}:{writer.Value.GetType().FullName} threw an exception during PostMethodInvoke method call. " +
-                            $"Writer will be disabled", e);
-                    }
+                    if (logger.IsEnabled(LogLevel.Error))
+                        logger.LogError(e, 
+                            $"Workflow writer { writer.Key}:{ writer.Value.GetType().FullName} threw an exception during PostMethodInvoke method call. " + 
+                            $"Writer will be disabled");
 
                     // Disable writer. Writers that throw exceptions are disabled
                     disabledWorkflowWriters.Add(writer.Key);
@@ -198,10 +204,5 @@ namespace AppBlocks.Autofac.Interceptors
             return 
                 workflowWriterServiceDictionary.Value[invocation.TargetType.FullName];
         }
-
-        /// <summary>
-        /// <see cref="ILog"/> instance
-        /// </summary>
-        public ILog Logger { get; set; }
     }
 }

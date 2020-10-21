@@ -1,5 +1,6 @@
 ﻿using AppBlocks.Autofac.Support;
 using log4net;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -10,8 +11,12 @@ namespace AppBlocks.Autofac.Tests.KeyedAndNamedServices
     [AppBlocksKeyedService("KeyedService2", typeof(IKeyedService))]
     public class KeyedService2 : IKeyedService
     {
-        private static readonly ILog logger =
-           LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger<KeyedService2> logger;
+
+        public KeyedService2(ILogger<KeyedService2> logger)
+        {
+            this.logger = logger;
+        }
 
         private static int callCount;
         public static int GetCallCount() => callCount;
@@ -21,8 +26,8 @@ namespace AppBlocks.Autofac.Tests.KeyedAndNamedServices
         {
             callCount++;
 
-            if (logger.IsInfoEnabled)
-                logger.Info($"{nameof(KeyedService2)}.{nameof(RunKeyedService)} called successfully");
+            if (logger.IsEnabled(LogLevel.Information))
+                logger.LogInformation($"{nameof(KeyedService2)}.{nameof(RunKeyedService)} called successfully");
         }
     }
 }

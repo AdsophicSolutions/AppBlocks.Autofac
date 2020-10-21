@@ -122,19 +122,19 @@ public class WorkflowInterceptor : IWorkflowInterceptor</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor__ctor_Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IWorkflowWriter__.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor.%23ctor(Autofac.Features.Indexed.IIndex%7BSystem.String%2CAppBlocks.Autofac.Common.IWorkflowWriter%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/phaseII/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor__ctor_Microsoft_Extensions_Logging_ILogger_AppBlocks_Autofac_Interceptors_ValidationInterceptor__Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IWorkflowWriter__.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor.%23ctor(Microsoft.Extensions.Logging.ILogger%7BAppBlocks.Autofac.Interceptors.ValidationInterceptor%7D%2CAutofac.Features.Indexed.IIndex%7BSystem.String%2CAppBlocks.Autofac.Common.IWorkflowWriter%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L37">View Source</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/phaseII/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L41">View Source</a>
   </span>
   <a id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor__ctor_" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor*"></a>
-  <h4 id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor__ctor_Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IWorkflowWriter__" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})">WorkflowInterceptor(IIndex&lt;String, IWorkflowWriter&gt;)</h4>
+  <h4 id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor__ctor_Microsoft_Extensions_Logging_ILogger_AppBlocks_Autofac_Interceptors_ValidationInterceptor__Autofac_Features_Indexed_IIndex_System_String_AppBlocks_Autofac_Common_IWorkflowWriter__" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.#ctor(Microsoft.Extensions.Logging.ILogger{AppBlocks.Autofac.Interceptors.ValidationInterceptor},Autofac.Features.Indexed.IIndex{System.String,AppBlocks.Autofac.Common.IWorkflowWriter})">WorkflowInterceptor(ILogger&lt;ValidationInterceptor&gt;, IIndex&lt;String, IWorkflowWriter&gt;)</h4>
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WorkflowInterceptor(IIndex&lt;string, IWorkflowWriter&gt; workflowWriters)</code></pre>
+    <pre><code class="lang-csharp hljs">public WorkflowInterceptor(ILogger&lt;ValidationInterceptor&gt; logger, IIndex&lt;string, IWorkflowWriter&gt; workflowWriters)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -147,6 +147,12 @@ public class WorkflowInterceptor : IWorkflowInterceptor</code></pre>
     </thead>
     <tbody>
       <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;<a class="xref" href="AppBlocks.Autofac.Interceptors.ValidationInterceptor.html">ValidationInterceptor</a>&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>Reference to logger instance</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">Autofac.Features.Indexed.IIndex</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="AppBlocks.Autofac.Common.IWorkflowWriter.html">IWorkflowWriter</a>&gt;</td>
         <td><span class="parametername">workflowWriters</span></td>
         <td><p>Keyed instances of <a class="xref" href="AppBlocks.Autofac.Common.IWorkflowWriter.html">IWorkflowWriter</a></p>
@@ -154,47 +160,14 @@ public class WorkflowInterceptor : IWorkflowInterceptor</code></pre>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor_Logger.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L205">View Source</a>
-  </span>
-  <a id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor_Logger_" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger*"></a>
-  <h4 id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor_Logger" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.Logger">Logger</h4>
-  <div class="markdown level1 summary"><p><span class="xref">log4net.ILog</span> instance</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ILog Logger { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">log4net.ILog</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PostMethodInvoke_Castle_DynamicProxy_IInvocation_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/phaseII/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PostMethodInvoke_Castle_DynamicProxy_IInvocation_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L86">View Source</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/phaseII/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L93">View Source</a>
   </span>
   <a id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PostMethodInvoke_" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PostMethodInvoke*"></a>
   <h4 id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PostMethodInvoke_Castle_DynamicProxy_IInvocation_" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PostMethodInvoke(Castle.DynamicProxy.IInvocation)">PostMethodInvoke(IInvocation)</h4>
@@ -225,10 +198,10 @@ public class WorkflowInterceptor : IWorkflowInterceptor</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PreMethodInvoke_Castle_DynamicProxy_IInvocation_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/phaseII/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PreMethodInvoke_Castle_DynamicProxy_IInvocation_.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L46">View Source</a>
+    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/phaseII/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L52">View Source</a>
   </span>
   <a id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PreMethodInvoke_" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PreMethodInvoke*"></a>
   <h4 id="AppBlocks_Autofac_Interceptors_WorkflowInterceptor_PreMethodInvoke_Castle_DynamicProxy_IInvocation_" data-uid="AppBlocks.Autofac.Interceptors.WorkflowInterceptor.PreMethodInvoke(Castle.DynamicProxy.IInvocation)">PreMethodInvoke(IInvocation)</h4>
@@ -269,10 +242,10 @@ public class WorkflowInterceptor : IWorkflowInterceptor</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/master/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/new/phaseII/apiSpec/new?filename=AppBlocks_Autofac_Interceptors_WorkflowInterceptor.md&amp;value=---%0Auid%3A%20AppBlocks.Autofac.Interceptors.WorkflowInterceptor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/master/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L18" class="contribution-link">View Source</a>
+                    <a href="https://github.com/AdsophicSolutions/AppBlocks.Autofac/blob/phaseII/src/AppBlocks.Autofac/Interceptors/WorkflowInterceptor.cs/#L20" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

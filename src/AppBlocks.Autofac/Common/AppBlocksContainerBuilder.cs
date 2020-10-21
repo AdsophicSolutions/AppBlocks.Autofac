@@ -5,6 +5,7 @@ using Autofac;
 using log4net;
 using MediatR;
 using MediatR.Pipeline;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace AppBlocks.Autofac.Common
     /// </summary>
     public abstract class AppBlocksContainerBuilder
     {
-        private static readonly ILog logger =
-            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly static ILogger<AppBlocksContainerBuilder> logger =
+            new Logger<AppBlocksContainerBuilder>(AppBlocksLogging.Instance.GetLoggerFactory());
 
         /// <summary>
         /// <see cref="ApplicationConfiguration"/> for the AppBlocks application
@@ -70,7 +71,7 @@ namespace AppBlocks.Autofac.Common
         public IContainer BuildContainer()
         {
             var builder = new ContainerBuilder();
-            InitializeContainer(builder);
+            InitializeContainer(builder, true);
             return builder.Build();
         }
 
@@ -80,12 +81,21 @@ namespace AppBlocks.Autofac.Common
         /// <see cref="global::Autofac.IContainer"/> implementation is passed in as a parameter 
         /// </summary>
         /// <param name="builder">Builder to initialize</param>
-        public void BuildContainer(ContainerBuilder builder) 
-        {
-            InitializeContainer(builder);
-        }
+        public void BuildContainer(ContainerBuilder builder) =>
+            BuildContainer(builder, false);
 
-        private void InitializeContainer(ContainerBuilder builder)
+        /// <summary>
+        /// Initializes <see cref="global::Autofac.IContainer"/> for an 
+        /// AppBlocks application. Used for Web project integration where
+        /// <see cref="global::Autofac.IContainer"/> implementation is passed in as a parameter 
+        /// </summary>
+        /// <param name="builder">Builder to initialize</param>
+        /// <param name="registerAppBlocksLogging"><c>true</c> if AppBlocks should be used; otherwise <c>false</c>. 
+        /// Required to support Asp.Net Core since we want to use logger factory registered in Asp.NET core services </param>
+        public void BuildContainer(ContainerBuilder builder, bool registerAppBlocksLogging)
+            => InitializeContainer(builder, registerAppBlocksLogging);
+
+        private void InitializeContainer(ContainerBuilder builder, bool registerAppBlocksLogging)
         {
             // Registation ApplicationConfiguration as single instance
             builder.Register(c => ApplicationConfiguration).AsSelf().SingleInstance();
@@ -98,8 +108,12 @@ namespace AppBlocks.Autofac.Common
                 .As<IContext>()
                 .SingleInstance();
 
-            // Register LoggingModule to inject logger
-            builder.RegisterModule<LoggingModule>();
+            if (registerAppBlocksLogging)
+            {
+                // Register log factory to create loggers
+                builder.RegisterInstance(AppBlocksLogging.Instance.GetLoggerFactory()).As<ILoggerFactory>().SingleInstance();
+                builder.RegisterGeneric(typeof(Logger<>)).As(typeof(ILogger<>)).SingleInstance();
+            }
 
             // MediatR registration
             RegisterMediatr(builder);
@@ -273,7 +287,9 @@ namespace AppBlocks.Autofac.Common
         private static void RegisterInterceptors(ContainerBuilder builder)
         {
             // Typed registration
-            logger.Debug("Registering Interceptor");
+            if (logger.IsEnabled(LogLevel.Debug))
+                logger.LogDebug("Registering Interceptor");
+
             builder.RegisterType<AppBlocksServiceInterceptor>().AsSelf().SingleInstance();
             //logger.Debug("Registering Validation Interceptor");
             //builder.RegisterType<ValidationInterceptor>().AsSelf().SingleInstance();

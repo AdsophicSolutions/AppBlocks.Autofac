@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://adsophicsolutions.github.io/AppBlocks.Autofac/index.html</PackageProjectUrl>
     <RepositoryUrl>https://github.com/AdsophicSolutions/AppBlocks.Autofac</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <Version>1.0.1</Version>
+    <Version>1.0.8</Version>
     <PackageReleaseNotes>* Support for web project integration</PackageReleaseNotes>
   </PropertyGroup>
 
@@ -22,26 +22,32 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="5.2.0" />
-    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="5.0.0" />
+    <PackageReference Include="Autofac" Version="6.0.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.0" />
     <PackageReference Include="docfx.console" Version="2.56.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="log4net" Version="2.0.8" />
-    <PackageReference Include="MediatR" Version="8.0.2" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+    <PackageReference Include="log4net" Version="2.0.11" />
+    <PackageReference Include="MediatR" Version="8.1.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.5" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.5" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.5" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logging\Log4Net\" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy $(OutDir)* $(ProjectDir)..\..\..\AppBlocks.Autofac.Examples\DLLs" />
+    <Exec Command="copy $(OutDir)* $(ProjectDir)..\..\..\appblocks.dlls" />
   </Target>
 
 </Project>
