@@ -117,10 +117,43 @@ namespace AppBlocks.Autofac.Interceptors
                 // Use default logger if not excluded from logging
                 if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
-                    if (logger.IsEnabled(LogLevel.Information))
-                        logger.LogInformation($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
-                            $"Returned {invocation.ReturnValue}", 
-                            invocation.ReturnValue);
+                    // Check if this is an asynchronous method calle
+                    var resultMethod = invocation?
+                        .ReturnValue?
+                        .GetType()
+                        .GetMethods()
+                        .FirstOrDefault(n => n.Name == "get_Result");
+
+                    // Not an async call
+                    if (resultMethod == null)
+                    {
+                        if (logger.IsEnabled(LogLevel.Information))
+                            logger.LogInformation($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                                $"Returned {invocation.ReturnValue}",
+                                invocation.ReturnValue);
+                    }
+                    // Log result for async call
+                    else
+                    {
+                        try
+                        {
+                            var returnValue = resultMethod?.Invoke(invocation?.ReturnValue, null);
+
+                            if (logger.IsEnabled(LogLevel.Information))
+                                logger.LogInformation($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                                    $"Returned {returnValue}",
+                                    returnValue);
+                        }
+#pragma warning disable CA1031 // Do not catch general exception types
+                        catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
+                        {
+                            // Log any exceptions
+                            if (logger.IsEnabled(LogLevel.Error))
+                                logger.LogError(e,
+                                    $"Logging Interceptor: {invocation.TargetType.FullName}.{invocation.Method.Name} threw an exception");
+                        }
+                    }
                 }
             }
         }
