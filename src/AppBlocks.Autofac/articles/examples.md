@@ -2,7 +2,7 @@
 
 Examples to get you started on AppBlocks.Autofac are available [here](https://github.com/AdsophicSolutions/AppBlocks.Autofac.Examples). Some topics covered in the examples are 
 
-* Quick Start - Get started on AppBlocks
+* Quick Start - Get started on AppBlocks. Please note - Video is out of date. Current implementation supports generic logging. Logging configuration declaration works differently in the new version
 
 [![Quick Start](~/images/AppBlocks.QuickStart.png)](https://youtu.be/uaYBKY9dMQk "AppBlocks Quick Start")
 
