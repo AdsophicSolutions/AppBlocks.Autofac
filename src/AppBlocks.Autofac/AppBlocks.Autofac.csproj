@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://adsophicsolutions.github.io/AppBlocks.Autofac/index.html</PackageProjectUrl>
     <RepositoryUrl>https://github.com/AdsophicSolutions/AppBlocks.Autofac</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <Version>1.0.9</Version>
+    <Version>1.0.10</Version>
     <PackageReleaseNotes>***** BREAKING CHANGES *******
 * Generic Logging - Replace log4net logging with Microsoft.Extensions.Logging based logging to support any underlying logging method. Please use example QuickStart.Program as reference to upgrade your application from version 1.0.1. https://github.com/AdsophicSolutions/AppBlocks.Autofac.Examples
 * Log return values for asynchronous service methods correctly.
