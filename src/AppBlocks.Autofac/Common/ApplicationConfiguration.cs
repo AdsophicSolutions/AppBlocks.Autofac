@@ -19,6 +19,8 @@ namespace AppBlocks.Autofac.Common
         internal Lazy<IList<string>> ConfigurationFilePaths { get; } = new Lazy<IList<string>>(() => new List<string>());
         internal Lazy<IList<string>> AutofacDirectories { get; } = new Lazy<IList<string>>(() => new List<string>());
         internal Lazy<IList<string>> ExcludeFromLogTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
+        internal Lazy<IList<string>> ElevateToInfoLogTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
+        internal Lazy<IList<string>> ElevateToWarnLogTypes { get; } = new Lazy<IList<string>>(() => new List<string>());
 
         /// <summary>
         /// Constructor
@@ -40,7 +42,9 @@ namespace AppBlocks.Autofac.Common
             //List of directories cannot be null or empty
             if ((configurationFilePaths?.Count() ?? 0) == 0)
             {
-                throw new ArgumentNullException("Argument configuration file paths cannot be null or empty");
+                throw new ArgumentNullException(
+                    paramName: nameof(configurationFilePaths),
+                    message: "Argument configuration file paths cannot be null or empty");
             }
 
             //Add file path to list of file paths to process
@@ -65,7 +69,9 @@ namespace AppBlocks.Autofac.Common
         {
             // Perform a null check
             if (string.IsNullOrEmpty(configurationFilePath)) 
-                throw new ArgumentNullException("Configuration file path cannot be null or empty");
+                throw new ArgumentNullException(
+                    paramName: nameof(configurationFilePath),
+                    message: "Configuration file path cannot be null or empty");
 
             //Add file path to list of file paths to process
             ValidateAndAddConfigurationPath(configurationFilePath);
@@ -91,6 +97,14 @@ namespace AppBlocks.Autofac.Common
 
                 // Add types to be excluded from logging
                 AddExcludeLogTypes(configuration);
+
+                // Add types to be elevate to info instead of default debug for logging
+                AddElevateToLogTypes(configuration);
+
+                // Add types to be elevate to warn instead of default debug for logging
+                // Can be an effective tool in production where you can set certain services
+                // to log warn level for debugging
+                AddElevateToWarnTypes(configuration);
             }          
         }
 
@@ -152,6 +166,40 @@ namespace AppBlocks.Autofac.Common
             // Add types to the list of directories. 
             foreach (var excludeFromLogType in excludeFromLogTypes)
                 ExcludeFromLogTypes.Value.Add(excludeFromLogType);
+        }
+
+        private void AddElevateToLogTypes(IConfigurationRoot configurationRoot)
+        {
+            // Read types to be elevated to info level logging. 
+            var elevateToInfoLogTypes = configurationRoot
+                .GetSection("elevateToInfoLog")
+                ?.GetChildren()
+                .Select(t => t.Value)
+                .ToArray();
+
+            // return if no entries are found
+            if (elevateToInfoLogTypes == null) return;
+
+            // Add types to elevate to info list
+            foreach (var elevateToInfoLogType in elevateToInfoLogTypes)
+                ElevateToInfoLogTypes.Value.Add(elevateToInfoLogType);
+        }
+
+        private void AddElevateToWarnTypes(IConfigurationRoot configurationRoot)
+        {
+            // Read types to be elevated to warn level logging. 
+            var elevateToWarnLogTypes = configurationRoot
+                .GetSection("elevateToWarnLog")
+                ?.GetChildren()
+                .Select(t => t.Value)
+                .ToArray();
+
+            // return if no entries are found
+            if (elevateToWarnLogTypes == null) return;
+
+            // Add types to elevate to warn list
+            foreach (var elevateToWarnLogType in elevateToWarnLogTypes)
+                ElevateToWarnLogTypes.Value.Add(elevateToWarnLogType);
         }
     }
 }

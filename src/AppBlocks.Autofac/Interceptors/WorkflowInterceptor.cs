@@ -92,7 +92,8 @@ namespace AppBlocks.Autofac.Interceptors
         /// <param name="invocation"><see cref="IInvocation"/> instance</param>
         public void PostMethodInvoke(IInvocation invocation)
         {
-            if (invocation == null) throw new ArgumentNullException("Parameter invocation cannot be null");
+            if (invocation == null) 
+                throw new ArgumentNullException(nameof(invocation), "Parameter invocation cannot be null");
 
             // Get workflow writers for service type
             var writers = GetWorkflowWriters(invocation);

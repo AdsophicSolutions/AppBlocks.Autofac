@@ -19,7 +19,8 @@ namespace AppBlocks.Autofac.Logging.Log4Net
         /// <returns><see cref="ILoggerFactory"/> reference</returns>
         public static ILoggerFactory AddLog4Net(this ILoggerFactory factory, string log4NetConfigFile)
         {
-            if (factory == null) throw new ArgumentNullException("Factory argument cannot be null");
+            if (factory == null) 
+                throw new ArgumentNullException(nameof(factory), "Factory argument cannot be null");
 
             using (var provider = new Log4NetProvider(log4NetConfigFile))
             {

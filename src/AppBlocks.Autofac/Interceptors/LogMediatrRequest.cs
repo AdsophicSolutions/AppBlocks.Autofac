@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using AppBlocks.Autofac.Common;
+using log4net;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 using System;
@@ -17,10 +18,13 @@ namespace AppBlocks.Autofac.Interceptors
     internal class LogMediatrRequest<TRequest> : IRequestPreProcessor<TRequest>
     {
         private readonly ILogger<LogMediatrRequest<TRequest>> logger;
+        private readonly ILoggingConfiguration loggingConfiguration;
 
-        public LogMediatrRequest(ILogger<LogMediatrRequest<TRequest>> logger)
+        public LogMediatrRequest(ILogger<LogMediatrRequest<TRequest>> logger,
+            ILoggingConfiguration loggingConfiguration)
         {
             this.logger = logger;
+            this.loggingConfiguration = loggingConfiguration;
         }
 
         /// <summary>
@@ -33,8 +37,23 @@ namespace AppBlocks.Autofac.Interceptors
         {
             return Task.Run(() =>
             {
-                if (logger.IsEnabled(LogLevel.Information))
-                    logger.LogInformation($"Logging request from {request?.GetType().FullName}. Request Details {request}");
+                var typeName = request?.GetType().FullName;
+
+                if (loggingConfiguration.IsTypeElevatedToWarn(typeName))
+                {
+                    if (logger.IsEnabled(LogLevel.Warning))
+                        logger.LogWarning(
+                            $"Logging request from {typeName}. Request details {request}");
+                }
+                // if type is elevated to info log as info
+                else if (loggingConfiguration.IsTypeElevatedToInfo(typeName))
+                {
+                    if (logger.IsEnabled(LogLevel.Information))
+                        logger.LogInformation(
+                            $"Logging request from {typeName}. Request details {request}");
+                }
+                else if (logger.IsEnabled(LogLevel.Debug))
+                    logger.LogDebug($"Logging request from {typeName}. Request details {request}");
 
             }, CancellationToken.None);
         }

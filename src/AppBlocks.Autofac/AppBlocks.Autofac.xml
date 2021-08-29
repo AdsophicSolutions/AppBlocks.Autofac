@@ -364,6 +364,22 @@
             <param name="fullTypeName">Full name for type to check</param>
             <returns><c>true</c> if type should be excluded; otherwise <c>false</c>.</returns>
         </member>
+        <member name="M:AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToInfo(System.String)">
+            <summary>
+            Implementation returns for types that should be elevated to Info level
+            logging from default log leval of Debug
+            </summary>
+            <param name="fullTypeName">Full name for type to check</param>
+            <returns><c>true</c> if type is elevated; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToWarn(System.String)">
+            <summary>
+            Implementation returns for types that should be elevated to Warn level
+            logging from default log leval of Debug
+            </summary>
+            <param name="fullTypeName">Full name for type to check</param>
+            <returns><c>true</c> if type is elevated; otherwise <c>false</c>.</returns>
+        </member>
         <member name="T:AppBlocks.Autofac.Common.IServiceLogger">
             <summary>
             Defines methods to use in custom service loggers
@@ -439,6 +455,22 @@
             </summary>
             <param name="fullTypeName">Full name of type to check</param>
             <returns><c>true</c> if type should be excluded; otherwise <c>false</c>;</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.LoggingConfiguration.IsTypeElevatedToInfo(System.String)">
+            <summary>
+            Implementation returns for types that should be elevated to Info level
+            logging from default log leval of Debug
+            </summary>
+            <param name="fullTypeName">Full name for type to check</param>
+            <returns><c>true</c> if type is elevated; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:AppBlocks.Autofac.Common.LoggingConfiguration.IsTypeElevatedToWarn(System.String)">
+            <summary>
+            Implementation returns for types that should be elevated to Warn level
+            logging from default log leval of Debug
+            </summary>
+            <param name="fullTypeName">Full name for type to check</param>
+            <returns><c>true</c> if type is elevated; otherwise <c>false</c>.</returns>
         </member>
         <member name="T:AppBlocks.Autofac.Common.RegistrationUtils">
             <summary>

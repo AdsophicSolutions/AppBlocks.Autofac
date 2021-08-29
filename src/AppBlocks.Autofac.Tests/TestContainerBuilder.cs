@@ -8,6 +8,9 @@ namespace AppBlocks.Autofac.Tests
 {
     public class TestContainerBuilder : AppBlocksContainerBuilder
     {
+        public TestContainerBuilder(ApplicationConfiguration applicationConfiguration) 
+            : base(applicationConfiguration, AppBlocksApplicationMode.Test) { }
+
         public TestContainerBuilder() : base(AppBlocksApplicationMode.Test) { }
 
         protected override void RegisterAssemblyServices(ContainerBuilder builder)

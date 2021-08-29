@@ -3,6 +3,6 @@
   <!-- configuration elements -->
    <!-- Parameters used by tests at run time -->
   <TestRunParameters>
-    <Parameter name="logType" value="serilog" />
+    <Parameter name="logType" value="log4net" />
   </TestRunParameters>
 </RunSettings>

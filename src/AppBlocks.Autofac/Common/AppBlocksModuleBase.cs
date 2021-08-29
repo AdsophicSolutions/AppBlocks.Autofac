@@ -107,7 +107,7 @@ namespace AppBlocks.Autofac.Common
         {
             // throw exception if reference is null
             if (service == null)
-                throw new ArgumentNullException("Cannot register service as null");
+                throw new ArgumentNullException(nameof(service), "Cannot register service as null");
 
             // Register service in builder
             builder

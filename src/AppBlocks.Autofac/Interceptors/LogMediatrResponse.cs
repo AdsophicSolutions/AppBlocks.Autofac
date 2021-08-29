@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using AppBlocks.Autofac.Common;
+using log4net;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,10 +19,13 @@ namespace AppBlocks.Autofac.Interceptors
         IRequestPostProcessor<TRequest, TResponse>
     {
         private readonly ILogger<LogMediatrResponse<TRequest, TResponse>> logger;
+        private readonly ILoggingConfiguration loggingConfiguration;
 
-        public LogMediatrResponse(ILogger<LogMediatrResponse<TRequest, TResponse>> logger)
+        public LogMediatrResponse(ILogger<LogMediatrResponse<TRequest, TResponse>> logger,
+            ILoggingConfiguration loggingConfiguration)
         {
             this.logger = logger;
+            this.loggingConfiguration = loggingConfiguration;
         }
 
         /// <summary>
@@ -35,8 +39,24 @@ namespace AppBlocks.Autofac.Interceptors
         {
             return Task.Run(() =>
             {
-                if (logger.IsEnabled(LogLevel.Information))
-                    logger.LogInformation($"Logging response from {response?.GetType().FullName}. Response details {response}");
+                var typeName = response?.GetType().FullName;
+
+                if (loggingConfiguration.IsTypeElevatedToWarn(typeName))
+                {
+                    if (logger.IsEnabled(LogLevel.Warning))
+                        logger.LogWarning(
+                            $"Logging response from {typeName}. Response details {response}");
+                }
+                // if type is elevated to info log as info
+                else if (loggingConfiguration.IsTypeElevatedToInfo(typeName))
+                {
+                    if (logger.IsEnabled(LogLevel.Information))
+                        logger.LogInformation(
+                            $"Logging response from {typeName}. Response details {response}");
+                }
+                else if (logger.IsEnabled(LogLevel.Debug))
+                    logger.LogDebug($"Logging response from {typeName}. Response details {response}");
+                
             }, CancellationToken.None);
         }
     }

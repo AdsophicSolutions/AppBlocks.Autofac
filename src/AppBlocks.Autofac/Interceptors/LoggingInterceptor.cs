@@ -75,10 +75,29 @@ namespace AppBlocks.Autofac.Interceptors
                 // Do not log if type is excluded from logging
                 if (!loggingConfiguration.IsTypeExcluded(invocation.TargetType.FullName))
                 {
-                    if (logger.IsEnabled(LogLevel.Information))
-                        logger.LogInformation($"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name} " +
-                        $"with parameters: {(invocation.Arguments.Length == 0 ? "None" : string.Join(", ", invocation.Arguments))}",
-                        invocation.Arguments);
+                    // If type is elevated to warn log as warn
+                    if(loggingConfiguration.IsTypeElevatedToWarn(invocation.TargetType.FullName))
+                    {
+                        if (logger.IsEnabled(LogLevel.Warning))
+                            logger.LogWarning(
+                                $"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name} " +
+                                    $"with parameters: {(invocation.Arguments.Length == 0 ? "None" : string.Join(", ", invocation.Arguments))}",
+                                invocation.Arguments);
+                    }
+                    // if type is elevated to info log as info
+                    else if (loggingConfiguration.IsTypeElevatedToInfo(invocation.TargetType.FullName))
+                    {
+                        if (logger.IsEnabled(LogLevel.Information))
+                            logger.LogInformation(
+                                $"Logging Interceptor: Calling {invocation.TargetType.FullName}.{invocation.Method.Name} " +
+                                    $"with parameters: {(invocation.Arguments.Length == 0 ? "None" : string.Join(", ", invocation.Arguments))}",
+                                invocation.Arguments);
+                    }
+                    else if (logger.IsEnabled(LogLevel.Debug))
+                        logger.LogDebug(
+                            $"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " + 
+                                $"Returned {invocation.ReturnValue}", 
+                            invocation.ReturnValue);
                 }
             }
         }
@@ -127,10 +146,29 @@ namespace AppBlocks.Autofac.Interceptors
                     // Not an async call
                     if (resultMethod == null)
                     {
-                        if (logger.IsEnabled(LogLevel.Information))
-                            logger.LogInformation($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
-                                $"Returned {invocation.ReturnValue}",
-                                invocation.ReturnValue);
+                        // If type is elevated to warn log as warn
+                        if (loggingConfiguration.IsTypeElevatedToWarn(invocation.TargetType.FullName))
+                        {
+                            if (logger.IsEnabled(LogLevel.Warning))
+                                logger.LogWarning(
+                                    $"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                                        $"Returned {invocation.ReturnValue}",
+                                    invocation.ReturnValue);
+                        }
+                        // if type is elevated to info log as info
+                        else if (loggingConfiguration.IsTypeElevatedToInfo(invocation.TargetType.FullName))
+                        {
+                            if (logger.IsEnabled(LogLevel.Information))
+                                logger.LogInformation(
+                                    $"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                                        $"Returned {invocation.ReturnValue}",
+                                    invocation.ReturnValue);
+                        }
+                        else if (logger.IsEnabled(LogLevel.Debug))
+                            logger.LogDebug(
+                                $"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                                    $"Returned {invocation.ReturnValue}",
+                                invocation.ReturnValue);                        
                     }
                     // Log result for async call
                     else
@@ -139,9 +177,28 @@ namespace AppBlocks.Autofac.Interceptors
                         {
                             var returnValue = resultMethod?.Invoke(invocation?.ReturnValue, null);
 
-                            if (logger.IsEnabled(LogLevel.Information))
-                                logger.LogInformation($"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
-                                    $"Returned {returnValue}",
+                            // If type is elevated to warn log as warn
+                            if (loggingConfiguration.IsTypeElevatedToWarn(invocation.TargetType.FullName))
+                            {
+                                if (logger.IsEnabled(LogLevel.Warning))
+                                    logger.LogWarning(
+                                        $"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                                            $"Returned {returnValue}",
+                                        returnValue);
+                            }
+                            // if type is elevated to info log as info
+                            else if (loggingConfiguration.IsTypeElevatedToInfo(invocation.TargetType.FullName))
+                            {
+                                if (logger.IsEnabled(LogLevel.Information))
+                                    logger.LogInformation(
+                                        $"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                                            $"Returned {returnValue}",
+                                        returnValue);
+                            }
+                            else if (logger.IsEnabled(LogLevel.Debug))
+                                logger.LogDebug(
+                                    $"Logging Interceptor: Finished {invocation.TargetType.FullName}.{invocation.Method.Name}. " +
+                                        $"Returned {returnValue}",
                                     returnValue);
                         }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -150,7 +207,8 @@ namespace AppBlocks.Autofac.Interceptors
                         {
                             // Log any exceptions
                             if (logger.IsEnabled(LogLevel.Error))
-                                logger.LogError(e,
+                                logger.LogError(
+                                    e,
                                     $"Logging Interceptor: {invocation.TargetType.FullName}.{invocation.Method.Name} threw an exception");
                         }
                     }

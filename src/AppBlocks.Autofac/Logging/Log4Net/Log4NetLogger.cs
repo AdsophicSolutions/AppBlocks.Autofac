@@ -80,7 +80,8 @@ namespace AppBlocks.Autofac.Logging.Log4Net
             if (!IsEnabled(logLevel)) return;
 
             // Format message
-            if (formatter == null) throw new ArgumentNullException("Formatter cannot be null");
+            if (formatter == null) 
+                throw new ArgumentNullException(nameof(formatter), "Formatter cannot be null");
             string message = formatter(state, null);
 
             // If event id name is not null. Add event id information to log

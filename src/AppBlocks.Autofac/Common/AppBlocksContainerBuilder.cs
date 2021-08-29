@@ -49,7 +49,10 @@ namespace AppBlocks.Autofac.Common
             ApplicationConfiguration applicationConfiguration,
             AppBlocksApplicationMode applicationMode)
         {
-            ApplicationConfiguration = applicationConfiguration ?? throw new ArgumentNullException("Application configuration cannot be null");
+            ApplicationConfiguration = applicationConfiguration ?? 
+                throw new ArgumentNullException(
+                    paramName: nameof(applicationConfiguration),
+                    message: "Application configuration cannot be null");
             ApplicationMode = applicationMode;
         }
 
@@ -159,38 +162,6 @@ namespace AppBlocks.Autofac.Common
             builder.RegisterGeneric(typeof(LogMediatrResponse<,>)).As(typeof(IRequestPostProcessor<,>));
             builder.RegisterGeneric(typeof(LogMediatrNotification<>)).As(typeof(INotificationHandler<>));
 
-            //var mediatrOpenTypes = new[]
-            //{
-            //    typeof(IRequestHandler<,>),
-            //    typeof(IRequestExceptionHandler<,,>),
-            //    typeof(IRequestExceptionAction<,>),
-            //    typeof(INotificationHandler<>),
-            //};
-
-            //foreach (var mediatrOpenType in mediatrOpenTypes)
-            //{
-            //    builder
-            //        .RegisterAssemblyTypes(typeof(Ping).GetTypeInfo().Assembly)
-            //        .AsClosedTypesOf(mediatrOpenType)
-            //        // when having a single class implementing several handler types
-            //        // this call will cause a handler to be called twice
-            //        // in general you should try to avoid having a class implementing for instance `IRequestHandler<,>` and `INotificationHandler<>`
-            //        // the other option would be to remove this call
-            //        // see also https://github.com/jbogard/MediatR/issues/462
-            //        .AsImplementedInterfaces();
-            //}
-
-            //// It appears Autofac returns the last registered types first
-            //builder.RegisterGeneric(typeof(RequestPostProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
-            //builder.RegisterGeneric(typeof(RequestPreProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
-            //builder.RegisterGeneric(typeof(RequestExceptionActionProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
-            //builder.RegisterGeneric(typeof(RequestExceptionProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
-            //builder.RegisterGeneric(typeof(GenericRequestPreProcessor<>)).As(typeof(IRequestPreProcessor<>));
-            //builder.RegisterGeneric(typeof(GenericRequestPostProcessor<,>)).As(typeof(IRequestPostProcessor<,>));
-            //builder.RegisterGeneric(typeof(GenericPipelineBehavior<,>)).As(typeof(IPipelineBehavior<,>));
-            //builder.RegisterGeneric(typeof(ConstrainedRequestPostProcessor<,>)).As(typeof(IRequestPostProcessor<,>));
-            //builder.RegisterGeneric(typeof(ConstrainedPingedHandler<>)).As(typeof(INotificationHandler<>));
-
             // request & notification handlers
             builder.Register<ServiceFactory>(context =>
             {
@@ -250,7 +221,9 @@ namespace AppBlocks.Autofac.Common
         {
             // throw exception if reference is null
             if (service == null)
-                throw new ArgumentNullException("Cannot register service as null");
+                throw new ArgumentNullException(
+                    paramName: nameof(service),
+                    message: "Cannot register service as null");
 
             // Register service in builder
             builder

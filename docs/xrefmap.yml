@@ -558,6 +558,32 @@ references:
   commentId: T:AppBlocks.Autofac.Common.ILoggingConfiguration
   fullName: AppBlocks.Autofac.Common.ILoggingConfiguration
   nameWithType: ILoggingConfiguration
+- uid: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToInfo(System.String)
+  name: IsTypeElevatedToInfo(String)
+  href: api/AppBlocks.Autofac.Common.ILoggingConfiguration.html#AppBlocks_Autofac_Common_ILoggingConfiguration_IsTypeElevatedToInfo_System_String_
+  commentId: M:AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToInfo(System.String)
+  fullName: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToInfo(System.String)
+  nameWithType: ILoggingConfiguration.IsTypeElevatedToInfo(String)
+- uid: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToInfo*
+  name: IsTypeElevatedToInfo
+  href: api/AppBlocks.Autofac.Common.ILoggingConfiguration.html#AppBlocks_Autofac_Common_ILoggingConfiguration_IsTypeElevatedToInfo_
+  commentId: Overload:AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToInfo
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToInfo
+  nameWithType: ILoggingConfiguration.IsTypeElevatedToInfo
+- uid: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToWarn(System.String)
+  name: IsTypeElevatedToWarn(String)
+  href: api/AppBlocks.Autofac.Common.ILoggingConfiguration.html#AppBlocks_Autofac_Common_ILoggingConfiguration_IsTypeElevatedToWarn_System_String_
+  commentId: M:AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToWarn(System.String)
+  fullName: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToWarn(System.String)
+  nameWithType: ILoggingConfiguration.IsTypeElevatedToWarn(String)
+- uid: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToWarn*
+  name: IsTypeElevatedToWarn
+  href: api/AppBlocks.Autofac.Common.ILoggingConfiguration.html#AppBlocks_Autofac_Common_ILoggingConfiguration_IsTypeElevatedToWarn_
+  commentId: Overload:AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToWarn
+  isSpec: "True"
+  fullName: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeElevatedToWarn
+  nameWithType: ILoggingConfiguration.IsTypeElevatedToWarn
 - uid: AppBlocks.Autofac.Common.ILoggingConfiguration.IsTypeExcluded(System.String)
   name: IsTypeExcluded(String)
   href: api/AppBlocks.Autofac.Common.ILoggingConfiguration.html#AppBlocks_Autofac_Common_ILoggingConfiguration_IsTypeExcluded_System_String_
