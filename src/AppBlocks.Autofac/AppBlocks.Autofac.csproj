@@ -7,17 +7,16 @@
     <Product>AppBlocks</Product>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Copyright>Copyright ©2020</Copyright>
+    <Copyright>Copyright ©2021</Copyright>
     <Description>AppBlocks intends to simplify the task of integrating Autofac into your application with emphasis on building supportable and testable applications</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://adsophicsolutions.github.io/AppBlocks.Autofac/index.html</PackageProjectUrl>
     <RepositoryUrl>https://github.com/AdsophicSolutions/AppBlocks.Autofac</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <Version>1.0.10</Version>
-    <PackageReleaseNotes>***** BREAKING CHANGES *******
-* Generic Logging - Replace log4net logging with Microsoft.Extensions.Logging based logging to support any underlying logging method. Please use example QuickStart.Program as reference to upgrade your application from version 1.0.1. https://github.com/AdsophicSolutions/AppBlocks.Autofac.Examples
-* Log return values for asynchronous service methods correctly.
-</PackageReleaseNotes>
+    <Version>1.0.11</Version>
+    <PackageReleaseNotes>***** CHANGES *******
+* Logging - Default log level to DEBUG. 
+* Loggingg - Add support for elevating logging level by type</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksContainerBuilder.html",
-          "hash": "DTny52QUukNytqJDFu0rcQ=="
+          "hash": "5xzvukypL0r6JVSez+RJmQ=="
         }
       },
       "is_incremental": true,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AppBlocks.Autofac.Common.AppBlocksModuleBase.html",
-          "hash": "e/AsIW4dFSS3xeB5NIawSg=="
+          "hash": "8wMgnpQPiIEPE1JCi3FvSA=="
         }
       },
       "is_incremental": true,

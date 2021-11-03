@@ -151,7 +151,8 @@ namespace AppBlocks.Autofac.Common
             // Register all types from IMediatR assembly
             builder
                 .RegisterAssemblyTypes(typeof(IMediator).Assembly)
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
 
             // Required for intercepting MediatR Request Response
             builder.RegisterGeneric(typeof(RequestPostProcessorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
@@ -164,8 +165,8 @@ namespace AppBlocks.Autofac.Common
 
             // request & notification handlers
             builder.Register<ServiceFactory>(context =>
-            {
-                var c = context.Resolve<IComponentContext>();
+            {   
+                var c = context.Resolve<IComponentContext>();                
                 return t => c.Resolve(t);
             });
         }
