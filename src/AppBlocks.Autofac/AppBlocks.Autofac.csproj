@@ -13,10 +13,9 @@
     <PackageProjectUrl>https://adsophicsolutions.github.io/AppBlocks.Autofac/index.html</PackageProjectUrl>
     <RepositoryUrl>https://github.com/AdsophicSolutions/AppBlocks.Autofac</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <Version>1.0.11</Version>
+    <Version>1.0.12</Version>
     <PackageReleaseNotes>***** CHANGES *******
-* Logging - Default log level to DEBUG. 
-* Loggingg - Add support for elevating logging level by type</PackageReleaseNotes>
+* MediatR Support - Create a single instance per lifetime scope</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
